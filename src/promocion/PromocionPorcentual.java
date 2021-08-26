@@ -6,9 +6,9 @@ public class PromocionPorcentual extends Promocion {
 
 	private double porcentajeACobrar;
 
-	public PromocionPorcentual(String nombre, Atraccion[] misAtracciones, Tipo tipoDePromocion,double porcentajeACobrar) {
+	public PromocionPorcentual(String nombre, Atraccion[] misAtracciones, Tipo tipoDePromocion,double porcentajeDescuento) {
 		super(nombre, misAtracciones, tipoDePromocion);
-		this.porcentajeACobrar = 1 - porcentajeACobrar;
+		this.porcentajeACobrar = 1 - porcentajeDescuento;
 	}
 
 	@Override

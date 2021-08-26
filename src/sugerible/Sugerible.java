@@ -3,7 +3,7 @@ package sugerible;
 import tipo.Tipo;
 
 public interface Sugerible {
-
+	
 	public String getNombre();
 
 	public int getPrecio();
