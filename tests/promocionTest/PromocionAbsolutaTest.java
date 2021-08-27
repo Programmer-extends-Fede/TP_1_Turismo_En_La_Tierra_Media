@@ -20,9 +20,9 @@ public class PromocionAbsolutaTest {
 
 	@Before
 	public void setup() {
-		atraccion1 = new Atraccion("Moria", 10, 2, 6, Tipo.DEGUSTACION);
-		atraccion2 = new Atraccion("Cueva Maldita", 15, 8, 3.5, Tipo.DEGUSTACION);
-		atraccion3 = new Atraccion("Zafari", 3, 10, 1, Tipo.DEGUSTACION);
+		atraccion1 = new Atraccion("Moria", 10, 2, 6, "Degustacion");
+		atraccion2 = new Atraccion("Cueva Maldita", 15, 8, 3.5, "Degustacion");
+		atraccion3 = new Atraccion("Zafari", 3, 10, 1, "Degustacion");
 		misAtracciones[0] = atraccion1;
 		misAtracciones[1] = atraccion2;
 		misAtracciones[2] = atraccion3;

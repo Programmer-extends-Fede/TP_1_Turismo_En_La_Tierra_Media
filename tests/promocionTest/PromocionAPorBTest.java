@@ -20,9 +20,9 @@ public class PromocionAPorBTest {
 
 	@Before
 	public void setup() {
-		atraccion1 = new Atraccion("Moria", 10, 2, 6, Tipo.AVENTURAS);
-		atraccion2 = new Atraccion("Cueva Maldita", 15, 8, 3.5, Tipo.AVENTURAS);
-		atraccion3 = new Atraccion("Zafari", 3, 10, 1, Tipo.AVENTURAS);
+		atraccion1 = new Atraccion("Moria", 10, 2, 6, "Aventuras");
+		atraccion2 = new Atraccion("Cueva Maldita", 15, 8, 3.5, "Aventuras");
+		atraccion3 = new Atraccion("Zafari", 3, 10, 1, "Aventuras");
 		misAtracciones[0] = atraccion1;
 		misAtracciones[1] = atraccion2;
 		misAtracciones[2] = atraccion3;
