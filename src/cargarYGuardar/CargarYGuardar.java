@@ -28,7 +28,6 @@ public class CargarYGuardar {
 				try {
 					bufferDeLectura.close();
 				} catch (IOException e) {
-
 					e.printStackTrace();
 				}
 		}
