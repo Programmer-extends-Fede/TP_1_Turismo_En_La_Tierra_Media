@@ -14,9 +14,9 @@ public abstract class Promocion implements Sugerible {
 	private Atraccion[] misAtracciones;
 	private String[] nombreAtracciones;
 
-	public Promocion(String nombre, Atraccion[] misAtracciones, Tipo tipoDePromocion) {
+	public Promocion(String nombre, Atraccion[] misAtracciones, String tipoDePromocion) {
 		this.nombre = nombre;
-		this.tipoDePromocion = tipoDePromocion;
+		this.tipoDePromocion = Tipo.valueOf(tipoDePromocion.toUpperCase());
 		this.misAtracciones = misAtracciones;
 		this.nombreAtracciones = new String[misAtracciones.length];
 
