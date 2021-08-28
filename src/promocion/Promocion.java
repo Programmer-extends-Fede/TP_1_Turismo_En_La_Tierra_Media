@@ -2,10 +2,10 @@ package promocion;
 
 import java.util.Arrays;
 
-import sugerible.Sugerible;
+import sugerencia.Sugerencia;
 import tipo.Tipo;
 
-public abstract class Promocion implements Sugerible {
+public abstract class Promocion implements Sugerencia {
 
 	private String nombre;
 	private int precio, cupo;

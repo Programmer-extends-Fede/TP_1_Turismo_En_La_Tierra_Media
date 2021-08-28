@@ -1,10 +1,10 @@
-package cargarYGuardar;
+package entradaSalida;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class CargarYGuardar {
+public class EntradaSalida {
 
 	public static String[] cargarArchivoDe(String ruta) {
 		String[] misDatos = null;

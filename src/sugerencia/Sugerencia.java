@@ -1,8 +1,8 @@
-package sugerible;
+package sugerencia;
 
 import tipo.Tipo;
 
-public interface Sugerible {
+public interface Sugerencia {
 	
 	public String getNombre();
 
