@@ -5,8 +5,8 @@ public class Usuario {
 	private int dineroDisponible;
 	private double tiempoDisponible;
 	private Tipo preferencia;
-	private Sugerencia sugerenciasDiarias;
-	
+	private Itinerario miItinerario;
+
 	public Usuario(String nombre, int dineroDisponible, double tiempoDisponible, Tipo preferencia) {
 		this.nombre = nombre;
 		this.dineroDisponible = dineroDisponible;
@@ -35,5 +35,8 @@ public class Usuario {
 		this.tiempoDisponible-= unaSugerencia.getDuracion();
 	}
 	
+	public Itinerario getMiItinerario() {
+		return miItinerario;
+	}
 	
 }
