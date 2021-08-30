@@ -1,13 +1,13 @@
-package atraccion;
+package usuario;
 
-public class Usuarios {
+public class Usuario {
 	private String nombre;
 	private int dineroDisponible;
 	private double tiempoDisponible;
 	private Tipo preferencia;
 	private Sugerencia sugerenciasDiarias;
 	
-	public Usuarios(String nombre, int dineroDisponible, double tiempoDisponible, Tipo preferencia) {
+	public Usuario(String nombre, int dineroDisponible, double tiempoDisponible, Tipo preferencia) {
 		this.nombre = nombre;
 		this.dineroDisponible = dineroDisponible;
 		this.tiempoDisponible = tiempoDisponible;
