@@ -41,10 +41,14 @@ public class Atraccion implements Sugerencia {
 
 	public boolean vender() {
 		if (this.cupo > 0) {
-			this.cupo--;
+			descontarCupo();
 			return true;
 		}
 		return false;
+	}
+
+	private int descontarCupo() {
+		return this.cupo--;
 	}
 
 	@Override
