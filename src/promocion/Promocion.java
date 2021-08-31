@@ -1,5 +1,6 @@
 package promocion;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import sugerencia.Sugerencia;
@@ -8,24 +9,22 @@ import tipo.Tipo;
 public abstract class Promocion implements Sugerencia {
 
 	private String nombre;
-	private int precio, cupo;
-	private double duracion;
 	private Tipo tipoDePromocion;
-	private Atraccion[] misAtracciones;
+	private ArrayList<Atraccion> atracciones;
 	private String[] nombreAtracciones;
 
-	public Promocion(String nombre, Atraccion[] misAtracciones, String tipoDePromocion) {
+	public Promocion(String nombre, Atraccion[] misAtracciones, Tipo tipoDePromocion) {
 		this.nombre = nombre;
-		this.tipoDePromocion = Tipo.valueOf(tipoDePromocion.toUpperCase());
-		this.misAtracciones = misAtracciones;
+		this.tipoDePromocion = tipoDePromocion;
+		this.atracciones = misAtracciones;
 		this.nombreAtracciones = new String[misAtracciones.length];
 
 		for (int i = 0; i < nombreAtracciones.length; i++) {
-			this.precio += misAtracciones[i].getPrecio();
-			this.duracion += misAtracciones[i].getDuracion();
 			nombreAtracciones[i] = misAtracciones[i].getNombre();
 		}
 	}
+	
+	public ArrayList<Atraccion> getAtracciones()
 
 	@Override
 	public String getNombre() {
@@ -34,19 +33,27 @@ public abstract class Promocion implements Sugerencia {
 
 	@Override
 	public int getPrecio() {
-		return this.precio;
+		int precio = 0;
+		for (Atraccion atraccion : atracciones) {
+			precio += atraccion.getPrecio();
+		}
+		return precio;
 	}
 
 	@Override
 	public double getDuracion() {
-		return this.duracion;
+		double duracion = 0;
+		for (Atraccion atraccion : atracciones) {
+			duracion += atraccion.getDuracion();
+		}
+		return duracion;
 	}
 
 	@Override
 	public int getCupo() {
-		cupo = misAtracciones[0].getCupo();
-		for (int i = 1; i < misAtracciones.length; i++) {
-			cupo = misAtracciones[i].getCupo() < cupo ? misAtracciones[i].getCupo() : cupo;
+		double cupo = atracciones[0].getCupo();
+		for (int i = 1; i < atracciones.length; i++) {
+			cupo = atracciones[i].getCupo() < cupo ? atracciones[i].getCupo() : cupo;
 		}
 		return cupo;
 	}
@@ -63,7 +70,7 @@ public abstract class Promocion implements Sugerencia {
 
 	@Override
 	public void vender() {
-		for (Atraccion atraccion : misAtracciones) {
+		for (Atraccion atraccion : atracciones) {
 			atraccion.vender();
 		}
 	}
