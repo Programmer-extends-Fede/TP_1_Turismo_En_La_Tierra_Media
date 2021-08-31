@@ -54,9 +54,9 @@ public abstract class Promocion implements Sugerencia {
 
 	@Override
 	public int getCupo() {
-		double cupo = atracciones[0].getCupo();
-		for (int i = 1; i < atracciones.length; i++) {
-			cupo = atracciones[i].getCupo() < cupo ? atracciones[i].getCupo() : cupo;
+		int cupo = atracciones.get(0).getCupo();
+		for (Atraccion atraccion : atracciones) {
+			cupo = atraccion.getCupo() < cupo ? atraccion.getCupo() : cupo;
 		}
 		return cupo;
 	}

@@ -3,10 +3,12 @@ package promocionTest;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import java.util.ArrayList;
+
 import org.junit.Before;
 import org.junit.Test;
 
-import promocion.Atraccion;
+import atraccion.Atraccion;
 import promocion.Promocion;
 import promocion.PromocionPorcentual;
 import tipo.Tipo;
@@ -16,16 +18,16 @@ public class PromocionPorcentualTest {
 	Atraccion atraccion1;
 	Atraccion atraccion2;
 	Atraccion atraccion3;
-	Atraccion[] misAtracciones = new Atraccion[3];
+	ArrayList<Atraccion> misAtracciones = new ArrayList<Atraccion>();
 
 	@Before
 	public void setup() {
-		atraccion1 = new Atraccion("Moria", 10, 2, 6, "Paisaje");
-		atraccion2 = new Atraccion("Cueva Maldita", 15, 8, 3.5, "Paisaje");
-		atraccion3 = new Atraccion("Zafari", 3, 10, 1, "Paisaje");
-		misAtracciones[0] = atraccion1;
-		misAtracciones[1] = atraccion2;
-		misAtracciones[2] = atraccion3;
+		atraccion1 = new Atraccion("Moria", 10, 2, 6, Tipo.AVENTURAS);
+		atraccion2 = new Atraccion("Cueva Maldita", 15, 3.5, 8, Tipo.AVENTURAS);
+		atraccion3 = new Atraccion("Zafari", 3, 10, 1, Tipo.AVENTURAS);
+		misAtracciones.add(atraccion1);
+		misAtracciones.add(atraccion2);
+		misAtracciones.add(atraccion3);
 	}
 
 	@Test

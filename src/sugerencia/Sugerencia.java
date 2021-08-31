@@ -1,6 +1,6 @@
 package sugerencia;
 
-import promocion.Atraccion;
+import atraccion.Atraccion;
 import tipo.Tipo;
 
 public interface Sugerencia {
