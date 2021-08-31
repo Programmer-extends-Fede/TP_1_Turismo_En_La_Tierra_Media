@@ -1,5 +1,6 @@
 package sugerencia;
 
+import promocion.Atraccion;
 import tipo.Tipo;
 
 public interface Sugerencia {
@@ -18,4 +19,5 @@ public interface Sugerencia {
 	
 	public void vender();
 	
+	public boolean atraccionIncluida(Atraccion atraccion);
 }
