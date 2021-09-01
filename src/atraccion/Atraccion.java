@@ -1,5 +1,8 @@
 package atraccion;
 
+import sugerencia.Sugerencia;
+import tipo.Tipo;
+
 public class Atraccion implements Sugerencia {
 	private String nombre;
 	private int precio;
@@ -47,6 +50,11 @@ public class Atraccion implements Sugerencia {
 	public String toString() {
 		return "Atraccion: " + this.nombre + "\n" + "Precio: " + precio + " oros \n" + "Duracion: " + duracion
 				+ " horas";
+	}
+
+	@Override
+	public boolean atraccionIncluida(Atraccion atraccion) {
+		return this == atraccion;
 	}
 
 }

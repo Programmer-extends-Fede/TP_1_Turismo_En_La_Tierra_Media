@@ -1,5 +1,8 @@
 package usuario;
 
+import sugerencia.Sugerencia;
+import tipo.Tipo;
+
 public class Usuario {
 	private String nombre;
 	private int dineroDisponible;
@@ -39,6 +42,5 @@ public class Usuario {
 	
 	public Itinerario getMiItinerario() {
 		return miItinerario;
-	}
-	
+	}	
 }

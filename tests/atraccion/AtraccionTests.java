@@ -6,13 +6,15 @@ import static org.junit.Assert.assertNotNull;
 import org.junit.Before;
 import org.junit.Test;
 
+import tipo.Tipo;
+
 public class AtraccionTests {
 	
 	Atraccion miAtraccion;
 	
 	@Before
 	public void inicializa() {
-		miAtraccion = new Atraccion("VueltaAlMundo", 150, 0.5, 2, Tipo.AVENTURA);
+		miAtraccion = new Atraccion("VueltaAlMundo", 150, 0.5, 2, Tipo.AVENTURAS);
 	}
 	
 	@Test
