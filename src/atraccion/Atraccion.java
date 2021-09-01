@@ -40,7 +40,7 @@ public class Atraccion implements Sugerencia {
 	}
 
 	public void vender() {
-		this.cupo--; //no es necedsario validar el cupo
+		this.cupo--;
 	}
 
 	@Override
