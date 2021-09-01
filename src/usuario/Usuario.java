@@ -37,7 +37,7 @@ public class Usuario {
 		if (leAlcanzaElDinero(sugerencia) && leAlcanzaElTiempo(sugerencia)) {
 			this.dineroDisponible -= sugerencia.getPrecio();
 			this.tiempoDisponible -= sugerencia.getDuracion();
-			this.itinerario.agregarCompra(sugerencia);
+			this.itinerario.agregarLaCompraDe(sugerencia);
 			return true;
 		}
 		return false;
@@ -51,4 +51,11 @@ public class Usuario {
 		return getDineroDisponible() >= sugerencia.getPrecio();
 	}
 
+	@Override
+	public String toString() {
+		return "Usuario: " + nombre + "\n" + "Dinero disponible: " + dineroDisponible + " monedas de oro. Tiempo disponible: "
+				+ tiempoDisponible + " horas. Tipo de preferencia: " + tipoPreferencia + "\n";
+	}
+
+	
 }
