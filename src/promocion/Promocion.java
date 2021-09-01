@@ -1,7 +1,6 @@
 package promocion;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import sugerencia.Atraccion;
 import sugerencia.Sugerencia;
@@ -12,7 +11,7 @@ public abstract class Promocion implements Sugerencia {
 	private String nombre;
 	private Tipo tipoDePromocion;
 	private ArrayList<Atraccion> atracciones;
-	private ArrayList<String> nombreAtracciones;
+	private String nombreAtracciones;
 
 	public Promocion(String nombre, ArrayList<Atraccion> atracciones, Tipo tipoDePromocion) {
 		this.nombre = nombre;
@@ -21,11 +20,11 @@ public abstract class Promocion implements Sugerencia {
 		this.nombreAtracciones = new ArrayList<String>();
 
 		for (Atraccion atraccion : atracciones) {
-			this.nombreAtracciones.add(atraccion.getNombre());
+			this.nombreAtracciones = atraccion.getNombre() + ", ";
 		}
 	}
-	
-	public ArrayList<Atraccion> getAtracciones(){
+
+	public ArrayList<Atraccion> getAtracciones() {
 		return this.atracciones;
 	}
 
@@ -80,7 +79,7 @@ public abstract class Promocion implements Sugerencia {
 
 	@Override
 	public String toString() {
-		return getNombre() + ": " + this.nombreAtracciones.toString() + ", de tipo " + tipoDePromocion.getDescripcion()
+		return getNombre() + ": " + this.nombreAtracciones + ", de tipo " + tipoDePromocion.getDescripcion()
 				+ ", su costo es de " + getPrecio() + " monedas y su duracion de " + getDuracion() + " horas.";
 	}
 

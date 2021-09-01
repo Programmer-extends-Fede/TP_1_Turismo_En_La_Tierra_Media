@@ -7,22 +7,21 @@ import tipo.Tipo;
 
 public class PromocionAPorB extends Promocion {
 
-	private ArrayList<Atraccion> atraccionesDeRegalo;
+	private ArrayList<Atraccion> atraccionesACobrar;
 
-	public PromocionAPorB(String nombre, ArrayList<Atraccion> atracciones, Tipo tipoDePromocion, int cantPromosRegalo) {
+	public PromocionAPorB(String nombre, ArrayList<Atraccion> atracciones, Tipo tipoDePromocion, int cantPromosACobrar) {
 		super(nombre, atracciones, tipoDePromocion);
-		for (int i = 0; i < cantPromosRegalo; i++) {
-			atraccionesDeRegalo.add(atracciones.get(i));
+		for (int i = 0; i < cantPromosACobrar; i++) {
+			atraccionesACobrar.add(atracciones.get(i));
 		}
 	}
 
 	@Override
 	public int getPrecio() {
-		int descuento = 0;
-		
-		for (Atraccion atraccionRegalada : atraccionesDeRegalo) {
-			descuento = atraccionRegalada.getPrecio();
+		int aCobrar = 0;
+		for (Atraccion atraccion : atraccionesACobrar) {
+			aCobrar += atraccion.getPrecio();
 		}
-		return super.getPrecio() - descuento;
+		return aCobrar;
 	}
 }
