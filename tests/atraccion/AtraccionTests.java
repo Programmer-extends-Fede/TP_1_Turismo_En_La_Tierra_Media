@@ -1,9 +1,7 @@
 package atraccion;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -23,21 +21,17 @@ public class AtraccionTests {
 	}
 	
 	@Test
-	public void queSePuedeVender() {
-		assertTrue(miAtraccion.vender());;
-	}
-	
-	@Test
-	public void queDescuentaUnCupoAlVender() {
+	public void queSePuedeVenderYDescuentaUnCupo() {
 		miAtraccion.vender();
-		assertEquals(1, miAtraccion.getCupo());
+		assertEquals(1, miAtraccion.getCupo());;
 	}
 	
+	/* Esto no se valida acá
 	@Test
 	public void queNoSePuedeVenderSinCupo() {
 		miAtraccion.vender();
 		miAtraccion.vender();
 		assertFalse(miAtraccion.vender());
-	}
+	}*/
 
 }
