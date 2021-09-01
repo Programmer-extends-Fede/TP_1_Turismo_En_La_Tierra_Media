@@ -12,27 +12,29 @@ public class Usuario {
 		this.dineroDisponible = dineroDisponible;
 		this.tiempoDisponible = tiempoDisponible;
 		this.preferencia = preferencia;
+		this.miItinerario= new Itinerario();
 	}
 
 	public String getNombre() {
-		return nombre;
+		return this.nombre;
 	}
 
 	public int getDineroDisponible() {
-		return dineroDisponible;
+		return this.dineroDisponible;
 	}
 
 	public double getTiempoDisponible() {
-		return tiempoDisponible;
+		return this.tiempoDisponible;
 	}
 
 	public Tipo getPreferencia() {
-		return preferencia;
+		return this.preferencia;
 	}
 	
 	public void comprar(Sugerencia unaSugerencia) {
 		this.dineroDisponible-= unaSugerencia.getPrecio();
 		this.tiempoDisponible-= unaSugerencia.getDuracion();
+		this.miItinerario.agregarLaCompraDe(unaSugerencia);
 	}
 	
 	public Itinerario getMiItinerario() {
