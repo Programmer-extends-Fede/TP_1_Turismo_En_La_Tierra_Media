@@ -2,17 +2,17 @@ package atraccion;
 
 public class Usuario {
 	private String nombre;
-	private double dineroDisponible;
+	private int dineroDisponible;
 	private double tiempoDisponible;
 	private Tipo tipoPreferencia;
 	private Itinerario miItinerario;
 
-	public Usuario(String nombre, double dinero, double tiempo, Tipo tipoPreferencia, Itinerario miItinerario) {
+	public Usuario(String nombre, int dinero, double tiempo, Tipo tipoPreferencia) {
 		this.nombre = nombre;
 		this.dineroDisponible = dinero;
 		this.tiempoDisponible = tiempo;
 		this.tipoPreferencia = tipoPreferencia;
-		this.miItinerario = miItinerario;
+		this.miItinerario = new Itinerario();
 	}
 
 	public String getNombre() {
@@ -35,20 +35,10 @@ public class Usuario {
 		return this.miItinerario;
 	}
 
-	public boolean comprar(Sugerencia sugerencia) {
-		if (sugerencia.getPrecio <= this.dineroDisponible && sugerencia.getDuracion <= this.tiempoDisponible) {
-			this.descontarDinero();
-			this.descontarTiempo();
-		}
-		return true;
-	}
-
-	public void descontarTiempo() {
-		this.tiempoDisponible -= sugerencia.getDuracion();
-	}
-
-	public void descontarDinero() {
+	public void comprar(Sugerencia sugerencia) {	
+		this.tiempoDisponible -= sugerencia.getDuracion();	
 		this.dineroDisponible -= sugerencia.getPrecio();
+		
 	}
 
 	@Override

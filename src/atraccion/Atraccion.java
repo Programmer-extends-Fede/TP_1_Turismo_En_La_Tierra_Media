@@ -2,12 +2,12 @@ package atraccion;
 
 public class Atraccion implements Sugerencia {
 	private String nombre;
-	private double precio;
+	private int precio;
 	private int cupo;
 	private Tipo tipo;
 	private double duracion;
 
-	public Atraccion(String nombre, double precio, int cupo, Tipo tipo, double duracion) {
+	public Atraccion(String nombre, int precio, int cupo, Tipo tipo, double duracion) {
 		this.nombre = nombre;
 		this.precio = precio;
 		this.cupo = cupo;
@@ -19,7 +19,7 @@ public class Atraccion implements Sugerencia {
 		return this.nombre;
 	}
 
-	public double getPrecio() {
+	public int getPrecio() {
 		return this.precio;
 	}
 
@@ -35,16 +35,7 @@ public class Atraccion implements Sugerencia {
 		return this.duracion;
 	}
 
-	public boolean vender() {
-		if (this.cupo == 0) {
-			throw new RuntimeException("No hay cupo para esta atraccion");
-		} else {
-			this.descontarCupo();
-		}
-		return true;
-	}
-
-	public void descontarCupo() {
+	public void vender() {
 		this.cupo--;
 	}
 
@@ -55,7 +46,7 @@ public class Atraccion implements Sugerencia {
 	}
 
 	public boolean esPromocion() {
-		//no se me ocurre como hacer este metodo
+		return false;
 	}
 
 }
