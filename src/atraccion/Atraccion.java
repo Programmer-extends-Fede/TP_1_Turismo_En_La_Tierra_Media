@@ -39,16 +39,8 @@ public class Atraccion implements Sugerencia {
 		return false;
 	}
 
-	public boolean vender() {
-		if (this.cupo > 0) {
-			descontarCupo();
-			return true;
-		}
-		return false;
-	}
-
-	private int descontarCupo() {
-		return this.cupo--;
+	public void vender() {
+		this.cupo--; //no es necedsario validar el cupo
 	}
 
 	@Override
