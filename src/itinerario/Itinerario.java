@@ -17,7 +17,6 @@ public class Itinerario {
 		duracionDelItinerario += unaSugerencia.getDuracion();
 	}
 
-
 	@Override
 	public String toString() {
 		return "Itinerario [sugerenciasDiarias=" + sugerenciasDiarias + ", costoDelItinerario=" + costoDelItinerario

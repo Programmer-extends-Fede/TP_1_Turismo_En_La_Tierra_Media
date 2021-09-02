@@ -1,5 +1,7 @@
 package atraccion;
 
+import java.util.ArrayList;
+
 import sugerencia.Sugerencia;
 import tipo.Tipo;
 
@@ -60,8 +62,7 @@ public class Atraccion implements Sugerencia {
 	}
 
 	@Override
-	public boolean atraccionIncluida(Atraccion atraccion) {
-		return this == atraccion;
+	public boolean noEstaIncluidaEn(ArrayList<Atraccion> atraccionesCompradas) {
+		return !atraccionesCompradas.contains(this);
 	}
-
 }

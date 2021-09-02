@@ -83,7 +83,14 @@ public abstract class Promocion implements Sugerencia {
 	}
 
 	@Override
-	public boolean atraccionIncluida(Atraccion atraccion) {
-		return this.atracciones.contains(atraccion);
+	public boolean noEstaIncluidaEn(ArrayList<Atraccion> atraccionesCompradas) {
+		boolean noEstaIncluida = true;
+		for (Atraccion atraccion : atracciones) {
+			if (atraccionesCompradas.contains(atraccion)) {
+				noEstaIncluida = false;
+				break;
+			}
+		}
+		return noEstaIncluida;
 	}
 }
