@@ -16,7 +16,7 @@ public class Ordenar implements Comparator<Sugerencia> {
 		Tipo o1Tipo = o1.getTipo();
 		Tipo o2Tipo = o2.getTipo();
 
-		resultado = Boolean.compare(o1.esPromocion(), o2.esPromocion());
+		resultado = -Boolean.compare(o1.esPromocion(), o2.esPromocion());
 		if (resultado == 0)
 			resultado = o1Tipo.equals(usuarioTipo) && !o2Tipo.equals(usuarioTipo) ? -1
 					: !o1Tipo.equals(usuarioTipo) && o2Tipo.equals(usuarioTipo) ? 1 : 0;

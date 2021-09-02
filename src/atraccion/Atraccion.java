@@ -57,7 +57,7 @@ public class Atraccion implements Sugerencia {
 
 	@Override
 	public String toString() {
-		return "Atraccion: " + this.nombre + "\n" + "Precio: " + precio + " oros \n" + "Duracion: " + duracion
+		return "Atraccion: " + this.nombre +  "Precio: " + precio + " oros \n" + "Duracion: " + duracion
 				+ " horas";
 	}
 
