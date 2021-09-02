@@ -1,18 +1,21 @@
 package atraccion;
 
+import sugerencia.Sugerencia;
+import tipo.Tipo;
+
 public class Atraccion implements Sugerencia {
 	private String nombre;
 	private int precio;
+	private double duracion;
 	private int cupo;
 	private Tipo tipo;
-	private double duracion;
 
-	public Atraccion(String nombre, int precio, int cupo, Tipo tipo, double duracion) {
+	public Atraccion(String nombre, int precio, double duracion, int cupo, Tipo tipo) {
 		this.nombre = nombre;
 		this.precio = precio;
+		this.duracion = duracion;
 		this.cupo = cupo;
 		this.tipo = tipo;
-		this.duracion = duracion;
 	}
 
 	public String getNombre() {
@@ -23,6 +26,10 @@ public class Atraccion implements Sugerencia {
 		return this.precio;
 	}
 
+	public double getDuracion() {
+		return this.duracion;
+	}
+
 	public int getCupo() {
 		return this.cupo;
 	}
@@ -31,8 +38,8 @@ public class Atraccion implements Sugerencia {
 		return this.tipo;
 	}
 
-	public double getDuracion() {
-		return this.duracion;
+	public boolean esPromocion() {
+		return false;
 	}
 
 	public void vender() {
@@ -41,12 +48,13 @@ public class Atraccion implements Sugerencia {
 
 	@Override
 	public String toString() {
-		return "El costo de la atraccion" + this.nombre + ", de tipo" + this.tipo.getDescripcion() + ", es de"
-				+ this.getPrecio() + "pesos y, su duracion es de" + this.getDuracion() + "horas.";
+		return "Atraccion: " + this.nombre + "\n" + "Precio: " + precio + " oros \n" + "Duracion: " + duracion
+				+ " horas";
 	}
 
-	public boolean esPromocion() {
-		return false;
+	@Override
+	public boolean atraccionIncluida(Atraccion atraccion) {
+		return this == atraccion;
 	}
 
 }
