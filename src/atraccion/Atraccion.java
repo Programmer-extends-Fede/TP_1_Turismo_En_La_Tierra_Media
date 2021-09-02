@@ -18,30 +18,37 @@ public class Atraccion implements Sugerencia {
 		this.tipo = tipo;
 	}
 
+	@Override
 	public String getNombre() {
 		return this.nombre;
 	}
 
+	@Override
 	public int getPrecio() {
 		return this.precio;
 	}
 
+	@Override
 	public double getDuracion() {
 		return this.duracion;
 	}
 
+	@Override
 	public int getCupo() {
 		return this.cupo;
 	}
 
+	@Override
 	public Tipo getTipo() {
 		return this.tipo;
 	}
 
+	@Override
 	public boolean esPromocion() {
 		return false;
 	}
 
+	@Override
 	public void vender() {
 		this.cupo--;
 	}
