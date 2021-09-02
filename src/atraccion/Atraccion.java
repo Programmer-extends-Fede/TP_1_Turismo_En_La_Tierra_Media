@@ -57,8 +57,8 @@ public class Atraccion implements Sugerencia {
 
 	@Override
 	public String toString() {
-		return "Atraccion: " + this.nombre + "\n" + "Precio: " + precio + " oros \n" + "Duracion: " + duracion
-				+ " horas";
+		return this.nombre + " de tipo " + this.tipo.getDescripcion() + ". Su precio es de " + this.precio
+				+ " monedas y su duracion de " + this.duracion + " horas.";
 	}
 
 	@Override
