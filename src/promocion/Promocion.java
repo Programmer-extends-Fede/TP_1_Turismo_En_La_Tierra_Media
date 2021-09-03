@@ -18,7 +18,7 @@ public abstract class Promocion implements Sugerencia {
 		this.tipoDePromocion = tipoDePromocion;
 		this.atracciones = atracciones;
 
-		for (Atraccion atraccion : atracciones) {  // juntar todo con el nombre
+		for (Atraccion atraccion : atracciones) {
 			this.nombreAtracciones += atraccion.getNombre() + ", " ;
 		}
 	}
@@ -78,8 +78,8 @@ public abstract class Promocion implements Sugerencia {
 
 	@Override
 	public String toString() {
-		return getNombre() + "de tipo " + this.tipoDePromocion.getDescripcion()
-				+ ", su costo es de " + getPrecio() + " monedas y su duracion de " + getDuracion() + " horas.";
+		return getNombre() + "de tipo " + tipoDePromocion.getDescripcion()
+				+ ", su costo es de " + getPrecio() + " monedas y su duracion de " + getDuracion() + " hs.";
 	}
 
 	@Override
