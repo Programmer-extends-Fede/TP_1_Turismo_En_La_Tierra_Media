@@ -20,12 +20,14 @@ public class Consola {
 
 		for (Usuario usuario : usuarios) {
 			TierraMedia.ordenar(sugerencias, usuario.getPreferencia());
-			System.out.println("BIENVENIDO " + usuario.getNombre().toUpperCase() + "\n");
+			System.out.println(
+					"------------------------------------------------------------------------------------------------------");
+			System.out.println("\n BIENVENIDO " + usuario.getNombre().toUpperCase());
 			for (Sugerencia sugerencia : sugerencias) {
 				if (sugerencia.getCupo() > 0 && puedeComprar(sugerencia, usuario)
 						&& sugerencia.noEstaIncluidaEn(atraccionesTemp)) {
 
-					System.out.println("Deseas comprar " + sugerencia);
+					System.out.println("\nDeseas comprar " + sugerencia);
 					String respuesta = "";
 					while (!respuesta.equals("s") && !respuesta.equals("n")) {
 						respuesta = entrada.nextLine();
@@ -34,17 +36,27 @@ public class Consola {
 							System.out.println("entrada incorrecta: ingrese s/n");
 
 						if (respuesta.equals("s")) {
-							sugerencia.vender();
+							sugerencia.vender();  // cambiar nombre a restar cupo? 
 							usuario.comprar(sugerencia);
 							agregarAtraccionTemp(sugerencia);
+							System.out.println("    [Monedas restantes: " + usuario.getDineroDisponible()
+									+ "]       [Horas restante: " + usuario.getTiempoDisponible() + "]\n");
 						}
 					}
 				}
 			}
-			System.out.println(usuario.getMiItinerario());
+
+			if (usuario.getMiItinerario().getSugerenciasDiarias().isEmpty())
+				System.out.println("\nNo realizaste compras.");
+			else {
+				System.out.println("\nTu itinerario es el siguiente:\n");
+				System.out.println(usuario.getMiItinerario());
+			}
 			atraccionesTemp.clear();
 		}
-		System.out.println("Muchas gracias, ya no quedan mas usuarios por ver.");
+		System.out.println("\n \n---------------------------------------------");
+		System.out.println("MUCHAS GRACIAS, YA NO QUEDAN USUARIOS POR VER");
+		System.out.println("---------------------------------------------");
 		entrada.close();
 	}
 

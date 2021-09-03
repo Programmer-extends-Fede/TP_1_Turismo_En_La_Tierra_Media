@@ -79,7 +79,7 @@ public abstract class Promocion implements Sugerencia {
 	@Override
 	public String toString() {
 		return getNombre() + "de tipo " + tipoDePromocion.getDescripcion()
-				+ ", su costo es de " + getPrecio() + " monedas y su duracion de " + getDuracion() + " horas.";
+				+ ", su costo es de " + getPrecio() + " monedas y su duracion de " + getDuracion() + " hs.";
 	}
 
 	@Override
