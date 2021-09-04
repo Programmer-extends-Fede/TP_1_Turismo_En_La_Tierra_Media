@@ -58,7 +58,7 @@ public class PromocionPorcentualTest {
 	@Test
 	public void venderPromocionTest() {
 		Promocion miPromo = new PromocionPorcentual("Pack 1", misAtracciones, Tipo.AVENTURAS, 0.15);
-		miPromo.vender();
+		miPromo.restarCupo();
 		int cupoObtenido = miPromo.getCupo();
 		int cupoEsperado = 1;
 

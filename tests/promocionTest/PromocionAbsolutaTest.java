@@ -58,7 +58,7 @@ public class PromocionAbsolutaTest {
 	@Test
 	public void venderPromocionTest() {
 		Promocion miPromo = new PromocionAbsoluta("Pack 1", misAtracciones, Tipo.AVENTURAS, 25);
-		miPromo.vender();
+		miPromo.restarCupo();
 		int cupoObtenido = miPromo.getCupo();
 		int cupoEsperado = 1;
 

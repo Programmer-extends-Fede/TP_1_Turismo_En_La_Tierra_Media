@@ -16,7 +16,7 @@ public class Usuario {
 		this.dineroDisponible = dineroDisponible;
 		this.tiempoDisponible = tiempoDisponible;
 		this.preferencia = preferencia;
-		this.miItinerario= new Itinerario();
+		this.miItinerario = new Itinerario();
 	}
 
 	public String getNombre() {
@@ -34,20 +34,20 @@ public class Usuario {
 	public Tipo getPreferencia() {
 		return this.preferencia;
 	}
-	
+
 	public void comprar(Sugerencia unaSugerencia) {
-		this.dineroDisponible-= unaSugerencia.getPrecio();
-		this.tiempoDisponible-= unaSugerencia.getDuracion();
+		this.dineroDisponible -= unaSugerencia.getPrecio();
+		this.tiempoDisponible -= unaSugerencia.getDuracion();
 		this.miItinerario.agregarLaCompraDe(unaSugerencia);
 	}
-	
+
 	public Itinerario getMiItinerario() {
 		return miItinerario;
 	}
 
 	@Override
 	public String toString() {
-		return "Usuario [nombre=" + nombre + ", dineroDisponible=" + dineroDisponible + ", tiempoDisponible="
-				+ tiempoDisponible + ", preferencia=" + preferencia + "]";
-	}	
+		return this.nombre.toUpperCase() + "\n\nSu saldo inicial es: " + this.dineroDisponible + " monedas y su tiempo disponible: "
+				+ this.tiempoDisponible + " hs.";
+	}
 }

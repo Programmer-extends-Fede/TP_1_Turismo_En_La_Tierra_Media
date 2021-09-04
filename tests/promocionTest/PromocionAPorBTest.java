@@ -58,7 +58,7 @@ public class PromocionAPorBTest {
 	@Test
 	public void venderPromocionTest() {
 		Promocion miPromo = new PromocionAPorB("Pack 1", misAtracciones, Tipo.AVENTURAS, 1);
-		miPromo.vender();
+		miPromo.restarCupo();
 		int cupoObtenido = miPromo.getCupo();
 		int cupoEsperado = 1;
 

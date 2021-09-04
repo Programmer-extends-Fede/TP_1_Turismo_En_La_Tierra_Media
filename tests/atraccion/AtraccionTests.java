@@ -24,7 +24,7 @@ public class AtraccionTests {
 	
 	@Test
 	public void queSePuedeVenderYDescuentaUnCupo() {
-		miAtraccion.vender();
+		miAtraccion.restarCupo();
 		assertEquals(1, miAtraccion.getCupo());;
 	}
 	
