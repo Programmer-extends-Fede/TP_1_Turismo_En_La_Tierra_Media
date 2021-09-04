@@ -1,6 +1,7 @@
 package promocion;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import atraccion.Atraccion;
 import tipo.Tipo;
@@ -11,6 +12,7 @@ public class PromocionAPorB extends Promocion {
 
 	public PromocionAPorB(String nombre, ArrayList<Atraccion> atracciones, Tipo tipoDePromocion, int cantPromosACobrar) {
 		super(nombre, atracciones, tipoDePromocion);
+		Collections.sort(atracciones);
 		for (int i = 0; i < cantPromosACobrar; i++) {
 			atraccionesACobrar.add(atracciones.get(i));
 		}
@@ -18,10 +20,10 @@ public class PromocionAPorB extends Promocion {
 
 	@Override
 	public int getPrecio() {
-		int aCobrar = 0;
+		int importeACobrar = 0;
 		for (Atraccion atraccion : atraccionesACobrar) {
-			aCobrar += atraccion.getPrecio();
+			importeACobrar += atraccion.getPrecio();
 		}
-		return aCobrar;
-	}
+		return importeACobrar;
+	}	
 }

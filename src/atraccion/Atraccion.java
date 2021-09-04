@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import sugerencia.Sugerencia;
 import tipo.Tipo;
 
-public class Atraccion implements Sugerencia {
+public class Atraccion implements Sugerencia, Comparable<Atraccion> {
 	private String nombre;
 	private int precio;
 	private double duracion;
@@ -51,7 +51,7 @@ public class Atraccion implements Sugerencia {
 	}
 
 	@Override
-	public void vender() {
+	public void restarCupo() {
 		this.cupo--;
 	}
 
@@ -64,5 +64,10 @@ public class Atraccion implements Sugerencia {
 	@Override
 	public boolean noEstaIncluidaEn(ArrayList<Atraccion> atraccionesCompradas) {
 		return !atraccionesCompradas.contains(this);
+	}
+
+	@Override
+	public int compareTo(Atraccion o) {
+		return -Integer.compare(this.precio, o.precio);
 	}
 }

@@ -19,7 +19,7 @@ public interface Sugerencia {
 	
 	public boolean esPromocion();
 	
-	public void vender();
+	public void restarCupo();
 	
 	public boolean noEstaIncluidaEn(ArrayList<Atraccion> atraccionesCompradas);
 }

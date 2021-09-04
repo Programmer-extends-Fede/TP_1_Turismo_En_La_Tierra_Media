@@ -13,7 +13,7 @@ public abstract class Promocion implements Sugerencia {
 	private ArrayList<Atraccion> atracciones;
 
 	public Promocion(String nombre, ArrayList<Atraccion> atracciones, Tipo tipoDePromocion) {
-		this.nombre = nombre + " incluye: ";
+		this.nombre = nombre + ": incluye ";
 		this.tipoDePromocion = tipoDePromocion;
 		this.atracciones = atracciones;
 
@@ -69,9 +69,9 @@ public abstract class Promocion implements Sugerencia {
 	}
 
 	@Override
-	public void vender() {
+	public void restarCupo() {
 		for (Atraccion atraccion : atracciones) {
-			atraccion.vender();
+			atraccion.restarCupo();
 		}
 	}
 
