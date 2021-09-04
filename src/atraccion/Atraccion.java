@@ -19,9 +19,12 @@ public class Atraccion implements Sugerencia, Comparable<Atraccion> {
 		this.cupo = cupo;
 		this.tipo = tipo;
 	}
-
 	
-
+	@Override
+	public String getNombre() {
+		return this.nombre;
+	}
+	
 	@Override
 	public int getPrecio() {
 		return this.precio;
