@@ -59,15 +59,19 @@ public abstract class TierraMedia {
 					atraccionesDePromo.add(atraccion);
 			}
 
-			if (datoRecortado[4].equals("1"))
+			switch (datoRecortado[4]) {
+			case "Porcentual":
 				promociones.add(new PromocionPorcentual(datoRecortado[0], atraccionesDePromo,
 						Tipo.valueOf(datoRecortado[2].toUpperCase()), Double.parseDouble(datoRecortado[3])));
-			else if (datoRecortado[4].equals("2"))
+				break;
+			case "Absoluta":
 				promociones.add(new PromocionAbsoluta(datoRecortado[0], atraccionesDePromo,
 						Tipo.valueOf(datoRecortado[2].toUpperCase()), Integer.parseInt(datoRecortado[3])));
-			else
+				break;
+			case "APorB":
 				promociones.add(new PromocionAPorB(datoRecortado[0], atraccionesDePromo,
 						Tipo.valueOf(datoRecortado[2].toUpperCase()), Integer.parseInt(datoRecortado[3])));
+			}
 		}
 	}
 
@@ -89,7 +93,6 @@ public abstract class TierraMedia {
 	}
 
 	public static void ordenar(ArrayList<Sugerencia> sugerencias, Tipo preferenciaDeUsuario) {
-		Ordenar.setUsuarioTipo(preferenciaDeUsuario);
-		sugerencias.sort(new Ordenar());
+		sugerencias.sort(new Ordenar(preferenciaDeUsuario));
 	}
 }
