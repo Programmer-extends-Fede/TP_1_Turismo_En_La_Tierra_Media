@@ -1,8 +1,7 @@
 package ordenar;
 
-
-
 import java.util.Comparator;
+
 import sugerencia.Sugerencia;
 import tipo.Tipo;
 
