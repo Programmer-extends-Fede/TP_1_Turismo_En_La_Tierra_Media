@@ -28,16 +28,20 @@ public class Itinerario {
 		return duracionDelItinerario;
 	}
 
-	private void imprimirSugerenciasCompradas() {
-		for (Sugerencia sugerencia : sugerenciasDiarias) {
-			System.out.println(sugerencia);
-		}
-	}
+	/*@Override
+	public String toString() {
+		return sugerenciasDiarias.toString().replace("[", " ").replace(".,", ".\n").replace("]", "\n")
+				+ " \n       Costo total: " + this.costoDelItinerario + " monedas.                  Duracion total: "
+				+ this.duracionDelItinerario + " hs.";
+	}*/
 
 	@Override
 	public String toString() {
-		imprimirSugerenciasCompradas();
-		return  " \n Duracion total: " + this.duracionDelItinerario + " hs.                    Costo total: "
-				+ this.costoDelItinerario + " monedas.";
+		ArrayList<String> detalleDeCompras = new ArrayList<String>();
+		for (Sugerencia sugerenciaComprada : sugerenciasDiarias) {
+			detalleDeCompras.add(sugerenciaComprada.toString());
+		}
+		return String.join("\n\n", detalleDeCompras).indent(2) + "\n\n" + ("Costo total: " + this.costoDelItinerario
+				+ " monedas.                 Duracion total: " + this.duracionDelItinerario + " hs.").indent(35);
 	}
 }
