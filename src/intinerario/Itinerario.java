@@ -11,6 +11,10 @@ public class Itinerario {
 		comprasRealizadas.add(sugerencia);
 	}
 	
+	public ArrayList<Sugerencia> getComprasRealizadas() {
+		return this.comprasRealizadas;
+	}
+
 	private int getPrecioTotalDeCompras() {
 		int precioTotal = 0;
 		for (int i = 0; i < comprasRealizadas.size(); i++) {
