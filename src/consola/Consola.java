@@ -10,6 +10,7 @@ import sugerencia.Sugerencia;
 import usuario.Usuario;
 
 public class Consola {
+	//cambiar usuarios y sugerencias con lo que viene por TierraMedia
 	private ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 	private ArrayList<Sugerencia> sugerencias = new ArrayList<Sugerencia>();
 	private Scanner entrada = new Scanner(System.in);
