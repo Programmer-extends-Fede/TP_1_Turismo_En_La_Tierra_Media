@@ -9,20 +9,19 @@ import tipo.Tipo;
 public abstract class Promocion implements Sugerencia {
 
 	private String nombre;
-	private Tipo tipoDePromocion;
 	private ArrayList<Atraccion> atracciones;
-	private String nombreAtracciones;
+	private Tipo tipoDePromocion;
 
-	public Promocion(String nombre, ArrayList<Atraccion> atracciones, Tipo tipoDePromocion) {
-		this.nombre = nombre;
-		this.tipoDePromocion = tipoDePromocion;
+	public Promocion(String nombre, ArrayList<Atraccion> atracciones) {
+		this.nombre = nombre + ": incluye ";
 		this.atracciones = atracciones;
 
 		for (Atraccion atraccion : atracciones) {
-			this.nombreAtracciones = atraccion.getNombre() + ", ";
+			this.nombre += "[" + atraccion.getNombre() + "]";
+			tipoDePromocion = atraccion.getTipo();
 		}
 	}
-
+ 
 	public ArrayList<Atraccion> getAtracciones() {
 		return this.atracciones;
 	}
@@ -58,10 +57,9 @@ public abstract class Promocion implements Sugerencia {
 		}
 		return cupo;
 	}
-
 	@Override
 	public Tipo getTipo() {
-		return this.tipoDePromocion;
+		return tipoDePromocion;
 	}
 
 	@Override
@@ -70,20 +68,27 @@ public abstract class Promocion implements Sugerencia {
 	}
 
 	@Override
-	public void vender() {
+	public void restarCupo() {
 		for (Atraccion atraccion : atracciones) {
-			atraccion.vender();
+			atraccion.restarCupo();
 		}
 	}
 
 	@Override
 	public String toString() {
-		return getNombre() + ": " + this.nombreAtracciones + ", de tipo " + tipoDePromocion.getDescripcion()
-				+ ", su costo es de " + getPrecio() + " monedas y su duracion de " + getDuracion() + " horas.";
+		return getNombre() + " de tipo " + tipoDePromocion.getDescripcion()
+				+ ", su costo es de " + getPrecio() + " monedas y su duracion de " + getDuracion() + " hs.";
 	}
 
 	@Override
-	public boolean atraccionIncluida(Atraccion atraccion) {
-		return this.atracciones.contains(atraccion);
+	public boolean noEstaIncluidaEn(ArrayList<Atraccion> atraccionesCompradas) {
+		boolean noEstaIncluida = true;
+		for (Atraccion atraccion : atracciones) {
+			if (atraccionesCompradas.contains(atraccion)) {
+				noEstaIncluida = false;
+				break;
+			}
+		}
+		return noEstaIncluida;
 	}
 }

@@ -1,9 +1,11 @@
 package atraccion;
 
+import java.util.ArrayList;
+
 import sugerencia.Sugerencia;
 import tipo.Tipo;
 
-public class Atraccion implements Sugerencia {
+public class Atraccion implements Sugerencia, Comparable<Atraccion> {
 	private String nombre;
 	private int precio;
 	private double duracion;
@@ -18,43 +20,55 @@ public class Atraccion implements Sugerencia {
 		this.tipo = tipo;
 	}
 
+	@Override
 	public String getNombre() {
 		return this.nombre;
 	}
 
-	public int getPrecio() 
+	@Override
+	public int getPrecio() {
 		return this.precio;
 	}
 
+	@Override
 	public double getDuracion() {
 		return this.duracion;
 	}
 
+	@Override
 	public int getCupo() {
 		return this.cupo;
 	}
 
+	@Override
 	public Tipo getTipo() {
 		return this.tipo;
 	}
 
+	@Override
 	public boolean esPromocion() {
 		return false;
 	}
 
-	public void vender() {
+	@Override
+	public void restarCupo() {
 		this.cupo--;
 	}
 
 	@Override
 	public String toString() {
-		return "Atraccion: " + this.nombre + "\n" + "Precio: " + precio + " oros \n" + "Duracion: " + duracion
-				+ " horas";
+		return this.nombre + " de tipo " + this.tipo.getDescripcion() + ". Su precio es de " + this.precio
+				+ " monedas y su duracion de " + this.duracion + " hs.";
+
 	}
 
 	@Override
-	public boolean atraccionIncluida(Atraccion atraccion) {
-		return this == atraccion;
+	public boolean noEstaIncluidaEn(ArrayList<Atraccion> atraccionesCompradas) {
+		return !atraccionesCompradas.contains(this);
 	}
 
+	@Override
+	public int compareTo(Atraccion o) {
+		return -Integer.compare(this.precio, o.precio);
+	}
 }
