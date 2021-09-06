@@ -90,7 +90,10 @@ public abstract class TierraMedia {
 			ArrayList<Atraccion> atracciones= new ArrayList<Atraccion>();
 			
 			for (int i = 0; i < atraccionesString.length; i++) {
-				atracciones.add(Atraccion.obtenerAtraccionPorNombre(atraccionesString[i]));
+				if (Atraccion.obtenerAtraccionPorNombre(atraccionesString[i])) {
+					atracciones.add(atraccionesString[i]);
+				}
+				
 			}
 
 			Tipo tipo = Tipo.valueOf(datosPromociones[2].toUpperCase());
