@@ -22,7 +22,7 @@ public class Atraccion implements Sugerencia {
 		return this.nombre;
 	}
 
-	public int getPrecio() {
+	public int getPrecio() 
 		return this.precio;
 	}
 
