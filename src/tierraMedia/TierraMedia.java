@@ -41,10 +41,6 @@ public abstract class TierraMedia {
 	
 	}
 
-	public static ArrayList<Usuario> getUsuarios() {
-		return usuarios;
-	}
-
 	public static void construirAtracciones() {
 	
 		ArrayList <String> misDatos = EntradaSalida.cargarArchivoDe("Entrada/Atracciones.csv");
@@ -66,10 +62,6 @@ public abstract class TierraMedia {
 			atracciones.add(atraccion);
 			indice++;
 		}
-	}
-
-	public static ArrayList<Atraccion> getAtracciones() {
-		return atracciones;
 	}
 	
 	public static void construirPromociones() {
@@ -123,23 +115,21 @@ public abstract class TierraMedia {
 		}
 	}
 
-
-	public static ArrayList<Promocion> getPromociones() {
-		return promociones;
-	}
-
-
-public static void construirSugerencias() {
+	public static void construirSugerencias() {
 		
 		TierraMedia.sugerencias= new ArrayList<Sugerencia>();
 		sugerencias.addAll(promociones);
 		sugerencias.addAll(atracciones);		
 	}
 	
+	public static ArrayList<Usuario> getUsuarios() {
+		return usuarios;
+	}
+	
 	public static ArrayList<Sugerencia> getSugerencias() {
 		return sugerencias;
 	}
-	
+
 	public static String informacionParaGuardar() {
 		
 		String datosAGuardar= null;
