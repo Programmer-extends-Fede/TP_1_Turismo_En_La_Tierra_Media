@@ -34,7 +34,7 @@ public class EntradaSalida {
 		return misDatos;
 	}
 
-	public static void guardarEnArchivo( String Ruta,ArrayList<String> misDatos) throws IOException {
+	public static void guardarEnArchivo( String Ruta,ArrayList<String> misDatos){
 		BufferedWriter bufferDeGuardado = null;
 		
 		try {
@@ -56,7 +56,11 @@ public class EntradaSalida {
 			e.printStackTrace();
 		} finally {
 			if(bufferDeGuardado != null) {
-				bufferDeGuardado.close();
+				try {
+					bufferDeGuardado.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 	}

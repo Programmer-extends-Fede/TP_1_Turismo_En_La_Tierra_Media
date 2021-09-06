@@ -1,7 +1,9 @@
 package promocionTest;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 
@@ -19,7 +21,8 @@ public class PromocionPorcentualTest {
 	Atraccion atraccion2;
 	Atraccion atraccion3;
 	ArrayList<Atraccion> misAtracciones = new ArrayList<Atraccion>();
-
+	Promocion miPromo;
+	
 	@Before
 	public void setup() {
 		atraccion1 = new Atraccion("Moria", 10, 2, 6, Tipo.AVENTURAS);
@@ -28,12 +31,11 @@ public class PromocionPorcentualTest {
 		misAtracciones.add(atraccion1);
 		misAtracciones.add(atraccion2);
 		misAtracciones.add(atraccion3);
+		miPromo = new PromocionPorcentual("Pack 1", misAtracciones, 0.15);
 	}
 
 	@Test
 	public void crearPromocionTestv() {
-		Promocion miPromo = new PromocionPorcentual("Pack 1", misAtracciones, 0.15);
-
 		assertNotNull(miPromo);
 	}
 
@@ -48,17 +50,6 @@ public class PromocionPorcentualTest {
 
 	@Test
 	public void obtenerCupoDePromocionTest() {
-		Promocion miPromo = new PromocionPorcentual("Pack 1", misAtracciones, 0.15);
-		int cupoObtenido = miPromo.getCupo();
-		int cupoEsperado = 2;
-
-		assertEquals(cupoEsperado, cupoObtenido);
-	}
-
-	@Test
-	public void venderPromocionTest() {
-		Promocion miPromo = new PromocionPorcentual("Pack 1", misAtracciones, 0.15);
-		miPromo.restarCupo();
 		int cupoObtenido = miPromo.getCupo();
 		int cupoEsperado = 1;
 
@@ -66,11 +57,31 @@ public class PromocionPorcentualTest {
 	}
 
 	@Test
+	public void restarCupoTest() {
+		miPromo.restarCupo();
+		
+		int cupoObtenido = miPromo.getCupo();
+		int cupoEsperado = 0;
+
+		assertEquals(cupoEsperado, cupoObtenido);
+	}
+
+	@Test
 	public void obtenerDuracionDePromocionTest() {
-		Promocion miPromo = new PromocionPorcentual("Pack 1", misAtracciones, 0.15);
 		double duracionObtenida = miPromo.getDuracion();
-		double duracionEsperada = 10.5;
+		double duracionEsperada = 15.5;
 
 		assertEquals(duracionEsperada, duracionObtenida, 0);
+	}
+
+	@Test
+	public void noEstaIncluidaTest() {
+		ArrayList<Atraccion> atraccionIncluida = new ArrayList<Atraccion>();
+		ArrayList<Atraccion> atraccionNoIncluida = new ArrayList<Atraccion>();
+		atraccionIncluida.add(atraccion1);
+		atraccionNoIncluida.add(new Atraccion("La Galaxia", 10, 2.5, 23, Tipo.PAISAJE));
+
+		assertFalse(miPromo.noEstaIncluidaEn(atraccionIncluida));
+		assertTrue(miPromo.noEstaIncluidaEn(atraccionNoIncluida));
 	}
 }

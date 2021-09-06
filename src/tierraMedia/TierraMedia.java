@@ -112,12 +112,7 @@ public abstract class TierraMedia {
 					datosCompras.add(compra.getNombre() + ";" + compra.getTipo().getDescripcion() + ";"
 							+ compra.getPrecio() + ";" + compra.getDuracion());
 				}
-				try {
-					EntradaSalida.guardarEnArchivo(usuario.getNombre(), datosCompras);
-				} catch (IOException e) {
-
-					e.printStackTrace();
-				}
+				EntradaSalida.guardarEnArchivo(usuario.getNombre(), datosCompras);
 			}
 		}
 	}
