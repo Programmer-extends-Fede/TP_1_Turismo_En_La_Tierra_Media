@@ -10,8 +10,8 @@ public class PromocionAPorB extends Promocion {
 
 	private ArrayList<Atraccion> atraccionesACobrar = new ArrayList<Atraccion>();
 
-	public PromocionAPorB(String nombre, ArrayList<Atraccion> atracciones, Tipo tipoDePromocion, int cantPromosACobrar) {
-		super(nombre, atracciones, tipoDePromocion);
+	public PromocionAPorB(String nombre, ArrayList<Atraccion> atracciones, int cantPromosACobrar) {
+		super(nombre, atracciones);
 		Collections.sort(atracciones);
 		for (int i = 0; i < cantPromosACobrar; i++) {
 			atraccionesACobrar.add(atracciones.get(i));

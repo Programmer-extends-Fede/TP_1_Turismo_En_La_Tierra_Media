@@ -19,12 +19,12 @@ public class Atraccion implements Sugerencia, Comparable<Atraccion> {
 		this.cupo = cupo;
 		this.tipo = tipo;
 	}
-
+	
 	@Override
 	public String getNombre() {
 		return this.nombre;
 	}
-
+	
 	@Override
 	public int getPrecio() {
 		return this.precio;
@@ -57,9 +57,8 @@ public class Atraccion implements Sugerencia, Comparable<Atraccion> {
 
 	@Override
 	public String toString() {
-		return this.nombre + " de tipo " + this.tipo.getDescripcion() + ". Su precio es de " + this.precio
-				+ " monedas y su duracion de " + this.duracion + " hs.";
-
+		return this.nombre + ": de tipo " + this.tipo.getDescripcion() + ". Su precio es de " + this.precio
+				+ " monedas. Su duracion de " + this.duracion + " hs.";
 	}
 
 	@Override

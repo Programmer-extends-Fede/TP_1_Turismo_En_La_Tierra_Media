@@ -3,10 +3,10 @@ package consola;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import TierraMedia.TierraMedia;
 import atraccion.Atraccion;
 import promocion.Promocion;
 import sugerencia.Sugerencia;
+import tierraMedia.TierraMedia;
 import usuario.Usuario;
 
 public class Consola {
@@ -79,6 +79,7 @@ public class Consola {
 			atraccionesTemp.clear();
 		}
 		System.out.println(MENSAJE_FINAL);
+		TierraMedia.guardarItinerarios();
 		entrada.close();
 	}
 
