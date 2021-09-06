@@ -4,11 +4,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import atraccion.Atraccion;
-import entradaSalida.EntradaSalida;
 import itinerario.Itinerario;
 import promocion.Promocion;
 import sugerencia.Sugerencia;
-import tierraMedia.TierraMedia;
 import usuario.Usuario;
 
 public class Consola {
