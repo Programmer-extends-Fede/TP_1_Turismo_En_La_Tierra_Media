@@ -112,6 +112,7 @@ public abstract class TierraMedia {
 	}
 
 	public ArrayList<Usuario> getUsuarios() {
+		construirUsuarios();
 		return usuarios;
 	}
 
