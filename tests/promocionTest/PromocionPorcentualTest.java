@@ -32,14 +32,14 @@ public class PromocionPorcentualTest {
 
 	@Test
 	public void crearPromocionTestv() {
-		Promocion miPromo = new PromocionPorcentual("Pack 1", misAtracciones, Tipo.AVENTURAS, 0.15);
+		Promocion miPromo = new PromocionPorcentual("Pack 1", misAtracciones, 0.15);
 
 		assertNotNull(miPromo);
 	}
 
 	@Test
 	public void obtenerPrecioDePromocionTest() {
-		Promocion miPromo = new PromocionPorcentual("Pack 1", misAtracciones, Tipo.AVENTURAS, 0.15);
+		Promocion miPromo = new PromocionPorcentual("Pack 1", misAtracciones, 0.15);
 		int precioObtenido = miPromo.getPrecio();
 		int precioEsperado = 23;
 
@@ -48,7 +48,7 @@ public class PromocionPorcentualTest {
 
 	@Test
 	public void obtenerCupoDePromocionTest() {
-		Promocion miPromo = new PromocionPorcentual("Pack 1", misAtracciones, Tipo.AVENTURAS, 0.15);
+		Promocion miPromo = new PromocionPorcentual("Pack 1", misAtracciones, 0.15);
 		int cupoObtenido = miPromo.getCupo();
 		int cupoEsperado = 2;
 
@@ -57,7 +57,7 @@ public class PromocionPorcentualTest {
 
 	@Test
 	public void venderPromocionTest() {
-		Promocion miPromo = new PromocionPorcentual("Pack 1", misAtracciones, Tipo.AVENTURAS, 0.15);
+		Promocion miPromo = new PromocionPorcentual("Pack 1", misAtracciones, 0.15);
 		miPromo.restarCupo();
 		int cupoObtenido = miPromo.getCupo();
 		int cupoEsperado = 1;
@@ -67,7 +67,7 @@ public class PromocionPorcentualTest {
 
 	@Test
 	public void obtenerDuracionDePromocionTest() {
-		Promocion miPromo = new PromocionPorcentual("Pack 1", misAtracciones, Tipo.AVENTURAS, 0.15);
+		Promocion miPromo = new PromocionPorcentual("Pack 1", misAtracciones, 0.15);
 		double duracionObtenida = miPromo.getDuracion();
 		double duracionEsperada = 10.5;
 

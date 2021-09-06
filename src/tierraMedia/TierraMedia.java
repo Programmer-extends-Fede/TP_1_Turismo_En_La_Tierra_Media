@@ -1,10 +1,12 @@
-package TierraMedia;
+package tierraMedia;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import atraccion.Atraccion;
 import entradaSalida.EntradaSalida;
+import itinerario.Itinerario;
 import ordenar.Ordenar;
 import promocion.Promocion;
 import promocion.PromocionAPorB;
@@ -59,18 +61,18 @@ public abstract class TierraMedia {
 					atraccionesDePromo.add(atraccion);
 			}
 
-			switch (datoRecortado[4]) {
+			switch (datoRecortado[3]) {
 			case "Porcentual":
 				promociones.add(new PromocionPorcentual(datoRecortado[0], atraccionesDePromo,
-						Tipo.valueOf(datoRecortado[2].toUpperCase()), Double.parseDouble(datoRecortado[3])));
+						Double.parseDouble(datoRecortado[2])));
 				break;
 			case "Absoluta":
 				promociones.add(new PromocionAbsoluta(datoRecortado[0], atraccionesDePromo,
-						Tipo.valueOf(datoRecortado[2].toUpperCase()), Integer.parseInt(datoRecortado[3])));
+						Integer.parseInt(datoRecortado[2])));
 				break;
 			case "APorB":
-				promociones.add(new PromocionAPorB(datoRecortado[0], atraccionesDePromo,
-						Tipo.valueOf(datoRecortado[2].toUpperCase()), Integer.parseInt(datoRecortado[3])));
+				promociones.add(
+						new PromocionAPorB(datoRecortado[0], atraccionesDePromo, Integer.parseInt(datoRecortado[2])));
 			}
 		}
 	}
@@ -94,5 +96,29 @@ public abstract class TierraMedia {
 
 	public static void ordenar(ArrayList<Sugerencia> sugerencias, Tipo preferenciaDeUsuario) {
 		sugerencias.sort(new Ordenar(preferenciaDeUsuario));
+	}
+
+	public static void guardarItinerarios() {
+		for (Usuario usuario : usuarios) {
+			Itinerario itinerario = usuario.getMiItinerario();
+			ArrayList<Sugerencia> compras = itinerario.getSugerenciasDiarias();
+
+			if (!compras.isEmpty()) {
+				ArrayList<String> datosCompras = new ArrayList<String>();
+				datosCompras.add("\nCosto de tu Itinerario:;" + itinerario.getCostoDelItinerario()
+						+ ";Duracion de tu Itinerario:;" + itinerario.getDuracionDelItinerario());
+
+				for (Sugerencia compra : compras) {
+					datosCompras.add(compra.getNombre() + ";" + compra.getTipo().getDescripcion() + ";"
+							+ compra.getPrecio() + ";" + compra.getDuracion());
+				}
+				try {
+					EntradaSalida.guardarEnArchivo(usuario.getNombre(), datosCompras);
+				} catch (IOException e) {
+
+					e.printStackTrace();
+				}
+			}
+		}
 	}
 }

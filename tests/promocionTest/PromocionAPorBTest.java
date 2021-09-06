@@ -32,14 +32,14 @@ public class PromocionAPorBTest {
 
 	@Test
 	public void crearPromocionTest() {
-		Promocion miPromo = new PromocionAPorB("Pack 1", misAtracciones, Tipo.AVENTURAS, 1);
+		Promocion miPromo = new PromocionAPorB("Pack 1", misAtracciones, 1);
 
 		assertNotNull(miPromo);
 	}
 
 	@Test
 	public void obtenerPrecioDePromocionTest() {
-		Promocion miPromo = new PromocionAPorB("Pack 1", misAtracciones, Tipo.AVENTURAS, 1);
+		Promocion miPromo = new PromocionAPorB("Pack 1", misAtracciones, 1);
 		int precioObtenido = miPromo.getPrecio();
 		int precioEsperado = 18;
 
@@ -48,7 +48,7 @@ public class PromocionAPorBTest {
 
 	@Test
 	public void obtenerCupoDePromocionTest() {
-		Promocion miPromo = new PromocionAPorB("Pack 1", misAtracciones, Tipo.AVENTURAS, 1);
+		Promocion miPromo = new PromocionAPorB("Pack 1", misAtracciones, 1);
 		int cupoObtenido = miPromo.getCupo();
 		int cupoEsperado = 2;
 
@@ -57,7 +57,7 @@ public class PromocionAPorBTest {
 
 	@Test
 	public void venderPromocionTest() {
-		Promocion miPromo = new PromocionAPorB("Pack 1", misAtracciones, Tipo.AVENTURAS, 1);
+		Promocion miPromo = new PromocionAPorB("Pack 1", misAtracciones, 1);
 		miPromo.restarCupo();
 		int cupoObtenido = miPromo.getCupo();
 		int cupoEsperado = 1;
@@ -67,7 +67,7 @@ public class PromocionAPorBTest {
 
 	@Test
 	public void obtenerDuracionDePromocionTest() {
-		Promocion miPromo = new PromocionAPorB("Pack 1", misAtracciones, Tipo.AVENTURAS, 1);
+		Promocion miPromo = new PromocionAPorB("Pack 1", misAtracciones, 1);
 		double duracionObtenida = miPromo.getDuracion();
 		double duracionEsperada = 10.5;
 

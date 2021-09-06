@@ -34,20 +34,22 @@ public class EntradaSalida {
 		return misDatos;
 	}
 
-	public static void guardarEnArchivoDe(String[] misDatos) throws IOException {
+	public static void guardarEnArchivo( String Ruta,ArrayList<String> misDatos) throws IOException {
 		BufferedWriter bufferDeGuardado = null;
 		
 		try {
-			bufferDeGuardado = new BufferedWriter(new FileWriter("Salida/DatosGuardados.csv"));
-			String encabezados = "Usuario;Costo del Itinerario;Duracion del Itinerario;Promociones y Atracciones Compradas";
-			bufferDeGuardado.write(encabezados);
+			bufferDeGuardado = new BufferedWriter(new FileWriter("Salida/Itinerario de " + Ruta +".csv"));
+			
+			bufferDeGuardado.write("ESTE ES EL DETALLE DE TU ITINERARIO\n");
+			bufferDeGuardado.write(misDatos.get(0));
+			misDatos.remove(0);
+			bufferDeGuardado.write("\n\n\nPromocion / Atraccion Comprada;Tipo;Costo;Duracion");
 			bufferDeGuardado.newLine();
-
-			for (int i = 0; i < misDatos.length; i++) {
-				if (misDatos[i] != null) {
-					bufferDeGuardado.write(misDatos[i]);
-					bufferDeGuardado.newLine();
-				}
+		
+			for (String dato : misDatos) {
+				bufferDeGuardado.newLine();
+				bufferDeGuardado.write(dato);
+				
 			}
 
 		} catch (IOException e) {
