@@ -90,10 +90,11 @@ public abstract class TierraMedia {
 			ArrayList<Atraccion> atracciones= new ArrayList<Atraccion>();
 			
 			for (int i = 0; i < atraccionesString.length; i++) {
-				if (Atraccion.obtenerAtraccionPorNombre(atraccionesString[i])) {
-					atracciones.add(atraccionesString[i]);
-				}
-				
+				for(Atraccion atraccion : atracciones) {
+					if(atraccionesString[i].equals(atraccion.getNombre())) {
+						atracciones.add(atraccion);
+					}
+				}			
 			}
 
 			Tipo tipo = Tipo.valueOf(datosPromociones[2].toUpperCase());
@@ -121,15 +122,7 @@ public abstract class TierraMedia {
 			indice++;
 		}
 	}
-	
-	public static Atraccion obtenerAtraccionPorNombre(String nombre) {
-		
-		for (Atraccion atraccion : atracciones) {
-			if (atraccion.getNombre().equals(nombre)) {
-				return atraccion;
-			}
-		} return null;
-	}
+
 
 	public static ArrayList<Promocion> getPromociones() {
 		return promociones;
