@@ -12,28 +12,20 @@ import usuario.Usuario;
 public class Consola {
 
 	static ArrayList<Atraccion> atraccionesTemp = new ArrayList<Atraccion>();
-	static final String ENTRADA_INCORRECTA = "<---ENTRADA INCORRECTA--->".indent(50);
-	static final String SEPARADOR_USUARIOS = "______________________________________________________________________________________"
-			.indent(23);
-	static final String SUBRAYADO = "\n------------------------------\n";
-	static final String LATERAL_CUADRADO = "|                                                                    |"
-			.indent(35);
-	static final String TECHO_CUADRADO = "                                    ____________________________________________________________________\n";
-	static final String SUELO_CUADRADO = "|____________________________________________________________________|"
-			.indent(35);
-	static final String MENSAJE_FINAL = "---------------------------------------------".indent(43)
-			+ "MUCHAS GRACIAS, YA NO QUEDAN USUARIOS POR VER".indent(43)
-			+ "---------------------------------------------".indent(43);
-	static final String MENSAJE_INICIAL = TECHO_CUADRADO
-			+ "|            ESTE ES EL SISTEMA DE COMPRAS DE TIERRAMEDIA            |".indent(35) + LATERAL_CUADRADO
-			+ "|RECUERDE, PRESIONAR 'S' PARA ACEPTAR LA COMPRA Y 'N' PARA RECHAZARLA|".indent(35) + LATERAL_CUADRADO
-			+ LATERAL_CUADRADO + LATERAL_CUADRADO
-			+ "|                  PRESIONE ENTER PARA CONTINUAR                     |".indent(35) + SUELO_CUADRADO;
+	static Scanner entrada = new Scanner(System.in);
+
+	static final String ENTRADA_INCORRECTA = "<<<ENTRADA INCORRECTA>>>".indent(50);
+	static final String SEPARADOR_USUARIOS = "_".repeat(80).indent(23);
+	static final String SUBRAYADO = "-".repeat(45);
+	static final String MENSAJE_INICIAL = "\nESTE ES EL SISTEMA DE COMPRAS DE TIERRAMEDIA\n".indent(47)
+			+ "\nRECUERDE, PRESIONAR 'S' PARA ACEPTAR LA COMPRA Y 'N' PARA RECHAZARLA".indent(35)
+			+ "\nPRESIONE ENTER PARA CONTINUAR".indent(53);
+	static final String MENSAJE_FINAL = SUBRAYADO.indent(43)
+			+ "MUCHAS GRACIAS, YA NO QUEDAN USUARIOS POR VER".indent(43) + SUBRAYADO.indent(43);
 
 	public static void iniciarInteraccion() {
 		ArrayList<Usuario> usuarios = TierraMedia.getUsuarios();
 		ArrayList<Sugerencia> sugerencias = TierraMedia.getSugerencias();
-		Scanner entrada = new Scanner(System.in);
 		System.out.println(MENSAJE_INICIAL);
 
 		for (Usuario usuario : usuarios) {
@@ -41,47 +33,20 @@ public class Consola {
 			entrada.nextLine();
 			System.out.println("BIENVENIDO " + usuario + "\n");
 
-			for (Sugerencia sugerencia : sugerencias) {
-				if (sugerencia.getCupo() > 0 && puedeComprarEl(usuario, sugerencia)
-						&& sugerencia.noEstaIncluidaEn(atraccionesTemp)) {
-
-					System.out.println("Deseas comprar " + sugerencia);
-					String respuesta = "";
-
-					while (!respuesta.equalsIgnoreCase("s") && !respuesta.equalsIgnoreCase("n")) {
-						respuesta = entrada.nextLine();
-
-						if (!respuesta.equalsIgnoreCase("s") && !respuesta.equalsIgnoreCase("n"))
-							System.out.println(ENTRADA_INCORRECTA);
-						else if (respuesta.equalsIgnoreCase("s")) {
-							sugerencia.restarCupo();
-							usuario.comprar(sugerencia);
-							agregarAtraccionTemp(sugerencia);
-							System.out.println(("[Monedas restantes: " + usuario.getDineroDisponible()
-									+ "]       [Horas restante: " + usuario.getTiempoDisponible() + "]").indent(35));
-						} else
-							System.out.println();
-					}
-				}
+			for (Sugerencia laSugerencia : sugerencias) {
+				if (tieneCupo(laSugerencia) && puedeComprarEl(usuario, laSugerencia) && noSeCompro(laSugerencia))
+					ofertar(laSugerencia, usuario);
 			}
-			if (usuario.getMiItinerario().getSugerenciasDiarias().isEmpty())
-				System.out.println("\nNO REALIZASTE COMPRAS.".indent(2));
-			else {
 
-				Itinerario itinerario = usuario.getMiItinerario();
-				ArrayList<String> datosDeItinerario = itinerario.obtenerDatosDeItinerario();
-				int dineroDeUsuario = usuario.getDineroDisponible();
-				double tiempoDeUsuario = usuario.getTiempoDisponible();
+			if (!usuario.getMiItinerario().getSugerenciasDiarias().isEmpty()) {
+				guardarItinerario(usuario);
+				System.out.println("\nEste es el detalle de tu itinerario".indent(6) + SUBRAYADO + "\n");
+				System.out.println(usuario.getMiItinerario());
+				System.out.println(("Tu dinero restante: " + usuario.getDineroDisponible() + " monedas."
+						+ " ".repeat(11) + "Tu tiempo restante: " + usuario.getTiempoDisponible() + " hs.").indent(30));
+			} else
+				System.out.println("\nNO REALIZASTE COMPRAS");
 
-				System.out.println("\n\nTu itinerario es el siguiente:" + SUBRAYADO);
-				System.out.println(itinerario + ("\nSu saldo actual: " + dineroDeUsuario
-						+ " monedas.                  Horas restantes: " + tiempoDeUsuario + " hs.").indent(31));
-
-				datosDeItinerario.add(
-						"\n\nTu saldo actual es:;" + dineroDeUsuario + ";Tu tiempo restante es de:;" + tiempoDeUsuario);
-				EntradaSalida.guardarEnArchivo(usuario.getNombre(), datosDeItinerario);
-
-			}
 			System.out.println(SEPARADOR_USUARIOS);
 			if (!usuarios.get(usuarios.size() - 1).equals(usuario))
 				System.out.print("PRESIONA ENTER PARA MOSTRAR EL SIGUIENTE USUARIO".indent(40));
@@ -90,13 +55,50 @@ public class Consola {
 		System.out.println(MENSAJE_FINAL);
 		entrada.close();
 	}
-	
-	private static boolean puedeComprarEl(Usuario usuario, Sugerencia laSugerencia) {
+
+	private static void ofertar(Sugerencia laSugerencia, Usuario usuario) {
+		System.out.println("Deseas comprar " + laSugerencia);
+		String respuesta = "";
+		while (!respuesta.equalsIgnoreCase("s") && !respuesta.equalsIgnoreCase("n")) {
+			respuesta = entrada.nextLine();
+
+			if (respuesta.equalsIgnoreCase("n"))
+				System.out.println();
+			else if (respuesta.equalsIgnoreCase("s")) {
+				laSugerencia.restarCupo();
+				usuario.comprar(laSugerencia);
+				agregarAtraccionATemp(laSugerencia);
+				System.out.println(("|Monedas restantes: " + usuario.getDineroDisponible() + "|       [Horas restante: "
+						+ usuario.getTiempoDisponible() + "]").indent(35));
+			} else
+				System.out.println(ENTRADA_INCORRECTA);
+		}
+	}
+
+	private static void guardarItinerario(Usuario usuario) {
+		Itinerario itinerario = usuario.getMiItinerario();
+		ArrayList<String> datosDeItinerario = itinerario.obtenerDatosDeItinerario();
+		String dineroDeUsuario = usuario.getDineroDisponible() + " monedas.";
+		String tiempoDeUsuario = usuario.getTiempoDisponible() + " hs.";
+		datosDeItinerario
+				.add("\n\nTu saldo actual es:;" + dineroDeUsuario + ";Tu tiempo restante es de:;" + tiempoDeUsuario);
+		EntradaSalida.guardarEnArchivo("Itinerario de " + usuario.getNombre(), datosDeItinerario);
+	}
+
+	public static boolean puedeComprarEl(Usuario usuario, Sugerencia laSugerencia) {
 		return usuario.getDineroDisponible() >= laSugerencia.getPrecio()
 				&& usuario.getTiempoDisponible() >= laSugerencia.getDuracion();
 	}
 
-	private static void agregarAtraccionTemp(Sugerencia sugerencia) {
+	public static boolean tieneCupo(Sugerencia laSugerencia) {
+		return laSugerencia.getCupo() > 0;
+	}
+
+	public static boolean noSeCompro(Sugerencia laSugerencia) {
+		return laSugerencia.noEstaIncluidaEn(atraccionesTemp);
+	}
+
+	private static void agregarAtraccionATemp(Sugerencia sugerencia) {
 		if (sugerencia.esPromocion()) {
 			Promocion miPromo = (Promocion) sugerencia;
 			atraccionesTemp.addAll(miPromo.getAtracciones());
