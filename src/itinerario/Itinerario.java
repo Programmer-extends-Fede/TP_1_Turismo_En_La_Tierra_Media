@@ -36,6 +36,14 @@ public class Itinerario {
 		}
 		return datosDelItinerario;
 	}
+	
+	public int getCostoDelItinerario() {
+		return this.costoDelItinerario;
+	}
+
+	public double getDuracionDelItinerario() {
+		return this.duracionDelItinerario;
+	}
 
 	/*@Override
 	public String toString() {
@@ -51,15 +59,7 @@ public class Itinerario {
 			detalleDeCompras.add(sugerenciaComprada.toString());
 		}
 		return String.join("\n\n", detalleDeCompras).indent(2) + "\n\n" + ("Costo total: " + this.costoDelItinerario
-				+ " monedas.                 Duracion total: " + this.duracionDelItinerario + " hs.").indent(35);
-	}
-
-	public int getCostoDelItinerario() {
-		return this.costoDelItinerario			;
-	}
-
-	public double getDuracionDelItinerario() {
-		return this.duracionDelItinerario;
+				+ " monedas.                 Duracion total: " + this.duracionDelItinerario + " hs.").indent(30);
 	}
 
 	/*@Override
