@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import atraccion.Atraccion;
+import entradaSalida.EntradaSalida;
+import itinerario.Itinerario;
 import promocion.Promocion;
 import sugerencia.Sugerencia;
 import tierraMedia.TierraMedia;
@@ -15,7 +17,7 @@ public class Consola {
 	static final String ENTRADA_INCORRECTA = "<---ENTRADA INCORRECTA--->".indent(50);
 	static final String SEPARADOR_USUARIOS = "______________________________________________________________________________________"
 			.indent(23);
-	static final String SUBRAYADO = "------------------------------";
+	static final String SUBRAYADO = "\n------------------------------\n";
 	static final String LATERAL_CUADRADO = "|                                                                    |"
 			.indent(35);
 	static final String TECHO_CUADRADO = "                                    ____________________________________________________________________\n";
@@ -40,6 +42,7 @@ public class Consola {
 			TierraMedia.ordenar(sugerencias, usuario.getPreferencia());
 			entrada.nextLine();
 			System.out.println("BIENVENIDO " + usuario + "\n");
+
 			for (Sugerencia sugerencia : sugerencias) {
 				if (sugerencia.getCupo() > 0 && puedeComprarEl(usuario, sugerencia)
 						&& sugerencia.noEstaIncluidaEn(atraccionesTemp)) {
@@ -67,21 +70,29 @@ public class Consola {
 			if (usuario.getMiItinerario().getSugerenciasDiarias().isEmpty())
 				System.out.println("\nNO REALIZASTE COMPRAS.".indent(2));
 			else {
-				System.out.println("\n\nTu itinerario es el siguiente:\n" + SUBRAYADO + "\n\n" + usuario.getMiItinerario()
-								+ ("\nSu saldo actual: " + usuario.getDineroDisponible()
-								+ " monedas.                  Horas restantes: " + usuario.getTiempoDisponible()
-								+ " hs.").indent(31));
+				Itinerario itinerario = usuario.getMiItinerario();
+				ArrayList<String> datosDeItinerario = itinerario.obtenerDatosDeItinerario();
+				int dineroDeUsuario = usuario.getDineroDisponible();
+				double tiempoDeUsuario = usuario.getTiempoDisponible();
+
+				System.out.println("\n\nTu itinerario es el siguiente:" + SUBRAYADO);
+				System.out.println(itinerario + ("\nSu saldo actual: " + dineroDeUsuario
+						+ " monedas.                  Horas restantes: " + tiempoDeUsuario + " hs.").indent(31));
+
+				datosDeItinerario.add(
+						"\n\nTu saldo actual es:;" + dineroDeUsuario + ";Tu tiempo restante es de:;" + tiempoDeUsuario);
+				EntradaSalida.guardarEnArchivo(usuario.getNombre(), datosDeItinerario);
 			}
 			System.out.println(SEPARADOR_USUARIOS);
-			if(!usuarios.get(usuarios.size()-1).equals(usuario))
+
+			if (!usuarios.get(usuarios.size() - 1).equals(usuario))
 				System.out.print("PRESIONA ENTER PARA MOSTRAR EL SIGUIENTE USUARIO".indent(40));
 			atraccionesTemp.clear();
 		}
 		System.out.println(MENSAJE_FINAL);
-		TierraMedia.guardarItinerarios();
 		entrada.close();
 	}
-
+	
 	private static boolean puedeComprarEl(Usuario usuario, Sugerencia laSugerencia) {
 		return usuario.getDineroDisponible() >= laSugerencia.getPrecio()
 				&& usuario.getTiempoDisponible() >= laSugerencia.getDuracion();

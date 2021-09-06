@@ -34,28 +34,21 @@ public class EntradaSalida {
 		return misDatos;
 	}
 
-	public static void guardarEnArchivo( String Ruta,ArrayList<String> misDatos){
+	public static void guardarEnArchivo(String ruta, ArrayList<String> misDatos) {
 		BufferedWriter bufferDeGuardado = null;
-		
+
 		try {
-			bufferDeGuardado = new BufferedWriter(new FileWriter("Salida/Itinerario de " + Ruta +".csv"));
-			
-			bufferDeGuardado.write("ESTE ES EL DETALLE DE TU ITINERARIO\n");
-			bufferDeGuardado.write(misDatos.get(0));
-			misDatos.remove(0);
-			bufferDeGuardado.write("\n\n\nPromocion / Atraccion Comprada;Tipo;Costo;Duracion");
-			bufferDeGuardado.newLine();
-		
+			bufferDeGuardado = new BufferedWriter(new FileWriter("Salida/" + ruta + ".csv"));
+
 			for (String dato : misDatos) {
-				bufferDeGuardado.newLine();
 				bufferDeGuardado.write(dato);
-				
+				bufferDeGuardado.newLine();
 			}
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
-			if(bufferDeGuardado != null) {
+			if (bufferDeGuardado != null) {
 				try {
 					bufferDeGuardado.close();
 				} catch (IOException e) {
