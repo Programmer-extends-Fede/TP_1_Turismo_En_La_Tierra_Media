@@ -115,11 +115,23 @@ public abstract class TierraMedia {
 		}
 	}
 
-	public static void construirSugerencias() {
-		
+	public static boolean construirSugerencias() {
 		TierraMedia.sugerencias= new ArrayList<Sugerencia>();
-		sugerencias.addAll(promociones);
-		sugerencias.addAll(atracciones);		
+		
+		if(TierraMedia.atracciones != null && TierraMedia.promociones != null) {
+			sugerencias.addAll(promociones);
+			sugerencias.addAll(atracciones);
+			return true;
+		}
+		else return false;
+	}
+	
+	public static ArrayList<Atraccion> getAtracciones() {
+		return atracciones;
+	}
+
+	public static ArrayList<Promocion> getPromociones() {
+		return promociones;
 	}
 	
 	public static ArrayList<Usuario> getUsuarios() {
