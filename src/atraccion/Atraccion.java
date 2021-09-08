@@ -58,7 +58,7 @@ public class Atraccion implements Sugerencia, Comparable<Atraccion> {
 	@Override
 	public String toString() {
 		return this.nombre + ": de tipo " + this.tipo.getDescripcion() + ". Su precio es de " + this.precio
-				+ " monedas. Su duracion de " + this.duracion + " hs.";
+				+ " monedas. Su duracion de " + this.duracion + " hs.\n";
 	}
 
 	@Override
