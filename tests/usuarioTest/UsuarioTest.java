@@ -9,15 +9,15 @@ import org.junit.Test;
 import atraccion.Atraccion;
 import tipo.Tipo;
 import usuario.Usuario;
-
+ 
 public class UsuarioTest {
 
 	Usuario u1;
 
 	@Before
 	public void inicializa() {
-		u1 = new Usuario("Emir", 1500, 2, Tipo.AVENTURAS);
-	}
+		u1 = new Usuario(null, 0, 0, Tipo.AVENTURAS);
+		}
 
 	@Test
 	public void noCreaNulo() {

@@ -1,5 +1,7 @@
 package sugerencia;
 
+import java.util.ArrayList;
+
 import atraccion.Atraccion;
 import tipo.Tipo;
 
@@ -17,7 +19,7 @@ public interface Sugerencia {
 	
 	public boolean esPromocion();
 	
-	public void vender();
+	public void restarCupo();
 	
-	public boolean atraccionIncluida(Atraccion atraccion);
+	public boolean noEstaIncluidaEn(ArrayList<Atraccion> atraccionesCompradas);
 }

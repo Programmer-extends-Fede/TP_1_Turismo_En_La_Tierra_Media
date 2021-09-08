@@ -1,14 +1,17 @@
 package ordenar;
 
-
-
 import java.util.Comparator;
+
 import sugerencia.Sugerencia;
 import tipo.Tipo;
 
 public class Ordenar implements Comparator<Sugerencia> {
 
-	private static Tipo usuarioTipo;
+	private Tipo usuarioTipo;
+	
+	public Ordenar(Tipo usuarioTipo) {
+		this.usuarioTipo = usuarioTipo;
+	}
 
 	@Override
 	public int compare(Sugerencia o1, Sugerencia o2) {
@@ -16,7 +19,7 @@ public class Ordenar implements Comparator<Sugerencia> {
 		Tipo o1Tipo = o1.getTipo();
 		Tipo o2Tipo = o2.getTipo();
 
-		resultado = Boolean.compare(o1.esPromocion(), o2.esPromocion());
+		resultado = -Boolean.compare(o1.esPromocion(), o2.esPromocion());
 		if (resultado == 0)
 			resultado = o1Tipo.equals(usuarioTipo) && !o2Tipo.equals(usuarioTipo) ? -1
 					: !o1Tipo.equals(usuarioTipo) && o2Tipo.equals(usuarioTipo) ? 1 : 0;
@@ -25,9 +28,5 @@ public class Ordenar implements Comparator<Sugerencia> {
 		if (resultado == 0)
 			resultado = -Double.compare(o1.getDuracion(), o2.getDuracion());
 		return resultado;
-	}
-
-	public static void setUsuarioTipo(Tipo preferenciaDeUsuario) {
-		usuarioTipo = preferenciaDeUsuario;
 	}
 }
