@@ -7,6 +7,7 @@ import atraccion.Atraccion;
 import itinerario.Itinerario;
 import promocion.Promocion;
 import sugerencia.Sugerencia;
+import tierraMedia.TierraMedia;
 import usuario.Usuario;
 
 public class Consola {
@@ -29,17 +30,17 @@ public class Consola {
 		System.out.println(MENSAJE_INICIAL);
 
 		for (Usuario usuario : usuarios) {
-			TierraMedia.ordenar(sugerencias, usuario.getPreferencia());
+			TierraMedia.ordenar(usuario.getPreferencia());
 			entrada.nextLine();
 			System.out.println("BIENVENIDO " + usuario + "\n");
 
 			for (Sugerencia laSugerencia : sugerencias) {
-				if (tieneCupo(laSugerencia) && puedeComprarEl(usuario, laSugerencia) && noSeCompro(laSugerencia))
+				if (tieneCupo(laSugerencia) && puedeComprar(laSugerencia, usuario) && noSeCompro(laSugerencia))
 					ofertar(laSugerencia, usuario);
 			}
 
 			if (!usuario.getMiItinerario().getSugerenciasDiarias().isEmpty()) {
-				guardarItinerario(usuario);
+				guardarItinerarioDe(usuario, "Itinerario de " + usuario.getNombre());
 				System.out.println("\nEste es el detalle de tu itinerario".indent(6) + SUBRAYADO + "\n");
 				System.out.println(usuario.getMiItinerario());
 				System.out.println(("Tu dinero restante: " + usuario.getDineroDisponible() + " monedas."
@@ -67,25 +68,27 @@ public class Consola {
 			else if (respuesta.equalsIgnoreCase("s")) {
 				laSugerencia.restarCupo();
 				usuario.comprar(laSugerencia);
-				agregarAtraccionATemp(laSugerencia);
-				System.out.println(("|Monedas restantes: " + usuario.getDineroDisponible() + "|       [Horas restante: "
+				agregarAtraccionComprada(laSugerencia);
+				System.out.println(("[Monedas restantes: " + usuario.getDineroDisponible() + "]       [Horas restante: "
 						+ usuario.getTiempoDisponible() + "]").indent(35));
 			} else
 				System.out.println(ENTRADA_INCORRECTA);
 		}
 	}
 
-	private static void guardarItinerario(Usuario usuario) {
+
+	public static void guardarItinerarioDe(Usuario usuario, String ruta) {
 		Itinerario itinerario = usuario.getMiItinerario();
 		ArrayList<String> datosDeItinerario = itinerario.obtenerDatosDeItinerario();
 		String dineroDeUsuario = usuario.getDineroDisponible() + " monedas.";
 		String tiempoDeUsuario = usuario.getTiempoDisponible() + " hs.";
 		datosDeItinerario
 				.add("\n\nTu saldo actual es:;" + dineroDeUsuario + ";Tu tiempo restante es de:;" + tiempoDeUsuario);
-		EntradaSalida.guardarEnArchivo("Itinerario de " + usuario.getNombre(), datosDeItinerario);
+		EntradaSalida.guardarEnArchivo(ruta, datosDeItinerario);
+
 	}
 
-	public static boolean puedeComprarEl(Usuario usuario, Sugerencia laSugerencia) {
+	public static boolean puedeComprar(Sugerencia laSugerencia, Usuario usuario) {
 		return usuario.getDineroDisponible() >= laSugerencia.getPrecio()
 				&& usuario.getTiempoDisponible() >= laSugerencia.getDuracion();
 	}
@@ -98,7 +101,7 @@ public class Consola {
 		return laSugerencia.noEstaIncluidaEn(atraccionesTemp);
 	}
 
-	private static void agregarAtraccionATemp(Sugerencia sugerencia) {
+	public static void agregarAtraccionComprada(Sugerencia sugerencia) {
 		if (sugerencia.esPromocion()) {
 			Promocion miPromo = (Promocion) sugerencia;
 			atraccionesTemp.addAll(miPromo.getAtracciones());
