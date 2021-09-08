@@ -1,9 +1,11 @@
 package tierraMedia;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import atraccion.Atraccion;
 import entradaSalida.EntradaSalida;
+import ordenar.Ordenar;
 import promocion.Promocion;
 import promocion.PromocionAPorB;
 import promocion.PromocionAbsoluta;
@@ -142,6 +144,12 @@ public abstract class TierraMedia {
 		return sugerencias;
 	}
 
+	public static void ordenarSugerenciasPor(Tipo tipo) {
+		
+		sugerencias.sort(new Ordenar(tipo));
+	}
+	
+	
 	public static String informacionParaGuardar() {
 		
 		String datosAGuardar= null;
