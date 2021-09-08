@@ -107,7 +107,7 @@ public abstract class TierraMedia {
 
 	}
 
-	public static void ordenarSugerencias(ArrayList<Sugerencia> sugerencias, Tipo preferenciaDeUsuario) {
+	public static void ordenarSugerencias( Tipo preferenciaDeUsuario) {
 		sugerencias.sort(new Ordenar(preferenciaDeUsuario));
 	}
 
