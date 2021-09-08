@@ -1,6 +1,7 @@
 package TierraMedia;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import atraccion.Atraccion;
 import entradaSalida.EntradaSalida;
@@ -18,10 +19,9 @@ public abstract class TierraMedia {
 	private static ArrayList<Usuario> usuarios;
 	private static ArrayList<Atraccion> atracciones;
 	private static ArrayList<Promocion> promociones;
-	private static ArrayList<Sugerencia> sugerencia;
+	private static ArrayList<Sugerencia> sugerencias;
 
-	
-	private static void construirUsuarios() {
+	public static boolean construirUsuarios() {
 		usuarios = new ArrayList<Usuario>();
 		ArrayList<String> misDatos = EntradaSalida.cargarArchivoDe("Entrada/Usuarios.csv");
 
@@ -38,10 +38,10 @@ public abstract class TierraMedia {
 			usuarios.add(usuario);
 
 		}
+		return !usuarios.isEmpty();
+	}
 
-	} 
-
-	private static void construirAtracciones() {
+	public static boolean construirAtracciones() {
 		atracciones = new ArrayList<Atraccion>();
 		ArrayList<String> misDatos = EntradaSalida.cargarArchivoDe("Entrada/Atracciones.csv");
 
@@ -57,68 +57,69 @@ public abstract class TierraMedia {
 
 			Atraccion atraccion = new Atraccion(nombre, precio, duracion, cupo, tipo);
 			atracciones.add(atraccion);
-
 		}
+		return !atracciones.isEmpty();
 	}
 
-	private static void construirPromociones() {
-		construirAtracciones();
-		promociones = new ArrayList<Promocion>();
-		ArrayList<String> misDatos = EntradaSalida.cargarArchivoDe("Entrada/Promociones.csv");
+	public static boolean construirPromociones() {
+		if (!atracciones.isEmpty()) {
 
-		for (String miPromo : misDatos) {
+			promociones = new ArrayList<Promocion>();
+			ArrayList<String> misDatos = EntradaSalida.cargarArchivoDe("Entrada/Promociones.csv");
 
-			String[] datosPromo = miPromo.split(";");
+			for (String miPromo : misDatos) {
 
-			String tipo = datosPromo[0];
-			String nombre = datosPromo[1];
-			String[] nombreAtracciones = datosPromo[2].split(",");
-			double descuento = Double.parseDouble(datosPromo[3]);
+				String[] datosPromo = miPromo.split(";");
 
-			ArrayList<Atraccion> atraccionIncluidas = new ArrayList<Atraccion>();
-			for (int i = 0; i < nombreAtracciones.length; i++) {
+				String tipo = datosPromo[0];
+				String nombre = datosPromo[1];
+				ArrayList<String> nombreAtracciones = new ArrayList<String>(Arrays.asList(datosPromo[2].split(",")));
+				double descuento = Double.parseDouble(datosPromo[3]);
+
+				ArrayList<Atraccion> atraccionIncluidas = new ArrayList<Atraccion>();
 				for (Atraccion atraccion : atracciones) {
-					if (nombreAtracciones[i].equals(atraccion.getNombre())) {
+					if (nombreAtracciones.contains(atraccion.getNombre()))
 						atraccionIncluidas.add(atraccion);
-					}
+				}
 
+				if (tipo.equals("Porcentual")) {
+					promociones.add(new PromocionPorcentual(nombre, atraccionIncluidas, descuento));
+				} else if (tipo.equals("Absoluta")) {
+					promociones.add(new PromocionAbsoluta(nombre, atraccionIncluidas, (int) descuento));
+				} else {
+					promociones.add(new PromocionAPorB(nombre, atraccionIncluidas, (int) descuento));
 				}
 			}
-
-			if (tipo.equals("Porcentual")) {
-				promociones.add(new PromocionPorcentual(nombre, atraccionIncluidas, descuento));
-			}
-
-			if (tipo.equals("Absoluta")) {
-				promociones.add(new PromocionAbsoluta(nombre, atraccionIncluidas, (int) descuento));
-			}
-
-			if (tipo.equals("AxB")) {
-				promociones.add(new PromocionAPorB(nombre, atraccionIncluidas, (int) descuento));
-			}
 		}
+		return !promociones.isEmpty();
 	}
 
-	private static void construirSugerencias() {
-		construirPromociones();
-		sugerencia = new ArrayList<Sugerencia>();
-		sugerencia.addAll(atracciones);
-		sugerencia.addAll(promociones);
-
+	public static boolean construirSugerencias() {
+		if (!atracciones.isEmpty() && !promociones.isEmpty()) {
+			sugerencias = new ArrayList<Sugerencia>();
+			sugerencias.addAll(atracciones);
+			sugerencias.addAll(promociones);
+		}
+		return !sugerencias.isEmpty();
 	}
 
-	public static void ordenarSugerencias( Tipo preferenciaDeUsuario) {
+	public static void ordenarSugerencias(Tipo preferenciaDeUsuario) {
 		sugerencias.sort(new Ordenar(preferenciaDeUsuario));
 	}
 
 	public ArrayList<Usuario> getUsuarios() {
-		construirUsuarios();
 		return usuarios;
 	}
 
-	public ArrayList<Sugerencia> getSugerencia() {
-		construirSugerencias();
-		return sugerencia;
+	public static ArrayList<Atraccion> getAtracciones() {
+		return atracciones;
 	}
 
+	public static ArrayList<Promocion> getPromociones() {
+		return promociones;
+	}
+
+	public ArrayList<Sugerencia> getSugerencias() {
+		return sugerencias;
+	}
 }
