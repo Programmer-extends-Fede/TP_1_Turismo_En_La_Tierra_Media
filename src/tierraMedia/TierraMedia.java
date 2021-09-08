@@ -107,7 +107,7 @@ public abstract class TierraMedia {
 				promociones.add(promocionPorcentual);
 			}
 			
-			else if(datosPromociones[4].equals("PromocionAPorB")) {
+			else {
 				
 				int cantPromosACobrar = Integer.parseInt(datosPromociones[3]);
 				PromocionAPorB promocionAPorB = new PromocionAPorB(nombre, atracciones, tipo, cantPromosACobrar);
