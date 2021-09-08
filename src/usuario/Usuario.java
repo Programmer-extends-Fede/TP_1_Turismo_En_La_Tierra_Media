@@ -1,5 +1,6 @@
 package usuario;
 
+import itinerario.Itinerario;
 import sugerencia.Sugerencia;
 import tipo.Tipo;
 
@@ -42,5 +43,11 @@ public class Usuario {
 	
 	public Itinerario getMiItinerario() {
 		return miItinerario;
-	}	
+	}
+	
+	@Override
+	public String toString() {
+		return this.nombre.toUpperCase() + "\n\nSu saldo inicial es: " + this.dineroDisponible + " monedas y su tiempo disponible: "
+				+ this.tiempoDisponible + " hs.\n\n";
+	}
 }

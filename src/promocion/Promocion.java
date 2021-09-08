@@ -11,7 +11,7 @@ public abstract class Promocion implements Sugerencia {
 	private String nombre;
 	private Tipo tipoDePromocion;
 	private ArrayList<Atraccion> atracciones;
-	private String nombreAtracciones;
+	private String nombreAtracciones = "";
 
 	public Promocion(String nombre, ArrayList<Atraccion> atracciones, Tipo tipoDePromocion) {
 		this.nombre = nombre;
@@ -19,7 +19,7 @@ public abstract class Promocion implements Sugerencia {
 		this.atracciones = atracciones;
 
 		for (Atraccion atraccion : atracciones) {
-			this.nombreAtracciones = atraccion.getNombre() + ", ";
+			this.nombreAtracciones += atraccion.getNombre() + ", ";
 		}
 	}
 
@@ -78,7 +78,7 @@ public abstract class Promocion implements Sugerencia {
 
 	@Override
 	public String toString() {
-		return getNombre() + ": " + this.nombreAtracciones + ", de tipo " + tipoDePromocion.getDescripcion()
+		return getNombre() + ": " + this.nombreAtracciones + "de tipo " + tipoDePromocion.getDescripcion()
 				+ ", su costo es de " + getPrecio() + " monedas y su duracion de " + getDuracion() + " horas.";
 	}
 
