@@ -36,7 +36,7 @@ public class Itinerario {
 		}
 		return datosDelItinerario;
 	}
-	
+
 	public int getCostoDelItinerario() {
 		return this.costoDelItinerario;
 	}
@@ -45,30 +45,11 @@ public class Itinerario {
 		return this.duracionDelItinerario;
 	}
 
-	/*@Override
-	public String toString() {
-		return sugerenciasDiarias.toString().replace("[", " ").replace(".,", ".\n").replace("]", "\n")
-				+ " \n       Costo total: " + this.costoDelItinerario + " monedas.                  Duracion total: "
-				+ this.duracionDelItinerario + " hs.";
-	}*/
-
 	@Override
 	public String toString() {
-		ArrayList<String> detalleDeCompras = new ArrayList<String>();
-		for (Sugerencia sugerenciaComprada : sugerenciasDiarias) {
-			detalleDeCompras.add(sugerenciaComprada.toString());
-		}
-		return String.join("\n\n", detalleDeCompras).indent(2) + "\n\n" + ("Costo total: " + this.costoDelItinerario
+		String sugerenciasDiariasLimpio = sugerenciasDiarias.toString().replace("[", " ").replace(", ", "\n ")
+				.replace("]", "\n");
+		return sugerenciasDiariasLimpio + ("\nCosto total: " + this.costoDelItinerario
 				+ " monedas.                 Duracion total: " + this.duracionDelItinerario + " hs.").indent(30);
 	}
-
-	/*@Override
-	public String toString() {
-		ArrayList<String> datosDelItinerario = this.obtenerDatosDeItinerario();
-		datosDelItinerario.remove(0);
-		datosDelItinerario.remove(1);
-
-		return datosDelItinerario.toString().replace(",", "\n\n").replace(";", "  ").replace("[", "").replace("]",
-				"\n");
-	}*/
 }
