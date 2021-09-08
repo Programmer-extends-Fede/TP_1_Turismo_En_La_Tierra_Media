@@ -30,7 +30,7 @@ public class Consola {
 		System.out.println(MENSAJE_INICIAL);
 
 		for (Usuario usuario : usuarios) {
-			TierraMedia.ordenar(usuario.getPreferencia());
+			TierraMedia.ordenarSugerenciasPor(usuario.getPreferencia());
 			entrada.nextLine();
 			System.out.println("BIENVENIDO " + usuario + "\n");
 
