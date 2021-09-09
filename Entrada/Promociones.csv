@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 Porcentual;Pack Aventuras;Bosque Negro,Mordor;Aventuras;0.2
 Absoluta;Pack Degustacion;Lothloriem,La Comarca;Degustacion;36
 AxB;Pack Paisaje;Minas Tirith,Abismo de Helm,Erebor;Paisaje;1
+=======
+Pack Aventuras;Bosque Negro,Mordor;0.2;Porcentual
+Pack Degustacion;Lothloriem,La Comarca;36;Absoluta
+Pack Paisaje;Minas Tirith,Abismo de Helm,Erebor;2;APorB
+>>>>>>> Martin

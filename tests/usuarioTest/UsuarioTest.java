@@ -12,30 +12,29 @@ import usuario.Usuario;
  
 public class UsuarioTest {
 
-	Usuario u1;
+	Usuario usuario;
 
 	@Before
-	public void inicializa() {
-		u1 = new Usuario(null, 0, 0, Tipo.AVENTURAS);
-		}
+	public void setup() {
+		usuario = new Usuario("Emir", 50, 2, Tipo.AVENTURAS);
+	}
 
 	@Test
-	public void noCreaNulo() {
-		assertNotNull(u1);
+	public void crearUsuarioTest() {
+		assertNotNull(usuario);
 	}
 	
 	@Test
-	public void queSeLeRestaDineroAlComprar() {
-		Atraccion miAtraccion = new Atraccion("VueltaAlMundo", 150, 0.5, 2, Tipo.AVENTURAS);
-		u1.comprar(miAtraccion);
-		assertEquals(1350, u1.getDineroDisponible());
+	public void comprarTest() {
+		Atraccion miAtraccion = new Atraccion("VueltaAlMundo", 15, 0.5, 2, Tipo.AVENTURAS);
+		usuario.comprar(miAtraccion);
+		
+		int dineroDispObtenido = usuario.getDineroDisponible();
+		int dineroDispEsperado = 35;
+		double tiempoDispObtenido = usuario.getTiempoDisponible();
+		double tiempoDispEsperado = 1.5;
+		
+		assertEquals(dineroDispEsperado, dineroDispObtenido);
+		assertEquals(tiempoDispEsperado, tiempoDispObtenido,0);
 	}
-	
-	@Test
-	public void queSeLeRestaTiempoAlComprar() {
-		Atraccion miAtraccion = new Atraccion("VueltaAlMundo", 150, 0.5, 2, Tipo.AVENTURAS);
-		u1.comprar(miAtraccion);
-		assertEquals(1.5, u1.getTiempoDisponible(), 0);
-	}
-
 }

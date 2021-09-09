@@ -1,0 +1,76 @@
+package itinerarioTest;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+
+import java.util.ArrayList;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import atraccion.Atraccion;
+import itinerario.Itinerario;
+import promocion.PromocionPorcentual;
+import sugerencia.Sugerencia;
+import tipo.Tipo;
+
+public class ItinerarioTest {
+
+	Itinerario itinerario;
+	Atraccion atraccion;
+	Atraccion atraccion2;
+	Atraccion atraccion3;
+	ArrayList<Atraccion> misAtracciones = new ArrayList<Atraccion>();
+	Sugerencia promocion;
+
+	@Before
+	public void setup() {
+		atraccion = new Atraccion("Moria", 10, 5.5, 3, Tipo.PAISAJE);
+		atraccion2 = new Atraccion("La Cueva", 15, 3.5, 10, Tipo.PAISAJE);
+		atraccion3 = new Atraccion("Cafe Vasco", 10, 3, 15, Tipo.AVENTURAS);
+		misAtracciones.add(atraccion);
+		misAtracciones.add(atraccion2);
+		promocion = new PromocionPorcentual("Promo Epica", misAtracciones, 0.15);
+		itinerario = new Itinerario();
+	}
+
+	@Test
+	public void crearItinerarioTest() {
+		assertNotNull(itinerario);
+	}
+
+	@Test
+	public void agregarCompraTest() {
+		itinerario.agregarLaCompraDe(atraccion);
+		itinerario.agregarLaCompraDe(atraccion2);
+		itinerario.agregarLaCompraDe(promocion);
+
+		int costoObtenido = itinerario.getCostoDelItinerario();
+		int costoDeseado = 46;
+		double duracionObtenida = itinerario.getDuracionDelItinerario();
+		double duracionDeseada = 18.0;
+
+		assertFalse(itinerario.getSugerenciasDiarias().isEmpty());
+		assertEquals(costoDeseado, costoObtenido);
+		assertEquals(duracionDeseada, duracionObtenida, 0);
+	}
+
+	@Test
+	public void obtenerDatosDelItinerario() {
+		itinerario.agregarLaCompraDe(atraccion3);
+		itinerario.agregarLaCompraDe(promocion);
+
+		ArrayList<String> arrayEsperado = new ArrayList<String>();
+		arrayEsperado.add("ESTE ES EL DETALLE DE TU ITINERARIO\n");
+		arrayEsperado.add("Costo de tu Itinerario:;31;Duracion de tu Itinerario:;12.0\n");
+		arrayEsperado.add("\nPromocion / Atraccion Comprada;Tipo;Costo;Duracion\n");
+		arrayEsperado.add("Cafe Vasco;aventuras;10 monedas.;3.0 hs.");
+		arrayEsperado.add("Promo Epica: incluye (Moria)(La Cueva);paisaje;21 monedas.;9.0 hs.");
+
+		ArrayList<String> arrayObtenido = itinerario.obtenerDatosDeItinerario();
+
+		assertEquals(arrayEsperado, arrayObtenido);
+
+	}
+}
