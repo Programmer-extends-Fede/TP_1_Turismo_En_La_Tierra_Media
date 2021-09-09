@@ -56,5 +56,5 @@ public class Atraccion implements Sugerencia {
 	public boolean atraccionIncluida(Atraccion atraccion) {
 		return this == atraccion;
 	}
-
+s
 }
