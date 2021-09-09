@@ -34,12 +34,12 @@ public class EntradaSalida {
 		return misDatos;
 	}
 	
-	public static void guardarEnArchivo(ArrayList<String> datosAGuardar) {
+	public static void guardarEnArchivo(ArrayList<String> datosAGuardar, String nombreDeRuta) {
 		PrintWriter salida = null;
 		
 		try {
 			for(String dato : datosAGuardar) {
-				salida = new PrintWriter(new FileWriter("Salida/"+ dato +".csv"));
+				salida = new PrintWriter(new FileWriter("Salida/"+ nombreDeRuta +".csv"));
 				salida.print(dato);
 				salida.close();
 			}

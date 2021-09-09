@@ -78,14 +78,14 @@ public class Consola {
 	}
 
 
-	public static void guardarItinerarioDe(Usuario usuario, String ruta) {
+	public static void guardarItinerarioDe(Usuario usuario, String nombreDeRuta) {
 		Itinerario itinerario = usuario.getMiItinerario();
 		ArrayList<String> datosDeItinerario = itinerario.obtenerDatosDeItinerario();
 		String dineroDeUsuario = usuario.getDineroDisponible() + " monedas.";
 		String tiempoDeUsuario = usuario.getTiempoDisponible() + " hs.";
 		datosDeItinerario
 				.add("\n\nTu saldo actual es:;" + dineroDeUsuario + ";Tu tiempo restante es de:;" + tiempoDeUsuario);
-		EntradaSalida.guardarEnArchivo(datosDeItinerario);
+		EntradaSalida.guardarEnArchivo(datosDeItinerario, nombreDeRuta);
 
 	}
 
