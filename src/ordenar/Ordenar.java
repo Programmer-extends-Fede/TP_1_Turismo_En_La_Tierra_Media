@@ -8,7 +8,7 @@ import tipo.Tipo;
 public class Ordenar implements Comparator<Sugerencia> {
 
 	private Tipo usuarioTipo;
-	
+
 	public Ordenar(Tipo usuarioTipo) {
 		this.usuarioTipo = usuarioTipo;
 	}

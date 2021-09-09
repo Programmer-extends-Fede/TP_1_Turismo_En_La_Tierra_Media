@@ -23,3 +23,4 @@ public interface Sugerencia {
 	
 	public boolean noEstaIncluidaEn(ArrayList<Atraccion> atraccionesCompradas);
 }
+

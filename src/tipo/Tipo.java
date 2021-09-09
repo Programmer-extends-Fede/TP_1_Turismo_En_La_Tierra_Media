@@ -2,7 +2,7 @@ package tipo;
 
 public enum Tipo {
 
-	AVENTURAS("Aventuras"), DEGUSTACION("Degustacion"), PAISAJE("Paisaje");
+	AVENTURAS("aventuras"), DEGUSTACION("degustacion"), PAISAJE("paisaje");
 	
 	private String descripcion;
 	

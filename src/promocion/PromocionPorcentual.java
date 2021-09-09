@@ -3,7 +3,6 @@ package promocion;
 import java.util.ArrayList;
 
 import atraccion.Atraccion;
-import tipo.Tipo;
 
 public class PromocionPorcentual extends Promocion {
 

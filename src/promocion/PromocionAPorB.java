@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import atraccion.Atraccion;
-import tipo.Tipo;
 
 public class PromocionAPorB extends Promocion {
 
@@ -27,3 +26,4 @@ public class PromocionAPorB extends Promocion {
 		return importeACobrar;
 	}	
 }
+

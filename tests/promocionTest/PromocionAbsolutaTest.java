@@ -1,7 +1,9 @@
 package promocionTest;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 
@@ -19,6 +21,7 @@ public class PromocionAbsolutaTest {
 	Atraccion atraccion2;
 	Atraccion atraccion3;
 	ArrayList<Atraccion> misAtracciones = new ArrayList<Atraccion>();
+	Promocion miPromo;
 
 	@Before
 	public void setup() {
@@ -28,18 +31,17 @@ public class PromocionAbsolutaTest {
 		misAtracciones.add(atraccion1);
 		misAtracciones.add(atraccion2);
 		misAtracciones.add(atraccion3);
+		miPromo = new PromocionAbsoluta("Pack 1", misAtracciones, 25);
 	}
 
 	@Test
 	public void crearPromocionTest() {
-		Promocion miPromo = new PromocionAbsoluta("Pack 1", misAtracciones, Tipo.AVENTURAS, 25);
-
 		assertNotNull(miPromo);
 	}
 
 	@Test
 	public void obtenerPrecioDePromocionTest() {
-		Promocion miPromo = new PromocionAbsoluta("Pack 1", misAtracciones, Tipo.AVENTURAS, 25);
+		Promocion miPromo = new PromocionAbsoluta("Pack 1", misAtracciones, 25);
 		int precioObtenido = miPromo.getPrecio();
 		int precioEsperado = 25;
 
@@ -48,17 +50,7 @@ public class PromocionAbsolutaTest {
 
 	@Test
 	public void obtenerCupoDePromocionTest() {
-		Promocion miPromo = new PromocionAbsoluta("Pack 1", misAtracciones, Tipo.AVENTURAS, 25);
-		int cupoObtenido = miPromo.getCupo();
-		int cupoEsperado = 2;
-
-		assertEquals(cupoEsperado, cupoObtenido);
-	}
-
-	@Test
-	public void venderPromocionTest() {
-		Promocion miPromo = new PromocionAbsoluta("Pack 1", misAtracciones, Tipo.AVENTURAS, 25);
-		miPromo.vender();
+		Promocion miPromo = new PromocionAbsoluta("Pack 1", misAtracciones, 25);
 		int cupoObtenido = miPromo.getCupo();
 		int cupoEsperado = 1;
 
@@ -66,11 +58,31 @@ public class PromocionAbsolutaTest {
 	}
 
 	@Test
+	public void restarCupoTest() {
+		miPromo.restarCupo();
+		
+		int cupoObtenido = miPromo.getCupo();
+		int cupoEsperado = 0;
+
+		assertEquals(cupoEsperado, cupoObtenido);
+	}
+
+	@Test
 	public void obtenerDuracionDePromocionTest() {
-		Promocion miPromo = new PromocionAbsoluta("Pack 1", misAtracciones, Tipo.AVENTURAS, 25);
 		double duracionObtenida = miPromo.getDuracion();
-		double duracionEsperada = 10.5;
+		double duracionEsperada = 15.5;
 
 		assertEquals(duracionEsperada, duracionObtenida, 0);
+	}
+	
+	@Test
+	public void noEstaIncluidaTest() {
+		ArrayList<Atraccion> atraccionIncluida = new ArrayList<Atraccion>();
+		ArrayList<Atraccion> atraccionNoIncluida = new ArrayList<Atraccion>();
+		atraccionIncluida.add(atraccion1);
+		atraccionNoIncluida.add(new Atraccion("La Galaxia", 10, 2.5, 23, Tipo.PAISAJE));
+
+		assertFalse(miPromo.noEstaIncluidaEn(atraccionIncluida));
+		assertTrue(miPromo.noEstaIncluidaEn(atraccionNoIncluida));
 	}
 }
