@@ -31,4 +31,9 @@ public class EntradaSalida {
 		}
 		return misDatos;
 	}
+
+	public static void guardarEnArchivo(String ruta, ArrayList<String> datosDeItinerario) {
+		// TODO Auto-generated method stub
+		
+	}
 }
