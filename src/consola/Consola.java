@@ -3,11 +3,12 @@ package consola;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import TierraMedia.TierraMedia;
 import atraccion.Atraccion;
+import entradaSalida.EntradaSalida;
 import itinerario.Itinerario;
 import promocion.Promocion;
 import sugerencia.Sugerencia;
-import tierraMedia.TierraMedia;
 import usuario.Usuario;
 
 public class Consola {
@@ -30,7 +31,7 @@ public class Consola {
 		System.out.println(MENSAJE_INICIAL);
 
 		for (Usuario usuario : usuarios) {
-			TierraMedia.ordenarSugerenciasPor(usuario.getPreferencia());
+			TierraMedia.ordenarSugerencias(usuario.getPreferencia());
 			entrada.nextLine();
 			System.out.println("BIENVENIDO " + usuario + "\n");
 

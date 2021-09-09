@@ -107,7 +107,7 @@ public abstract class TierraMedia {
 		sugerencias.sort(new Ordenar(preferenciaDeUsuario));
 	}
 
-	public ArrayList<Usuario> getUsuarios() {
+	public static ArrayList<Usuario> getUsuarios() {
 		return usuarios;
 	}
 
@@ -119,7 +119,7 @@ public abstract class TierraMedia {
 		return promociones;
 	}
 
-	public ArrayList<Sugerencia> getSugerencias() {
+	public static ArrayList<Sugerencia> getSugerencias() {
 		return sugerencias;
 	}
 }
