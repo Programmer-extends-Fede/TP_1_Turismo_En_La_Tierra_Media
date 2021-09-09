@@ -18,7 +18,7 @@ public abstract class TierraMedia {
 	private static ArrayList<Usuario> usuarios;
 	private static ArrayList<Atraccion> atracciones;
 	private static ArrayList<Promocion> promociones;
-	private static ArrayList<Sugerencia> sugerencia;
+	private static ArrayList<Sugerencia> sugerencias;
 
 	
 	private static void construirUsuarios() {
@@ -101,9 +101,9 @@ public abstract class TierraMedia {
 
 	private static void construirSugerencias() {
 		construirPromociones();
-		sugerencia = new ArrayList<Sugerencia>();
-		sugerencia.addAll(atracciones);
-		sugerencia.addAll(promociones);
+		sugerencias = new ArrayList<Sugerencia>();
+		sugerencias.addAll(atracciones);
+		sugerencias.addAll(promociones);
 
 	}
 
@@ -118,7 +118,7 @@ public abstract class TierraMedia {
 
 	public ArrayList<Sugerencia> getSugerencia() {
 		construirSugerencias();
-		return sugerencia;
+		return sugerencias;
 	}
 
 }
