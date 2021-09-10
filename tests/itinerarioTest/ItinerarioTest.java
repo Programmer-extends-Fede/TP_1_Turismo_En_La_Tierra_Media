@@ -67,11 +67,11 @@ public class ItinerarioTest {
 		ArrayList<String> arrayEsperado = new ArrayList<String>();
 		arrayEsperado.add("USUARIO: JOSE;SALDO INICIAL: 100 MONEDAS;TIEMPO INICIAL: 100.0 HS.\n\n");
 		arrayEsperado.add("ESTE ES EL DETALLE DE TU ITINERARIO\n\n");
-		arrayEsperado.add("Costo de tu Itinerario:;31;Duracion de tu Itinerario:;12.0\n\n");
+		arrayEsperado.add("Costo de tu Itinerario:;31 monedas.;Duracion de tu Itinerario:;12.0 hs.\n\n");
 		arrayEsperado.add("\nPromocion / Atraccion Comprada;Tipo;Costo;Duracion\n\n");
 		arrayEsperado.add("Cafe Vasco;aventuras;10 monedas.;3.0 hs.\n");
 		arrayEsperado.add("Promo Epica: incluye (Moria)(La Cueva);paisaje;21 monedas.;9.0 hs.\n");
-		arrayEsperado.add("Te quedan 69 monedas y 88.0 hs.");
+		arrayEsperado.add("\n\nTu saldo actual es:;69 monedas.;Tu tiempo restante es de:;88.0 hs.");
 
 		ArrayList<String> arrayObtenido = miUsuario.getMiItinerario().obtenerDatosDeItinerario();
 
