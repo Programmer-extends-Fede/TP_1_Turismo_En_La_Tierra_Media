@@ -14,7 +14,7 @@ public class EntradaSalida {
 		BufferedReader bufferDeLectura = null;
 
 		try {
-			bufferDeLectura = new BufferedReader(new FileReader(ruta));
+			bufferDeLectura = new BufferedReader(new FileReader("Entrada/" + ruta));
 			String linea;
 
 			while ((linea = bufferDeLectura.readLine()) != null) {
@@ -38,11 +38,13 @@ public class EntradaSalida {
 		PrintWriter salida = null;
 		
 		try {
+			salida = new PrintWriter(new FileWriter("Salida/"+ nombreDeRuta +".csv"));
+			
 			for(String dato : datosAGuardar) {
-				salida = new PrintWriter(new FileWriter("Salida/"+ nombreDeRuta +".csv"));
+				
 				salida.print(dato);
-				salida.close();
 			}
+			
 		} catch (IOException e){
 			e.printStackTrace();
 		} finally {

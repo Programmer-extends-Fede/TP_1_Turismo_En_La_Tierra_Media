@@ -1,7 +1,10 @@
 package app;
 
+import java.util.ArrayList;
+
 import TierraMedia.TierraMedia;
 import consola.Consola;
+import entradaSalida.EntradaSalida;
 
 public class App {
 
@@ -10,6 +13,16 @@ public class App {
 		TierraMedia.construirAtracciones();
 		TierraMedia.construirPromociones();
 		TierraMedia.construirSugerencias();
-		Consola.iniciarInteraccion();
+		//Consola.iniciarInteraccion();
+		
+		ArrayList<String> arrayDePrueba= new ArrayList<String>();
+		arrayDePrueba.add("Usuario");
+		arrayDePrueba.add("Atraccion");
+		arrayDePrueba.add("Promocion");
+		arrayDePrueba.add("Sugerencia");
+		
+		EntradaSalida.guardarEnArchivo(arrayDePrueba, arrayDePrueba.get(0));
+		
+		//System.out.println(arrayDePrueba);
 	}
 }
