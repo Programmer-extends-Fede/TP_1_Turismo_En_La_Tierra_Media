@@ -2,7 +2,9 @@ package entradaSalida;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class EntradaSalida {
@@ -33,7 +35,25 @@ public class EntradaSalida {
 	}
 
 	public static void guardarEnArchivo(String ruta, ArrayList<String> datosDeItinerario) {
-		// TODO Auto-generated method stub
-		
+
+		PrintWriter salida = null;
+
+		try {
+			salida = new PrintWriter(new FileWriter("salida/" + ruta + ".csv"));
+
+			for (String cadaDato : datosDeItinerario) {
+				salida.println(cadaDato);
+				//salida.println(); - sacar los saltos de linea de itinerario -
+			}
+			salida.close();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (salida != null) {
+				salida.close();
+			}
+		}
 	}
+
 }
