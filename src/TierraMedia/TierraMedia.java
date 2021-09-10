@@ -16,13 +16,12 @@ import usuario.Usuario;
 
 public abstract class TierraMedia {
 
-	private static ArrayList<Usuario> usuarios;
-	private static ArrayList<Atraccion> atracciones;
-	private static ArrayList<Promocion> promociones;
-	private static ArrayList<Sugerencia> sugerencias;
+	private static ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+	private static ArrayList<Atraccion> atracciones = new ArrayList<Atraccion>();
+	private static ArrayList<Promocion> promociones = new ArrayList<Promocion>();
+	private static ArrayList<Sugerencia> sugerencias = new ArrayList<Sugerencia>();
 
 	public static boolean construirUsuarios() {
-		usuarios = new ArrayList<Usuario>();
 		ArrayList<String> misDatos = EntradaSalida.cargarArchivoDe("Entrada/Usuarios.csv");
 
 		for (String misUsuarios : misDatos) {
@@ -42,7 +41,6 @@ public abstract class TierraMedia {
 	}
 
 	public static boolean construirAtracciones() {
-		atracciones = new ArrayList<Atraccion>();
 		ArrayList<String> misDatos = EntradaSalida.cargarArchivoDe("Entrada/Atracciones.csv");
 
 		for (String misAtracciones : misDatos) {
@@ -63,8 +61,6 @@ public abstract class TierraMedia {
 
 	public static boolean construirPromociones() {
 		if (!atracciones.isEmpty()) {
-
-			promociones = new ArrayList<Promocion>();
 			ArrayList<String> misDatos = EntradaSalida.cargarArchivoDe("Entrada/Promociones.csv");
 
 			for (String miPromo : misDatos) {
@@ -94,9 +90,8 @@ public abstract class TierraMedia {
 		return !promociones.isEmpty();
 	}
 
-	public static boolean construirSugerencias() {
-		if (!atracciones.isEmpty() && !promociones.isEmpty()) {
-			sugerencias = new ArrayList<Sugerencia>();
+	public static boolean construirSugerencias(){
+		if (!atracciones.isEmpty()) {
 			sugerencias.addAll(atracciones);
 			sugerencias.addAll(promociones);
 		}
@@ -121,5 +116,12 @@ public abstract class TierraMedia {
 
 	public static ArrayList<Sugerencia> getSugerencias() {
 		return sugerencias;
+	}
+	
+	public static void borrarDatos() {
+		usuarios.clear();
+		atracciones.clear();
+		promociones.clear();
+		sugerencias.clear();
 	}
 }

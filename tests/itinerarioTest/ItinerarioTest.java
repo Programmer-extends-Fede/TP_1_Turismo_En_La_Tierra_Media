@@ -71,6 +71,5 @@ public class ItinerarioTest {
 		ArrayList<String> arrayObtenido = itinerario.obtenerDatosDeItinerario();
 
 		assertEquals(arrayEsperado, arrayObtenido);
-
 	}
 }
