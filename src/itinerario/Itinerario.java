@@ -36,16 +36,15 @@ public class Itinerario {
 					+ (usuario.getDineroDisponible() + this.costoDelItinerario) + " monedas;Tiempo inicial: "
 					+ (usuario.getTiempoDisponible() + this.duracionDelItinerario) + " hs.\n\n").toUpperCase());
 			datosDelItinerario.add("ESTE ES EL DETALLE DE TU ITINERARIO\n\n");
-			datosDelItinerario.add("Costo de tu Itinerario:;" + this.costoDelItinerario + ";Duracion de tu Itinerario:;"
-					+ this.duracionDelItinerario + "\n\n");
+			datosDelItinerario.add("Costo de tu Itinerario:;" + this.costoDelItinerario + " monedas.;Duracion de tu Itinerario:;"
+					+ this.duracionDelItinerario + " hs.\n\n");
 			datosDelItinerario.add("\nPromocion / Atraccion Comprada;Tipo;Costo;Duracion\n\n");
 
 			for (Sugerencia sugerencia : sugerenciasDiarias) {
 				datosDelItinerario.add(sugerencia.getNombre() + ";" + sugerencia.getTipo().getDescripcion() + ";"
 						+ sugerencia.getPrecio() + " monedas." + ";" + sugerencia.getDuracion() + " hs.\n");
 			}
-			datosDelItinerario.add("Te quedan " + usuario.getDineroDisponible() + " monedas y "
-					+ usuario.getTiempoDisponible() + " hs.");
+			datosDelItinerario.add("\n\nTu saldo actual es:;" + usuario.getDineroDisponible() + " monedas.;Tu tiempo restante es de:;" + usuario.getTiempoDisponible() + " hs.");
 		}
 		return datosDelItinerario;
 	}

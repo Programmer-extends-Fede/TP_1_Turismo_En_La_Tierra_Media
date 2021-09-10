@@ -6,7 +6,6 @@ import java.util.Scanner;
 import TierraMedia.TierraMedia;
 import atraccion.Atraccion;
 import entradaSalida.EntradaSalida;
-import itinerario.Itinerario;
 import promocion.Promocion;
 import sugerencia.Sugerencia;
 import usuario.Usuario;
@@ -48,7 +47,8 @@ public class Consola {
 
 				if (!usuario.getMiItinerario().getSugerenciasDiarias().isEmpty()) {
 
-					guardarItinerarioDe(usuario, "Itinerario de " + usuario.getNombre());
+					guardarItinerarioDe(usuario.getMiItinerario().obtenerDatosDeItinerario(),
+							"Itinerario de " + usuario.getNombre());
 
 					System.out.println("\nEste es el detalle de tu itinerario".indent(6) + SUBRAYADO + "\n");
 					System.out.println(usuario.getMiItinerario());
@@ -87,14 +87,7 @@ public class Consola {
 		} while (!respuesta.equalsIgnoreCase("s") && !respuesta.equalsIgnoreCase("n"));
 	}
 
-	public static void guardarItinerarioDe(Usuario usuario, String ruta) {
-		Itinerario itinerario = usuario.getMiItinerario();
-		ArrayList<String> datosDeItinerario = itinerario.obtenerDatosDeItinerario();
-		String dineroDeUsuario = usuario.getDineroDisponible() + " monedas.";
-		String tiempoDeUsuario = usuario.getTiempoDisponible() + " hs.";
-		datosDeItinerario
-				.add("\n\nTu saldo actual es:;" + dineroDeUsuario + ";Tu tiempo restante es de:;" + tiempoDeUsuario);
-
+	public static void guardarItinerarioDe(ArrayList<String> datosDeItinerario, String ruta) {
 		EntradaSalida.guardarEnArchivo(datosDeItinerario, ruta);
 	}
 

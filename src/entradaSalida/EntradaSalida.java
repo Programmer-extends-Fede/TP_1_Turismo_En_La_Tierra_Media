@@ -9,12 +9,12 @@ import java.util.ArrayList;
 
 public class EntradaSalida {
 
-	public static ArrayList<String> cargarArchivoDe(String ruta) {
+	public static ArrayList<String> cargarArchivoDe(String rutaRelativa) {
 		ArrayList<String> misDatos = new ArrayList<String>();
 		BufferedReader bufferDeLectura = null;
 
 		try {
-			bufferDeLectura = new BufferedReader(new FileReader(ruta));
+			bufferDeLectura = new BufferedReader(new FileReader("Entrada/" + rutaRelativa));
 			String linea;
 
 			while ((linea = bufferDeLectura.readLine()) != null) {

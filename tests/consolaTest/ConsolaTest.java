@@ -45,7 +45,8 @@ public class ConsolaTest {
 
 		usuario.comprar(atraccion);
 		usuario.comprar(promo);
-		Consola.guardarItinerarioDe(usuario, "ConsolaTest/Itinerario ObtenidoTest");
+		Consola.guardarItinerarioDe(usuario.getMiItinerario().obtenerDatosDeItinerario(),
+				"ConsolaTest/Itinerario ObtenidoTest");
 
 		BufferedInputStream ArchivoSalidaObtenido = null;
 		BufferedInputStream ArchivoSalidaEsperado = null;

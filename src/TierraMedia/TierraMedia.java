@@ -22,7 +22,7 @@ public abstract class TierraMedia {
 	private static ArrayList<Sugerencia> sugerencias = new ArrayList<Sugerencia>();
 
 	public static boolean construirUsuarios() {
-		ArrayList<String> misDatos = EntradaSalida.cargarArchivoDe("Entrada/Usuarios.csv");
+		ArrayList<String> misDatos = EntradaSalida.cargarArchivoDe("Usuarios.csv");
 
 		for (String misUsuarios : misDatos) {
 			String[] datosUsuarios = misUsuarios.split(";");
@@ -38,7 +38,7 @@ public abstract class TierraMedia {
 	}
 
 	public static boolean construirAtracciones() {
-		ArrayList<String> misDatos = EntradaSalida.cargarArchivoDe("Entrada/Atracciones.csv");
+		ArrayList<String> misDatos = EntradaSalida.cargarArchivoDe("Atracciones.csv");
 
 		for (String misAtracciones : misDatos) {
 			String[] datosAtracciones = misAtracciones.split(";");
@@ -55,7 +55,7 @@ public abstract class TierraMedia {
 
 	public static boolean construirPromociones() {
 		if (!atracciones.isEmpty()) {
-			ArrayList<String> misDatos = EntradaSalida.cargarArchivoDe("Entrada/Promociones.csv");
+			ArrayList<String> misDatos = EntradaSalida.cargarArchivoDe("Promociones.csv");
 
 			for (String miPromo : misDatos) {
 				String[] datosPromo = miPromo.split(";");
