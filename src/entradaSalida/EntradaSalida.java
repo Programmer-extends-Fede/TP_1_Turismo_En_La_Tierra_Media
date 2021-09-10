@@ -43,7 +43,6 @@ public class EntradaSalida {
 
 			for (String dato : datosDeItinerario) {
 				bufferDeGuardado.write(dato);
-				bufferDeGuardado.newLine();
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -52,8 +51,8 @@ public class EntradaSalida {
 				try {
 					bufferDeGuardado.close();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
+					System.exit(1);
 				}
 			}
 		}

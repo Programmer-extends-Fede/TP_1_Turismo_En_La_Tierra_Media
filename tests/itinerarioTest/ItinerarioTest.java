@@ -14,6 +14,7 @@ import itinerario.Itinerario;
 import promocion.PromocionPorcentual;
 import sugerencia.Sugerencia;
 import tipo.Tipo;
+import usuario.Usuario;
 
 public class ItinerarioTest {
 
@@ -23,6 +24,7 @@ public class ItinerarioTest {
 	Atraccion atraccion3;
 	ArrayList<Atraccion> misAtracciones = new ArrayList<Atraccion>();
 	Sugerencia promocion;
+	Usuario miUsuario;
 
 	@Before
 	public void setup() {
@@ -31,8 +33,9 @@ public class ItinerarioTest {
 		atraccion3 = new Atraccion("Cafe Vasco", 10, 3, 15, Tipo.AVENTURAS);
 		misAtracciones.add(atraccion);
 		misAtracciones.add(atraccion2);
+		miUsuario = new Usuario("Jose", 100, 100, Tipo.AVENTURAS);
 		promocion = new PromocionPorcentual("Promo Epica", misAtracciones, 0.15);
-		itinerario = new Itinerario();
+		itinerario = new Itinerario(miUsuario);
 	}
 
 	@Test
@@ -58,17 +61,19 @@ public class ItinerarioTest {
 
 	@Test
 	public void obtenerDatosDelItinerario() {
-		itinerario.agregarLaCompraDe(atraccion3);
-		itinerario.agregarLaCompraDe(promocion);
-
+		miUsuario.comprar(atraccion3);
+		miUsuario.comprar(promocion);
+	
 		ArrayList<String> arrayEsperado = new ArrayList<String>();
-		arrayEsperado.add("ESTE ES EL DETALLE DE TU ITINERARIO\n");
-		arrayEsperado.add("Costo de tu Itinerario:;31;Duracion de tu Itinerario:;12.0\n");
-		arrayEsperado.add("\nPromocion / Atraccion Comprada;Tipo;Costo;Duracion\n");
-		arrayEsperado.add("Cafe Vasco;aventuras;10 monedas.;3.0 hs.");
-		arrayEsperado.add("Promo Epica: incluye (Moria)(La Cueva);paisaje;21 monedas.;9.0 hs.");
+		arrayEsperado.add("USUARIO: JOSE;SALDO INICIAL: 100 MONEDAS;TIEMPO INICIAL: 100.0 HS.\n\n");
+		arrayEsperado.add("ESTE ES EL DETALLE DE TU ITINERARIO\n\n");
+		arrayEsperado.add("Costo de tu Itinerario:;31;Duracion de tu Itinerario:;12.0\n\n");
+		arrayEsperado.add("\nPromocion / Atraccion Comprada;Tipo;Costo;Duracion\n\n");
+		arrayEsperado.add("Cafe Vasco;aventuras;10 monedas.;3.0 hs.\n");
+		arrayEsperado.add("Promo Epica: incluye (Moria)(La Cueva);paisaje;21 monedas.;9.0 hs.\n");
+		arrayEsperado.add("Te quedan 69 monedas y 88.0 hs.");
 
-		ArrayList<String> arrayObtenido = itinerario.obtenerDatosDeItinerario();
+		ArrayList<String> arrayObtenido = miUsuario.getMiItinerario().obtenerDatosDeItinerario();
 
 		assertEquals(arrayEsperado, arrayObtenido);
 	}

@@ -28,10 +28,11 @@ public class Consola {
 	public static void iniciarInteraccion() {
 		ArrayList<Usuario> usuarios = TierraMedia.getUsuarios();
 		ArrayList<Sugerencia> sugerencias = TierraMedia.getSugerencias();
+		
 		if (usuarios.isEmpty())
-			System.out.println("No existe usuario a quien mostrarle las sugerencias, cargue los usuarios");
+			System.out.println("NO EXISTE USUARIO A QUIEN MOSTRARLE LAS SUGERENCIAS, CARGUE LOS USUARIOS");
 		else if (sugerencias.isEmpty())
-			System.out.println("No existen sugerencias para mostrar, cargue las atracciones y sugerencias.");
+			System.out.println("NO EXISTEN SUGERENCIAS PARA MOSTRAR, CARGUE LAS ATRACCIONES Y/O LAS SUGERENCIAS.");
 		else {
 			System.out.println(MENSAJE_INICIAL);
 			
@@ -46,6 +47,7 @@ public class Consola {
 				}
 
 				if (!usuario.getMiItinerario().getSugerenciasDiarias().isEmpty()) {
+					
 					guardarItinerarioDe(usuario, "Itinerario de " + usuario.getNombre());
 
 					System.out.println("\nEste es el detalle de tu itinerario".indent(6) + SUBRAYADO + "\n");

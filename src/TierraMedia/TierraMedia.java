@@ -25,14 +25,11 @@ public abstract class TierraMedia {
 		ArrayList<String> misDatos = EntradaSalida.cargarArchivoDe("Entrada/Usuarios.csv");
 
 		for (String misUsuarios : misDatos) {
-
 			String[] datosUsuarios = misUsuarios.split(";");
-
 			String nombre = datosUsuarios[0];
 			int dineroDisponible = Integer.parseInt(datosUsuarios[1]);
 			double tiempoDisponible = Double.parseDouble(datosUsuarios[2]);
 			Tipo preferencia = Tipo.valueOf(datosUsuarios[3].toUpperCase());
-
 			Usuario usuario = new Usuario(nombre, dineroDisponible, tiempoDisponible, preferencia);
 			usuarios.add(usuario);
 
@@ -44,15 +41,12 @@ public abstract class TierraMedia {
 		ArrayList<String> misDatos = EntradaSalida.cargarArchivoDe("Entrada/Atracciones.csv");
 
 		for (String misAtracciones : misDatos) {
-
 			String[] datosAtracciones = misAtracciones.split(";");
-
 			String nombre = datosAtracciones[0];
 			int precio = Integer.parseInt(datosAtracciones[1]);
 			double duracion = Double.parseDouble(datosAtracciones[2]);
 			int cupo = Integer.parseInt(datosAtracciones[3]);
 			Tipo tipo = Tipo.valueOf(datosAtracciones[4].toUpperCase());
-
 			Atraccion atraccion = new Atraccion(nombre, precio, duracion, cupo, tipo);
 			atracciones.add(atraccion);
 		}
@@ -64,14 +58,11 @@ public abstract class TierraMedia {
 			ArrayList<String> misDatos = EntradaSalida.cargarArchivoDe("Entrada/Promociones.csv");
 
 			for (String miPromo : misDatos) {
-
 				String[] datosPromo = miPromo.split(";");
-
 				String tipo = datosPromo[0];
 				String nombre = datosPromo[1];
 				ArrayList<String> nombreAtracciones = new ArrayList<String>(Arrays.asList(datosPromo[2].split(",")));
 				double descuento = Double.parseDouble(datosPromo[3]);
-
 				ArrayList<Atraccion> atraccionIncluidas = new ArrayList<Atraccion>();
 				for (Atraccion atraccion : atracciones) {
 					if (nombreAtracciones.contains(atraccion.getNombre()))
@@ -90,7 +81,7 @@ public abstract class TierraMedia {
 		return !promociones.isEmpty();
 	}
 
-	public static boolean construirSugerencias(){
+	public static boolean construirSugerencias() {
 		if (!atracciones.isEmpty()) {
 			sugerencias.addAll(atracciones);
 			sugerencias.addAll(promociones);
@@ -117,7 +108,7 @@ public abstract class TierraMedia {
 	public static ArrayList<Sugerencia> getSugerencias() {
 		return sugerencias;
 	}
-	
+
 	public static void borrarDatos() {
 		usuarios.clear();
 		atracciones.clear();

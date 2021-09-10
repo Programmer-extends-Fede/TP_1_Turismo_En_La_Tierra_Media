@@ -3,12 +3,19 @@ package itinerario;
 import java.util.ArrayList;
 
 import sugerencia.Sugerencia;
+import usuario.Usuario;
 
 public class Itinerario {
 
 	private ArrayList<Sugerencia> sugerenciasDiarias = new ArrayList<Sugerencia>();
 	private int costoDelItinerario = 0;
 	private double duracionDelItinerario = 0;
+	private Usuario usuario;
+
+	public Itinerario(Usuario usuario) {
+		this.usuario = usuario;
+
+	}
 
 	public void agregarLaCompraDe(Sugerencia unaSugerencia) {
 		this.sugerenciasDiarias.add(unaSugerencia);
@@ -24,15 +31,21 @@ public class Itinerario {
 		ArrayList<String> datosDelItinerario = new ArrayList<String>();
 
 		if (!sugerenciasDiarias.isEmpty()) {
-			datosDelItinerario.add("ESTE ES EL DETALLE DE TU ITINERARIO\n");
+
+			datosDelItinerario.add(("Usuario: " + usuario.getNombre() + ";Saldo inicial: "
+					+ (usuario.getDineroDisponible() + this.costoDelItinerario) + " monedas;Tiempo inicial: "
+					+ (usuario.getTiempoDisponible() + this.duracionDelItinerario) + " hs.\n\n").toUpperCase());
+			datosDelItinerario.add("ESTE ES EL DETALLE DE TU ITINERARIO\n\n");
 			datosDelItinerario.add("Costo de tu Itinerario:;" + this.costoDelItinerario + ";Duracion de tu Itinerario:;"
-					+ this.duracionDelItinerario + "\n");
-			datosDelItinerario.add("\nPromocion / Atraccion Comprada;Tipo;Costo;Duracion\n");
+					+ this.duracionDelItinerario + "\n\n");
+			datosDelItinerario.add("\nPromocion / Atraccion Comprada;Tipo;Costo;Duracion\n\n");
 
 			for (Sugerencia sugerencia : sugerenciasDiarias) {
 				datosDelItinerario.add(sugerencia.getNombre() + ";" + sugerencia.getTipo().getDescripcion() + ";"
-						+ sugerencia.getPrecio() + " monedas." + ";" + sugerencia.getDuracion() + " hs.");
+						+ sugerencia.getPrecio() + " monedas." + ";" + sugerencia.getDuracion() + " hs.\n");
 			}
+			datosDelItinerario.add("Te quedan " + usuario.getDineroDisponible() + " monedas y "
+					+ usuario.getTiempoDisponible() + " hs.");
 		}
 		return datosDelItinerario;
 	}

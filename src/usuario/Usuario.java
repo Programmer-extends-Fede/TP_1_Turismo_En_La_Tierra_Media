@@ -16,7 +16,7 @@ public class Usuario {
 		this.dineroDisponible = dineroDisponible;
 		this.tiempoDisponible = tiempoDisponible;
 		this.preferencia = preferencia;
-		this.miItinerario = new Itinerario();
+		this.miItinerario = new Itinerario(this);
 	}
 
 	public String getNombre() {
