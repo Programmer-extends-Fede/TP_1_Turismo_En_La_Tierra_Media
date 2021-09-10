@@ -122,5 +122,5 @@ public abstract class TierraMedia {
 	public static ArrayList<Sugerencia> getSugerencias() {
 		return sugerencias;
 	}
-	
+
 }

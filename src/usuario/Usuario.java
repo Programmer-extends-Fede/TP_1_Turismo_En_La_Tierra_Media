@@ -1,5 +1,7 @@
 package usuario;
 
+import java.util.Objects;
+
 import itinerario.Itinerario;
 import sugerencia.Sugerencia;
 import tipo.Tipo;
@@ -50,4 +52,21 @@ public class Usuario {
 		return this.nombre.toUpperCase() + "\n\nSu saldo inicial es: " + this.dineroDisponible + " monedas y su tiempo disponible: "
 				+ this.tiempoDisponible + " hs.";
 	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Usuario other = (Usuario) obj;
+		return dineroDisponible == other.dineroDisponible && Objects.equals(nombre, other.nombre)
+				&& preferencia == other.preferencia
+				&& Double.doubleToLongBits(tiempoDisponible) == Double.doubleToLongBits(other.tiempoDisponible);
+	}
+	
+	
 }

@@ -1,6 +1,7 @@
 package atraccion;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import sugerencia.Sugerencia;
 import tipo.Tipo;
@@ -70,5 +71,21 @@ public class Atraccion implements Sugerencia, Comparable<Atraccion> {
 	public int compareTo(Atraccion o) {
 		return -Integer.compare(this.precio, o.precio);
 	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Atraccion other = (Atraccion) obj;
+		return cupo == other.cupo && Double.doubleToLongBits(duracion) == Double.doubleToLongBits(other.duracion)
+				&& Objects.equals(nombre, other.nombre) && precio == other.precio && tipo == other.tipo;
+	}
+	
+	
 }
 

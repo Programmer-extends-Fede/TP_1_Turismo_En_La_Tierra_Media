@@ -43,15 +43,18 @@ public class EntradaSalida {
 
 			for (String cadaDato : datosDeItinerario) {
 				salida.println(cadaDato);
-				//salida.println(); - sacar los saltos de linea de itinerario -
+				// salida.println(); - sacar los saltos de linea de itinerario -
 			}
-			salida.close();
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
-			if (salida != null) {
-				salida.close();
+			try {
+				if (salida != null) {
+					salida.close();
+				}
+			} catch (Exception e2) {
+				e2.printStackTrace();
 			}
 		}
 	}
