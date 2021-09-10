@@ -44,7 +44,7 @@ public class Usuario {
 	public Itinerario getMiItinerario() {
 		return miItinerario;
 	}
-
+	
 	@Override
 	public String toString() {
 		return this.nombre.toUpperCase() + "\n\nSu saldo inicial es: " + this.dineroDisponible + " monedas y su tiempo disponible: "

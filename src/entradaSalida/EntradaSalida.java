@@ -2,8 +2,13 @@ package entradaSalida;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+
+import tierraMedia.TierraMedia;
+import usuario.Usuario;
 
 public class EntradaSalida {
 
@@ -31,4 +36,29 @@ public class EntradaSalida {
 		}
 		return misDatos;
 	}
+	
+	public static void guardarEnArchivo(ArrayList<String> datosAGuardar, String nombreDeRuta) {
+		PrintWriter salida = null;
+		
+		try {
+			salida = new PrintWriter(new FileWriter("Salida/"+ nombreDeRuta +".csv"));
+			
+			for(String dato : datosAGuardar) {
+				
+				salida.print(dato);
+			}
+			
+		} catch (IOException e){
+			e.printStackTrace();
+		} finally {
+			 try{                    
+	               if(salida != null){   
+	                    salida.close();     
+	                }                  
+	            }catch (Exception e2){ 
+	                e2.printStackTrace();
+	            }
+		}		
+	}
 }
+

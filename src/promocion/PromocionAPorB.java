@@ -12,6 +12,7 @@ public class PromocionAPorB extends Promocion {
 	public PromocionAPorB(String nombre, ArrayList<Atraccion> atracciones, int cantPromosACobrar) {
 		super(nombre, atracciones);
 		Collections.sort(atracciones);
+
 		for (int i = 0; i < cantPromosACobrar; i++) {
 			atraccionesACobrar.add(atracciones.get(i));
 		}
