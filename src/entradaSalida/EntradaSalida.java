@@ -29,6 +29,7 @@ public class EntradaSalida {
 					bufferDeLectura.close();
 				} catch (IOException e) {
 					e.printStackTrace();
+					System.exit(1);
 				}
 		}
 		return misDatos;
@@ -41,7 +42,6 @@ public class EntradaSalida {
 			salida = new PrintWriter(new FileWriter("Salida/" + nombreDeRuta + ".csv"));
 
 			for (String dato : datosAGuardar) {
-
 				salida.print(dato);
 			}
 

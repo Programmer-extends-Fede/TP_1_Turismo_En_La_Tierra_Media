@@ -1,15 +1,15 @@
-package ordenar;
+package ordenarSugerencias;
 
 import java.util.Comparator;
 
 import sugerencia.Sugerencia;
 import tipo.Tipo;
 
-public class Ordenar implements Comparator<Sugerencia> {
+public class OrdenarSugerencias implements Comparator<Sugerencia> {
 
 	private Tipo usuarioTipo;
 
-	public Ordenar(Tipo usuarioTipo) {
+	public OrdenarSugerencias(Tipo usuarioTipo) {
 		this.usuarioTipo = usuarioTipo;
 	}
 

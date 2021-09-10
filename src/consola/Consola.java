@@ -28,40 +28,50 @@ public class Consola {
 	public static void iniciarInteraccion() {
 		ArrayList<Usuario> usuarios = TierraMedia.getUsuarios();
 		ArrayList<Sugerencia> sugerencias = TierraMedia.getSugerencias();
-		System.out.println(MENSAJE_INICIAL);
 
-		for (Usuario usuario : usuarios) {
-			TierraMedia.ordenarSugerencias(usuario.getPreferencia());
-			entrada.nextLine();
-			System.out.println("BIENVENIDO " + usuario + "\n");
+		if (usuarios.isEmpty())
+			System.out.println("NO EXISTE USUARIO A QUIEN MOSTRARLE LAS SUGERENCIAS, CARGUE LOS USUARIOS");
+		else if (sugerencias.isEmpty())
+			System.out.println("NO EXISTEN SUGERENCIAS PARA MOSTRAR, CARGUE LAS ATRACCIONES Y/O LAS SUGERENCIAS.");
+		else {
+			System.out.println(MENSAJE_INICIAL);
 
-			for (Sugerencia laSugerencia : sugerencias) {
-				if (tieneCupo(laSugerencia) && puedeComprar(laSugerencia, usuario) && noSeCompro(laSugerencia))
-					ofertar(laSugerencia, usuario);
+			for (Usuario usuario : usuarios) {
+				TierraMedia.ordenarSugerencias(usuario.getPreferencia());
+				entrada.nextLine();
+				System.out.println("BIENVENIDO " + usuario + "\n");
+
+				for (Sugerencia laSugerencia : sugerencias) {
+					if (tieneCupo(laSugerencia) && puedeComprar(laSugerencia, usuario) && noSeCompro(laSugerencia))
+						ofertar(laSugerencia, usuario);
+				}
+
+				if (!usuario.getMiItinerario().getSugerenciasDiarias().isEmpty()) {
+
+					guardarItinerarioDe(usuario, "Itinerario de " + usuario.getNombre());
+
+					System.out.println("\nEste es el detalle de tu itinerario".indent(6) + SUBRAYADO + "\n");
+					System.out.println(usuario.getMiItinerario());
+					System.out.println(
+							("Tu dinero restante: " + usuario.getDineroDisponible() + " monedas." + " ".repeat(11)
+									+ "Tu tiempo restante: " + usuario.getTiempoDisponible() + " hs.").indent(30));
+				} else
+					System.out.println("\nNO REALIZASTE COMPRAS");
+
+				System.out.println(SEPARADOR_USUARIOS);
+				if (!usuarios.get(usuarios.size() - 1).equals(usuario))
+					System.out.print("PRESIONA ENTER PARA MOSTRAR EL SIGUIENTE USUARIO".indent(40));
+				atraccionesTemp.clear();
 			}
-
-			if (!usuario.getMiItinerario().getSugerenciasDiarias().isEmpty()) {
-				guardarItinerarioDe(usuario, "Itinerario de " + usuario.getNombre());
-				System.out.println("\nEste es el detalle de tu itinerario".indent(6) + SUBRAYADO + "\n");
-				System.out.println(usuario.getMiItinerario());
-				System.out.println(("Tu dinero restante: " + usuario.getDineroDisponible() + " monedas."
-						+ " ".repeat(11) + "Tu tiempo restante: " + usuario.getTiempoDisponible() + " hs.").indent(30));
-			} else
-				System.out.println("\nNO REALIZASTE COMPRAS");
-
-			System.out.println(SEPARADOR_USUARIOS);
-			if (!usuarios.get(usuarios.size() - 1).equals(usuario))
-				System.out.print("PRESIONA ENTER PARA MOSTRAR EL SIGUIENTE USUARIO".indent(40));
-			atraccionesTemp.clear();
+			System.out.println(MENSAJE_FINAL);
+			entrada.close();
 		}
-		System.out.println(MENSAJE_FINAL);
-		entrada.close();
 	}
 
 	private static void ofertar(Sugerencia laSugerencia, Usuario usuario) {
 		System.out.println("Deseas comprar " + laSugerencia);
 		String respuesta = "";
-		while (!respuesta.equalsIgnoreCase("s") && !respuesta.equalsIgnoreCase("n")) {
+		do {
 			respuesta = entrada.nextLine();
 
 			if (respuesta.equalsIgnoreCase("n"))
@@ -74,9 +84,8 @@ public class Consola {
 						+ usuario.getTiempoDisponible() + "]").indent(35));
 			} else
 				System.out.println(ENTRADA_INCORRECTA);
-		}
+		} while (!respuesta.equalsIgnoreCase("s") && !respuesta.equalsIgnoreCase("n"));
 	}
-
 
 	public static void guardarItinerarioDe(Usuario usuario, String ruta) {
 		Itinerario itinerario = usuario.getMiItinerario();
@@ -85,8 +94,8 @@ public class Consola {
 		String tiempoDeUsuario = usuario.getTiempoDisponible() + " hs.";
 		datosDeItinerario
 				.add("\n\nTu saldo actual es:;" + dineroDeUsuario + ";Tu tiempo restante es de:;" + tiempoDeUsuario);
-		EntradaSalida.guardarEnArchivo(datosDeItinerario, ruta);
 
+		EntradaSalida.guardarEnArchivo(datosDeItinerario, ruta);
 	}
 
 	public static boolean puedeComprar(Sugerencia laSugerencia, Usuario usuario) {

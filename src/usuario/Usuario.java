@@ -1,5 +1,7 @@
 package usuario;
 
+import java.util.Objects;
+
 import itinerario.Itinerario;
 import sugerencia.Sugerencia;
 import tipo.Tipo;
@@ -16,7 +18,7 @@ public class Usuario {
 		this.dineroDisponible = dineroDisponible;
 		this.tiempoDisponible = tiempoDisponible;
 		this.preferencia = preferencia;
-		this.miItinerario = new Itinerario();
+		this.miItinerario = new Itinerario(this);
 	}
 
 	public String getNombre() {
@@ -49,5 +51,24 @@ public class Usuario {
 	public String toString() {
 		return this.nombre.toUpperCase() + "\n\nSu saldo inicial es: " + this.dineroDisponible + " monedas y su tiempo disponible: "
 				+ this.tiempoDisponible + " hs.";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(dineroDisponible, nombre, preferencia, tiempoDisponible);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Usuario other = (Usuario) obj;
+		return dineroDisponible == other.dineroDisponible && Objects.equals(nombre, other.nombre)
+				&& preferencia == other.preferencia
+				&& Double.doubleToLongBits(tiempoDisponible) == Double.doubleToLongBits(other.tiempoDisponible);
 	}
 }

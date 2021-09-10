@@ -1,6 +1,7 @@
 package promocion;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import atraccion.Atraccion;
 import sugerencia.Sugerencia;
@@ -90,5 +91,23 @@ public abstract class Promocion implements Sugerencia {
 			}
 		}
 		return noEstaIncluida;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(atracciones, nombre, tipoDePromocion);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Promocion other = (Promocion) obj;
+		return Objects.equals(atracciones, other.atracciones) && Objects.equals(nombre, other.nombre)
+				&& tipoDePromocion == other.tipoDePromocion;
 	}
 }
