@@ -7,9 +7,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-import tierraMedia.TierraMedia;
-import usuario.Usuario;
-
 public class EntradaSalida {
 
 	public static ArrayList<String> cargarArchivoDe(String ruta) {
@@ -36,29 +33,28 @@ public class EntradaSalida {
 		}
 		return misDatos;
 	}
-	
+
 	public static void guardarEnArchivo(ArrayList<String> datosAGuardar, String nombreDeRuta) {
 		PrintWriter salida = null;
-		
+
 		try {
-			salida = new PrintWriter(new FileWriter("Salida/"+ nombreDeRuta +".csv"));
-			
-			for(String dato : datosAGuardar) {
-				
+			salida = new PrintWriter(new FileWriter("Salida/" + nombreDeRuta + ".csv"));
+
+			for (String dato : datosAGuardar) {
+
 				salida.print(dato);
 			}
-			
-		} catch (IOException e){
+
+		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
-			 try{                    
-	               if(salida != null){   
-	                    salida.close();     
-	                }                  
-	            }catch (Exception e2){ 
-	                e2.printStackTrace();
-	            }
-		}		
+			try {
+				if (salida != null) {
+					salida.close();
+				}
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
 	}
 }
-

@@ -85,7 +85,7 @@ public class Consola {
 		String tiempoDeUsuario = usuario.getTiempoDisponible() + " hs.";
 		datosDeItinerario
 				.add("\n\nTu saldo actual es:;" + dineroDeUsuario + ";Tu tiempo restante es de:;" + tiempoDeUsuario);
-		EntradaSalida.guardarEnArchivo(ruta, datosDeItinerario);
+		EntradaSalida.guardarEnArchivo(datosDeItinerario, ruta);
 
 	}
 
