@@ -1,5 +1,6 @@
 package usuario;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 import itinerario.Itinerario;
@@ -18,7 +19,7 @@ public class Usuario {
 		this.dineroDisponible = dineroDisponible;
 		this.tiempoDisponible = tiempoDisponible;
 		this.preferencia = preferencia;
-		this.miItinerario = new Itinerario(this);
+		this.miItinerario = new Itinerario();
 	}
 
 	public String getNombre() {
@@ -37,20 +38,34 @@ public class Usuario {
 		return this.preferencia;
 	}
 
+	public Itinerario getItinerario() {
+		return this.miItinerario;
+	}
+
 	public void comprar(Sugerencia unaSugerencia) {
 		this.dineroDisponible -= unaSugerencia.getPrecio();
 		this.tiempoDisponible -= unaSugerencia.getDuracion();
 		this.miItinerario.agregarLaCompraDe(unaSugerencia);
 	}
 
-	public Itinerario getMiItinerario() {
-		return miItinerario;
+	public ArrayList<String> obtenerDatosDelItinerario() {
+		ArrayList<String> datosADevolver = miItinerario.obtenerDetalleDeCompras();
+		if (!datosADevolver.isEmpty()) {
+			datosADevolver.add(0, ("Usuario: " + this.nombre + ";Saldo inicial: "
+					+ (this.dineroDisponible + miItinerario.getCostoDelItinerario()) + " monedas;Tiempo inicial: "
+							+ (this.tiempoDisponible + miItinerario.getDuracionDelItinerario()) + " hs.\n\n")
+									.toUpperCase());
+			datosADevolver.add("\n\nTu saldo actual es:;" + this.dineroDisponible
+					+ " monedas.;Tu tiempo restante es de:;" + this.tiempoDisponible + " hs.");
+
+		}
+		return datosADevolver;
 	}
-	
+
 	@Override
 	public String toString() {
-		return this.nombre.toUpperCase() + "\n\nSu saldo inicial es: " + this.dineroDisponible + " monedas y su tiempo disponible: "
-				+ this.tiempoDisponible + " hs.";
+		return this.nombre.toUpperCase() + "\n\nSu saldo inicial es: " + this.dineroDisponible
+				+ " monedas y su tiempo disponible: " + this.tiempoDisponible + " hs.";
 	}
 
 	@Override

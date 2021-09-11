@@ -15,6 +15,7 @@ import org.junit.Test;
 
 import atraccion.Atraccion;
 import consola.Consola;
+import entradaSalida.EntradaSalida;
 import promocion.Promocion;
 import promocion.PromocionPorcentual;
 import tipo.Tipo;
@@ -45,7 +46,7 @@ public class ConsolaTest {
 
 		usuario.comprar(atraccion);
 		usuario.comprar(promo);
-		Consola.guardarItinerarioDe(usuario.getMiItinerario().obtenerDatosDeItinerario(),
+		EntradaSalida.guardarEnArchivo(usuario.obtenerDatosDelItinerario(),
 				"ConsolaTest/Itinerario ObtenidoTest");
 
 		BufferedInputStream ArchivoSalidaObtenido = null;

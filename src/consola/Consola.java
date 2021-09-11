@@ -45,13 +45,10 @@ public class Consola {
 						ofertar(laSugerencia, usuario);
 				}
 
-				if (!usuario.getMiItinerario().getSugerenciasDiarias().isEmpty()) {
-
-					guardarItinerarioDe(usuario.getMiItinerario().obtenerDatosDeItinerario(),
-							"Itinerario de " + usuario.getNombre());
-
+				if (!usuario.obtenerDatosDelItinerario().isEmpty()) {
+					EntradaSalida.guardarEnArchivo(usuario.obtenerDatosDelItinerario(), "Itinerario de " + usuario.getNombre());
 					System.out.println("\nEste es el detalle de tu itinerario".indent(6) + SUBRAYADO + "\n");
-					System.out.println(usuario.getMiItinerario());
+					System.out.println(usuario.getItinerario());
 					System.out.println(
 							("Tu dinero restante: " + usuario.getDineroDisponible() + " monedas." + " ".repeat(11)
 									+ "Tu tiempo restante: " + usuario.getTiempoDisponible() + " hs.").indent(30));
@@ -85,10 +82,6 @@ public class Consola {
 			} else
 				System.out.println(ENTRADA_INCORRECTA);
 		} while (!respuesta.equalsIgnoreCase("s") && !respuesta.equalsIgnoreCase("n"));
-	}
-
-	public static void guardarItinerarioDe(ArrayList<String> datosDeItinerario, String ruta) {
-		EntradaSalida.guardarEnArchivo(datosDeItinerario, ruta);
 	}
 
 	public static boolean puedeComprar(Sugerencia laSugerencia, Usuario usuario) {

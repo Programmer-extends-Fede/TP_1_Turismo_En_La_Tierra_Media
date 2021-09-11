@@ -14,7 +14,6 @@ import itinerario.Itinerario;
 import promocion.PromocionPorcentual;
 import sugerencia.Sugerencia;
 import tipo.Tipo;
-import usuario.Usuario;
 
 public class ItinerarioTest {
 
@@ -24,7 +23,6 @@ public class ItinerarioTest {
 	Atraccion atraccion3;
 	ArrayList<Atraccion> misAtracciones = new ArrayList<Atraccion>();
 	Sugerencia promocion;
-	Usuario miUsuario;
 
 	@Before
 	public void setup() {
@@ -33,9 +31,8 @@ public class ItinerarioTest {
 		atraccion3 = new Atraccion("Cafe Vasco", 10, 3, 15, Tipo.AVENTURAS);
 		misAtracciones.add(atraccion);
 		misAtracciones.add(atraccion2);
-		miUsuario = new Usuario("Jose", 100, 100, Tipo.AVENTURAS);
 		promocion = new PromocionPorcentual("Promo Epica", misAtracciones, 0.15);
-		itinerario = new Itinerario(miUsuario);
+		itinerario = new Itinerario();
 	}
 
 	@Test
@@ -60,20 +57,17 @@ public class ItinerarioTest {
 	}
 
 	@Test
-	public void obtenerDatosDelItinerario() {
-		miUsuario.comprar(atraccion3);
-		miUsuario.comprar(promocion);
+	public void obtenerDetalleDeComprasTest() {
+		itinerario.agregarLaCompraDe(atraccion3);
+		itinerario.agregarLaCompraDe(promocion);
 	
 		ArrayList<String> arrayEsperado = new ArrayList<String>();
-		arrayEsperado.add("USUARIO: JOSE;SALDO INICIAL: 100 MONEDAS;TIEMPO INICIAL: 100.0 HS.\n\n");
 		arrayEsperado.add("ESTE ES EL DETALLE DE TU ITINERARIO\n\n");
 		arrayEsperado.add("Costo de tu Itinerario:;31 monedas.;Duracion de tu Itinerario:;12.0 hs.\n\n");
 		arrayEsperado.add("\nPromocion / Atraccion Comprada;Tipo;Costo;Duracion\n\n");
 		arrayEsperado.add("Cafe Vasco;aventuras;10 monedas.;3.0 hs.\n");
 		arrayEsperado.add("Promo Epica: incluye (Moria)(La Cueva);paisaje;21 monedas.;9.0 hs.\n");
-		arrayEsperado.add("\n\nTu saldo actual es:;69 monedas.;Tu tiempo restante es de:;88.0 hs.");
-
-		ArrayList<String> arrayObtenido = miUsuario.getMiItinerario().obtenerDatosDeItinerario();
+		ArrayList<String> arrayObtenido = itinerario.obtenerDetalleDeCompras();
 
 		assertEquals(arrayEsperado, arrayObtenido);
 	}
