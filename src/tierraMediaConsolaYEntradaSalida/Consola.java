@@ -1,14 +1,12 @@
-package consola;
+package tierraMediaConsolaYEntradaSalida;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import TierraMedia.TierraMedia;
 import atraccion.Atraccion;
-import entradaSalida.EntradaSalida;
 import promocion.Promocion;
 import sugerencia.Sugerencia;
-import usuario.Usuario;
+import usuarioEItinerario.Usuario;
 
 public class Consola {
 

@@ -11,7 +11,7 @@ import org.junit.Test;
 import atraccion.Atraccion;
 import promocion.PromocionPorcentual;
 import tipo.Tipo;
-import usuario.Usuario;
+import usuarioEItinerario.Usuario;
 
 public class UsuarioTest {
 

@@ -1,10 +1,9 @@
-package TierraMedia;
+package tierraMediaConsolaYEntradaSalida;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import atraccion.Atraccion;
-import entradaSalida.EntradaSalida;
 import ordenarSugerencias.OrdenarSugerencias;
 import promocion.Promocion;
 import promocion.PromocionAPorB;
@@ -12,7 +11,7 @@ import promocion.PromocionAbsoluta;
 import promocion.PromocionPorcentual;
 import sugerencia.Sugerencia;
 import tipo.Tipo;
-import usuario.Usuario;
+import usuarioEItinerario.Usuario;
 
 public abstract class TierraMedia {
 

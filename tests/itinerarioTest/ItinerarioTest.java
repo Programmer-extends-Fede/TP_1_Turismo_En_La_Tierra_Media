@@ -10,10 +10,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 import atraccion.Atraccion;
-import itinerario.Itinerario;
 import promocion.PromocionPorcentual;
 import sugerencia.Sugerencia;
 import tipo.Tipo;
+import usuarioEItinerario.Itinerario;
 
 public class ItinerarioTest {
 

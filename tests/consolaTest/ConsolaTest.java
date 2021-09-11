@@ -14,12 +14,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 import atraccion.Atraccion;
-import consola.Consola;
-import entradaSalida.EntradaSalida;
 import promocion.Promocion;
 import promocion.PromocionPorcentual;
+import tierraMediaConsolaYEntradaSalida.Consola;
+import tierraMediaConsolaYEntradaSalida.EntradaSalida;
 import tipo.Tipo;
-import usuario.Usuario;
+import usuarioEItinerario.Usuario;
 
 public class ConsolaTest {
 

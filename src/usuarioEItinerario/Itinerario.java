@@ -1,4 +1,4 @@
-package itinerario;
+package usuarioEItinerario;
 
 import java.util.ArrayList;
 
@@ -24,14 +24,14 @@ public class Itinerario {
 		ArrayList<String> datosDelItinerario = new ArrayList<String>();
 
 		if (!sugerenciasDiarias.isEmpty()) {
-			datosDelItinerario.add("ESTE ES EL DETALLE DE TU ITINERARIO\n\n");
-			datosDelItinerario.add("Costo de tu Itinerario:;" + this.costoDelItinerario + " monedas.;Duracion de tu Itinerario:;"
-					+ this.duracionDelItinerario + " hs.\n\n");
-			datosDelItinerario.add("\nPromocion / Atraccion Comprada;Tipo;Costo;Duracion\n\n");
+			datosDelItinerario.add("ESTE ES EL DETALLE DE TU ITINERARIO\r\n\r\n");
+			datosDelItinerario.add("Costo de tu Itinerario:;" + this.costoDelItinerario
+					+ " monedas.;Duracion de tu Itinerario:;" + this.duracionDelItinerario + " hs.\r\n\r\n");
+			datosDelItinerario.add("\r\nPromocion / Atraccion Comprada;Tipo;Costo;Duracion\r\n\r\n");
 
 			for (Sugerencia sugerencia : sugerenciasDiarias) {
 				datosDelItinerario.add(sugerencia.getNombre() + ";" + sugerencia.getTipo().getDescripcion() + ";"
-						+ sugerencia.getPrecio() + " monedas." + ";" + sugerencia.getDuracion() + " hs.\n");
+						+ sugerencia.getPrecio() + " monedas." + ";" + sugerencia.getDuracion() + " hs.\r\n");
 			}
 		}
 		return datosDelItinerario;
