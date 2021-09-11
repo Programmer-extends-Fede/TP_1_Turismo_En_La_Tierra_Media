@@ -17,7 +17,7 @@ public class EntradaSalidaTest {
 	@Test
 	public void cargarArchivoTest() {
 
-		ArrayList<String> lecturaObtenida = EntradaSalida.cargarArchivoDe("EntradaTest/EntradaEsperada.csv");
+		ArrayList<String> lecturaObtenida = EntradaSalida.cargarArchivoDe("EntradaTest/EntradaObtenidaTest.csv");
 		String[] esperado = { "A", "B", "C" };
 		ArrayList<String> lecturaEsperada = new ArrayList<String>(Arrays.asList(esperado));
 
@@ -27,9 +27,9 @@ public class EntradaSalidaTest {
 
 	@Test
 	public void guardarEnArchivoTest() {
-		File archivoEsperado = new File("Salida/SalidaTest/nombreDePrueba.csv");
 		ArrayList<String> arrayDePrueba = new ArrayList<String>();
-		String rutaRelativa = "SalidaTest/nombreDePrueba";
+		String rutaRelativa = "SalidaTest/ArchivoSalidaTest";
+		File archivoEsperado = new File("Salida/SalidaTest/ArchivoSalidaTest.csv");
 
 		EntradaSalida.guardarEnArchivo(arrayDePrueba, rutaRelativa);
 
