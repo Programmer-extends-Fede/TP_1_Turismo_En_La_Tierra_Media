@@ -1,10 +1,10 @@
 package app;
 
-import javax.swing.JTextArea;
+import javax.swing.JTextPane;
 
-import marco.ConsolaNueva;
-import marco.Marco;
-import tierraMediaConsolaYEntradaSalida.TierraMedia;
+import tierraMediaYEntradaSalida.TierraMedia;
+import ventanaConsolaNuevaYLaminas.ConsolaNueva;
+import ventanaConsolaNuevaYLaminas.Marco;
 
 public class App {
 
@@ -15,10 +15,13 @@ public class App {
 		TierraMedia.construirSugerencias();
 		TierraMedia.construirUsuarios();
 
-		JTextArea areaImpresion = new JTextArea();
-		ConsolaNueva consola = new ConsolaNueva("Pepe", areaImpresion);
-		Marco marco = new Marco(consola, areaImpresion);
+		JTextPane areaImpresion = new JTextPane(); //esto lo voy a usar como display
 		
-		consola.gethilo().start();
+		ConsolaNueva consola = new ConsolaNueva("Hilo de mi consola", areaImpresion);
+		
+		@SuppressWarnings("unused")
+		Marco marco = new Marco(consola, areaImpresion); //esta es la creacion de la ventana, con todo lo que contiene.
+
+		consola.gethilo().start(); //aca inicia la ejecucion de la consola, empieza a mostrar los arrays y demas.
 	}
 }

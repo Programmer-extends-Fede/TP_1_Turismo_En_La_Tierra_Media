@@ -10,7 +10,7 @@ import java.util.Arrays;
 
 import org.junit.Test;
 
-import tierraMediaConsolaYEntradaSalida.EntradaSalida;
+import tierraMediaYEntradaSalida.EntradaSalida;
 
 public class EntradaSalidaTest {
 

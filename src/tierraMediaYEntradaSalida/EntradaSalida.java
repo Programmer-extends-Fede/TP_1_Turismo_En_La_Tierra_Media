@@ -1,4 +1,4 @@
-package tierraMediaConsolaYEntradaSalida;
+package tierraMediaYEntradaSalida;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

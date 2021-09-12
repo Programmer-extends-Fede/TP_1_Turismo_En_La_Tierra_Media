@@ -8,7 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import atraccion.Atraccion;
-import tierraMediaConsolaYEntradaSalida.TierraMedia;
+import tierraMediaYEntradaSalida.TierraMedia;
 import tipo.Tipo;
 import usuarioEItinerario.Usuario;
 

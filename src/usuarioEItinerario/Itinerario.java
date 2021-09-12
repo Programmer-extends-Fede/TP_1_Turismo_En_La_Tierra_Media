@@ -48,9 +48,9 @@ public class Itinerario {
 	@Override
 	public String toString() {
 		String sugerenciasDiariasLimpio = sugerenciasDiarias.toString().replace("[", " ").replace(", ", "\n ")
-				.replace("]", "\n");
-		return sugerenciasDiariasLimpio + ("\nCosto total: " + this.costoDelItinerario
-				+ " monedas.                 Duracion total: " + this.duracionDelItinerario + " hs.").indent(30);
+				.replace("]", "\n\n");
+		return sugerenciasDiariasLimpio; //+ ("\nCosto total: " + this.costoDelItinerario
+			//	+ " monedas.                 Duracion total: " + this.duracionDelItinerario + " hs.\n");
 	}
 
 }

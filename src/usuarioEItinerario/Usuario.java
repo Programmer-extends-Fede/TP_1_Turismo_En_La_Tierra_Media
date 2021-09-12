@@ -63,8 +63,8 @@ public class Usuario {
 
 	@Override
 	public String toString() {
-		return this.nombre.toUpperCase() + "\n\nSu saldo inicial es: " + this.dineroDisponible
-				+ " monedas y su tiempo disponible: " + this.tiempoDisponible + " hs.";
+		return this.nombre.toUpperCase() + ("\n\nSu saldo inicial es: " + this.dineroDisponible
+				+ " monedas y su tiempo disponible: " + this.tiempoDisponible + " hs.\n\n").toUpperCase();
 	}
 
 	@Override

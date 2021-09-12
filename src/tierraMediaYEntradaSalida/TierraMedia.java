@@ -1,4 +1,4 @@
-package tierraMediaConsolaYEntradaSalida;
+package tierraMediaYEntradaSalida;
 
 import java.util.ArrayList;
 import java.util.Arrays;
