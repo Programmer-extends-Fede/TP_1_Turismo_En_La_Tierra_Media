@@ -1,15 +1,15 @@
 package app;
 
-import TierraMedia.TierraMedia;
 import consola.Consola;
+import tierraMedia.tierraMedia;
 
 public class App {
 
 	public static void main(String[] args) {
-		TierraMedia.construirUsuarios();
-		TierraMedia.construirAtracciones();
-		TierraMedia.construirPromociones();
-		TierraMedia.construirSugerencias();
+		tierraMedia.construirUsuarios();
+		tierraMedia.construirAtracciones();
+		tierraMedia.construirPromociones();
+		tierraMedia.construirSugerencias();
 		Consola.iniciarInteraccion();
 	}
 }

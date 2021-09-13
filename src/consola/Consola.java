@@ -3,30 +3,30 @@ package consola;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import TierraMedia.TierraMedia;
 import atraccion.Atraccion;
 import entradaSalida.EntradaSalida;
 import promocion.Promocion;
 import sugerencia.Sugerencia;
+import tierraMedia.tierraMedia;
 import usuario.Usuario;
 
 public class Consola {
 
-	static ArrayList<Atraccion> atraccionesTemp = new ArrayList<Atraccion>();
-	static Scanner entrada = new Scanner(System.in);
+	private static ArrayList<Atraccion> atraccionesTemp = new ArrayList<Atraccion>();
+	private static Scanner entrada = new Scanner(System.in);
 
-	static final String ENTRADA_INCORRECTA = "<<<ENTRADA INCORRECTA>>>".indent(50);
-	static final String SEPARADOR_USUARIOS = "_".repeat(80).indent(23);
-	static final String SUBRAYADO = "-".repeat(45);
-	static final String MENSAJE_INICIAL = "\nESTE ES EL SISTEMA DE COMPRAS DE TIERRAMEDIA\n".indent(47)
+	private static final String ENTRADA_INCORRECTA = "<<<ENTRADA INCORRECTA>>>".indent(50);
+	private static final String SEPARADOR_USUARIOS = "_".repeat(80).indent(23);
+	private static final String SUBRAYADO = "-".repeat(45);
+	private static final String MENSAJE_INICIAL = "\nESTE ES EL SISTEMA DE COMPRAS DE TIERRAMEDIA\n".indent(47)
 			+ "\nRECUERDE, PRESIONAR 'S' PARA ACEPTAR LA COMPRA Y 'N' PARA RECHAZARLA".indent(35)
 			+ "\nPRESIONE ENTER PARA CONTINUAR".indent(53);
-	static final String MENSAJE_FINAL = SUBRAYADO.indent(43)
+	private static final String MENSAJE_FINAL = SUBRAYADO.indent(43)
 			+ "MUCHAS GRACIAS, YA NO QUEDAN USUARIOS POR VER".indent(43) + SUBRAYADO.indent(43);
 
 	public static void iniciarInteraccion() {
-		ArrayList<Usuario> usuarios = TierraMedia.getUsuarios();
-		ArrayList<Sugerencia> sugerencias = TierraMedia.getSugerencias();
+		ArrayList<Usuario> usuarios = tierraMedia.getUsuarios();
+		ArrayList<Sugerencia> sugerencias = tierraMedia.getSugerencias();
 
 		if (usuarios.isEmpty())
 			System.out.println("NO EXISTE USUARIO A QUIEN MOSTRARLE LAS SUGERENCIAS, CARGUE LOS USUARIOS");
@@ -36,7 +36,7 @@ public class Consola {
 			System.out.println(MENSAJE_INICIAL);
 
 			for (Usuario usuario : usuarios) {
-				TierraMedia.ordenarSugerencias(usuario.getPreferencia());
+				tierraMedia.ordenarSugerencias(usuario.getPreferencia());
 				entrada.nextLine();
 				System.out.println("BIENVENIDO " + usuario + "\n");
 

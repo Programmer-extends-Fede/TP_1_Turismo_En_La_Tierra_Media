@@ -1,4 +1,4 @@
-package TierraMedia;
+		package tierraMedia;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,7 +14,7 @@ import sugerencia.Sugerencia;
 import tipo.Tipo;
 import usuario.Usuario;
 
-public abstract class TierraMedia {
+public abstract class tierraMedia {
 
 	private static ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 	private static ArrayList<Atraccion> atracciones = new ArrayList<Atraccion>();
