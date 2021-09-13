@@ -11,14 +11,14 @@ public class Usuario {
 	private int dineroDisponible;
 	private double tiempoDisponible;
 	private Tipo preferencia;
-	private Itinerario miItinerario;
+	private Itinerario itinerario;
 
 	public Usuario(String nombre, int dineroDisponible, double tiempoDisponible, Tipo preferencia) {
 		this.nombre = nombre;
 		this.dineroDisponible = dineroDisponible;
 		this.tiempoDisponible = tiempoDisponible;
 		this.preferencia = preferencia;
-		this.miItinerario = new Itinerario();
+		this.itinerario = new Itinerario();
 	}
 
 	public String getNombre() {
@@ -38,21 +38,21 @@ public class Usuario {
 	}
 
 	public Itinerario getItinerario() {
-		return this.miItinerario;
+		return this.itinerario;
 	}
 
 	public void comprar(Sugerencia unaSugerencia) {
 		this.dineroDisponible -= unaSugerencia.getPrecio();
 		this.tiempoDisponible -= unaSugerencia.getDuracion();
-		this.miItinerario.agregarLaCompraDe(unaSugerencia);
+		this.itinerario.agregarLaCompraDe(unaSugerencia);
 	}
 
 	public ArrayList<String> obtenerDatosDelItinerario() {
-		ArrayList<String> datosADevolver = miItinerario.obtenerDetalleDeCompras();
+		ArrayList<String> datosADevolver = itinerario.obtenerDetalleDeCompras();
 		if (!datosADevolver.isEmpty()) {
 			datosADevolver.add(0, ("Usuario: " + this.nombre + ";Saldo inicial: "
-					+ (this.dineroDisponible + miItinerario.getCostoDelItinerario()) + " monedas;Tiempo inicial: "
-					+ (this.tiempoDisponible + miItinerario.getDuracionDelItinerario()) + " hs.\r\n\r\n")
+					+ (this.dineroDisponible + itinerario.getCostoDelItinerario()) + " monedas;Tiempo inicial: "
+					+ (this.tiempoDisponible + itinerario.getDuracionDelItinerario()) + " hs.\r\n\r\n")
 							.toUpperCase());
 			datosADevolver.add("\r\n\r\nTu saldo actual es:;" + this.dineroDisponible
 					+ " monedas.;Tu tiempo restante es de:;" + this.tiempoDisponible + " hs.");

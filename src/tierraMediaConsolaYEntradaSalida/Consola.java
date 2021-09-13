@@ -10,16 +10,15 @@ import usuarioEItinerario.Usuario;
 
 public class Consola {
 
-	static ArrayList<Atraccion> atraccionesTemp = new ArrayList<Atraccion>();
-	static Scanner entrada = new Scanner(System.in);
-
-	static final String ENTRADA_INCORRECTA = "<<<ENTRADA INCORRECTA>>>".indent(50);
-	static final String SEPARADOR_USUARIOS = "_".repeat(80).indent(23);
-	static final String SUBRAYADO = "-".repeat(45);
-	static final String MENSAJE_INICIAL = "\nESTE ES EL SISTEMA DE COMPRAS DE TIERRAMEDIA\n".indent(47)
+	private static ArrayList<Atraccion> atraccionesTemp = new ArrayList<Atraccion>();
+	private static Scanner entrada = new Scanner(System.in);
+	private static final String ENTRADA_INCORRECTA = "<<<ENTRADA INCORRECTA>>>".indent(50);
+	private static final String SEPARADOR_USUARIO = "_".repeat(80).indent(23);
+	private static final String SUBRAYADO = "-".repeat(45);
+	private static final String MENSAJE_INICIAL = "\nESTE ES EL SISTEMA DE COMPRAS DE TIERRAMEDIA\n".indent(47)
 			+ "\nRECUERDE, PRESIONAR 'S' PARA ACEPTAR LA COMPRA Y 'N' PARA RECHAZARLA".indent(35)
 			+ "\nPRESIONE ENTER PARA CONTINUAR".indent(53);
-	static final String MENSAJE_FINAL = SUBRAYADO.indent(43)
+	private static final String MENSAJE_FINAL = SUBRAYADO.indent(43)
 			+ "MUCHAS GRACIAS, YA NO QUEDAN USUARIOS POR VER".indent(43) + SUBRAYADO.indent(43);
 
 	public static void iniciarInteraccion() {
@@ -53,7 +52,7 @@ public class Consola {
 				} else
 					System.out.println("\nNO REALIZASTE COMPRAS");
 
-				System.out.println(SEPARADOR_USUARIOS);
+				System.out.println(SEPARADOR_USUARIO);
 				if (!usuarios.get(usuarios.size() - 1).equals(usuario))
 					System.out.print("PRESIONA ENTER PARA MOSTRAR EL SIGUIENTE USUARIO".indent(40));
 				atraccionesTemp.clear();
