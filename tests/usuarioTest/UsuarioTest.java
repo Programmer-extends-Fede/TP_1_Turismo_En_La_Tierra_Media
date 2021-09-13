@@ -58,13 +58,13 @@ public class UsuarioTest {
 		usuario.comprar(promocion);
 
 		ArrayList<String> arrayEsperado = new ArrayList<String>();
-		arrayEsperado.add("USUARIO: EMIR;SALDO INICIAL: 50 MONEDAS;TIEMPO INICIAL: 15.0 HS.\n\n");
-		arrayEsperado.add("ESTE ES EL DETALLE DE TU ITINERARIO\n\n");
-		arrayEsperado.add("Costo de tu Itinerario:;31 monedas.;Duracion de tu Itinerario:;12.0 hs.\n\n");
-		arrayEsperado.add("\nPromocion / Atraccion Comprada;Tipo;Costo;Duracion\n\n");
-		arrayEsperado.add("Cafe Vasco;aventuras;10 monedas.;3.0 hs.\n");
-		arrayEsperado.add("Promo Epica: incluye (Moria)(La Cueva);paisaje;21 monedas.;9.0 hs.\n");
-		arrayEsperado.add("\n\nTu saldo actual es:;19 monedas.;Tu tiempo restante es de:;3.0 hs.");
+		arrayEsperado.add("USUARIO: EMIR;SALDO INICIAL: 50 MONEDAS;TIEMPO INICIAL: 15.0 HS.\r\n\r\n");
+		arrayEsperado.add("ESTE ES EL DETALLE DE TU ITINERARIO\r\n\r\n");
+		arrayEsperado.add("Costo de tu Itinerario:;31 monedas.;Duracion de tu Itinerario:;12.0 hs.\r\n\r\n");
+		arrayEsperado.add("\r\nPromocion / Atraccion Comprada;Tipo;Costo;Duracion\r\n\r\n");
+		arrayEsperado.add("Cafe Vasco;aventuras;10 monedas.;3.0 hs.\r\n");
+		arrayEsperado.add("Promo Epica: incluye (Moria)(La Cueva);paisaje;21 monedas.;9.0 hs.\r\n");
+		arrayEsperado.add("\r\n\r\nTu saldo actual es:;19 monedas.;Tu tiempo restante es de:;3.0 hs.");
 
 		ArrayList<String> arrayObtenido = usuario.obtenerDatosDelItinerario();
 

@@ -62,11 +62,11 @@ public class ItinerarioTest {
 		itinerario.agregarLaCompraDe(promocion);
 	
 		ArrayList<String> arrayEsperado = new ArrayList<String>();
-		arrayEsperado.add("ESTE ES EL DETALLE DE TU ITINERARIO\n\n");
-		arrayEsperado.add("Costo de tu Itinerario:;31 monedas.;Duracion de tu Itinerario:;12.0 hs.\n\n");
-		arrayEsperado.add("\nPromocion / Atraccion Comprada;Tipo;Costo;Duracion\n\n");
-		arrayEsperado.add("Cafe Vasco;aventuras;10 monedas.;3.0 hs.\n");
-		arrayEsperado.add("Promo Epica: incluye (Moria)(La Cueva);paisaje;21 monedas.;9.0 hs.\n");
+		arrayEsperado.add("ESTE ES EL DETALLE DE TU ITINERARIO\r\n\r\n");
+		arrayEsperado.add("Costo de tu Itinerario:;31 monedas.;Duracion de tu Itinerario:;12.0 hs.\r\n\r\n");
+		arrayEsperado.add("\r\nPromocion / Atraccion Comprada;Tipo;Costo;Duracion\r\n\r\n");
+		arrayEsperado.add("Cafe Vasco;aventuras;10 monedas.;3.0 hs.\r\n");
+		arrayEsperado.add("Promo Epica: incluye (Moria)(La Cueva);paisaje;21 monedas.;9.0 hs.\r\n");
 		ArrayList<String> arrayObtenido = itinerario.obtenerDetalleDeCompras();
 
 		assertEquals(arrayEsperado, arrayObtenido);
