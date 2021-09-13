@@ -2,7 +2,7 @@ package ordenarSugerencias;
 
 import java.util.Comparator;
 
-import sugerencia.Sugerencia;
+import sugerenciaPromocionAtraccion.Sugerencia;
 import tipo.Tipo;
 
 public class OrdenarSugerencias implements Comparator<Sugerencia> {

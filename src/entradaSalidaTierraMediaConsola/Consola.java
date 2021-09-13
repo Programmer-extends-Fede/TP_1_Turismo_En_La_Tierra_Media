@@ -1,22 +1,19 @@
-package consola;
+package entradaSalidaTierraMediaConsola;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import atraccion.Atraccion;
-import entradaSalida.EntradaSalida;
-import promocion.Promocion;
-import sugerencia.Sugerencia;
-import tierraMedia.tierraMedia;
-import usuario.Usuario;
+import sugerenciaPromocionAtraccion.Atraccion;
+import sugerenciaPromocionAtraccion.Promocion;
+import sugerenciaPromocionAtraccion.Sugerencia;
+import usuarioItinerario.Usuario;
 
 public class Consola {
 
 	private static ArrayList<Atraccion> atraccionesTemp = new ArrayList<Atraccion>();
 	private static Scanner entrada = new Scanner(System.in);
-
 	private static final String ENTRADA_INCORRECTA = "<<<ENTRADA INCORRECTA>>>".indent(50);
-	private static final String SEPARADOR_USUARIOS = "_".repeat(80).indent(23);
+	private static final String SEPARADOR_USUARIO = "_".repeat(80).indent(23);
 	private static final String SUBRAYADO = "-".repeat(45);
 	private static final String MENSAJE_INICIAL = "\nESTE ES EL SISTEMA DE COMPRAS DE TIERRAMEDIA\n".indent(47)
 			+ "\nRECUERDE, PRESIONAR 'S' PARA ACEPTAR LA COMPRA Y 'N' PARA RECHAZARLA".indent(35)
@@ -25,8 +22,8 @@ public class Consola {
 			+ "MUCHAS GRACIAS, YA NO QUEDAN USUARIOS POR VER".indent(43) + SUBRAYADO.indent(43);
 
 	public static void iniciarInteraccion() {
-		ArrayList<Usuario> usuarios = tierraMedia.getUsuarios();
-		ArrayList<Sugerencia> sugerencias = tierraMedia.getSugerencias();
+		ArrayList<Usuario> usuarios = TierraMedia.getUsuarios();
+		ArrayList<Sugerencia> sugerencias = TierraMedia.getSugerencias();
 
 		if (usuarios.isEmpty())
 			System.out.println("NO EXISTE USUARIO A QUIEN MOSTRARLE LAS SUGERENCIAS, CARGUE LOS USUARIOS");
@@ -36,29 +33,27 @@ public class Consola {
 			System.out.println(MENSAJE_INICIAL);
 
 			for (Usuario usuario : usuarios) {
-				tierraMedia.ordenarSugerencias(usuario.getPreferencia());
+				TierraMedia.ordenarSugerencias(usuario.getPreferencia());
 				entrada.nextLine();
-				System.out.println("BIENVENIDO " + usuario + "\n");
+				System.out.println("BIENVENIDO/A " + usuario + "\n");
 
 				for (Sugerencia laSugerencia : sugerencias) {
 					if (tieneCupo(laSugerencia) && puedeComprar(laSugerencia, usuario) && noSeCompro(laSugerencia))
 						ofertar(laSugerencia, usuario);
 				}
 
-				if (!usuario.getMiItinerario().getSugerenciasDiarias().isEmpty()) {
-
-					guardarItinerarioDe(usuario.getMiItinerario().obtenerDatosDeItinerario(),
+				if (!usuario.obtenerDatosDelItinerario().isEmpty()) {
+					EntradaSalida.guardarEnArchivo(usuario.obtenerDatosDelItinerario(),
 							"Itinerario de " + usuario.getNombre());
-
 					System.out.println("\nEste es el detalle de tu itinerario".indent(6) + SUBRAYADO + "\n");
-					System.out.println(usuario.getMiItinerario());
+					System.out.println(usuario.getItinerario());
 					System.out.println(
 							("Tu dinero restante: " + usuario.getDineroDisponible() + " monedas." + " ".repeat(11)
 									+ "Tu tiempo restante: " + usuario.getTiempoDisponible() + " hs.").indent(30));
 				} else
 					System.out.println("\nNO REALIZASTE COMPRAS");
 
-				System.out.println(SEPARADOR_USUARIOS);
+				System.out.println(SEPARADOR_USUARIO);
 				if (!usuarios.get(usuarios.size() - 1).equals(usuario))
 					System.out.print("PRESIONA ENTER PARA MOSTRAR EL SIGUIENTE USUARIO".indent(40));
 				atraccionesTemp.clear();
@@ -85,10 +80,6 @@ public class Consola {
 			} else
 				System.out.println(ENTRADA_INCORRECTA);
 		} while (!respuesta.equalsIgnoreCase("s") && !respuesta.equalsIgnoreCase("n"));
-	}
-
-	public static void guardarItinerarioDe(ArrayList<String> datosDeItinerario, String ruta) {
-		EntradaSalida.guardarEnArchivo(datosDeItinerario, ruta);
 	}
 
 	public static boolean puedeComprar(Sugerencia laSugerencia, Usuario usuario) {

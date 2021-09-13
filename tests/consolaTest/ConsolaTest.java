@@ -13,12 +13,13 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
-import atraccion.Atraccion;
-import consola.Consola;
-import promocion.Promocion;
-import promocion.PromocionPorcentual;
+import entradaSalidaTierraMediaConsola.Consola;
+import entradaSalidaTierraMediaConsola.EntradaSalida;
+import sugerenciaPromocionAtraccion.Atraccion;
+import sugerenciaPromocionAtraccion.Promocion;
+import sugerenciaPromocionAtraccion.PromocionPorcentual;
 import tipo.Tipo;
-import usuario.Usuario;
+import usuarioItinerario.Usuario;
 
 public class ConsolaTest {
 
@@ -45,7 +46,7 @@ public class ConsolaTest {
 
 		usuario.comprar(atraccion);
 		usuario.comprar(promo);
-		Consola.guardarItinerarioDe(usuario.getMiItinerario().obtenerDatosDeItinerario(),
+		EntradaSalida.guardarEnArchivo(usuario.obtenerDatosDelItinerario(),
 				"ConsolaTest/Itinerario ObtenidoTest");
 
 		BufferedInputStream ArchivoSalidaObtenido = null;

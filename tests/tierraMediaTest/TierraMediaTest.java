@@ -7,66 +7,66 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-import atraccion.Atraccion;
-import tierraMedia.tierraMedia;
+import entradaSalidaTierraMediaConsola.TierraMedia;
+import sugerenciaPromocionAtraccion.Atraccion;
 import tipo.Tipo;
-import usuario.Usuario;
+import usuarioItinerario.Usuario;
 
 public class TierraMediaTest {
 
 	@Before
 	public void setup() {
-		tierraMedia.borrarDatos();
+		TierraMedia.borrarDatos();
 	}
 
 	public void construirUsuariostest() {
-		assertTrue(tierraMedia.construirUsuarios());
-		assertFalse(tierraMedia.getUsuarios().isEmpty());
-		assertEquals(3, tierraMedia.getUsuarios().size());
+		assertTrue(TierraMedia.construirUsuarios());
+		assertFalse(TierraMedia.getUsuarios().isEmpty());
+		assertEquals(3, TierraMedia.getUsuarios().size());
 
 		Usuario usuarioEsperado1 = new Usuario("Martin Suarez", 50, 20.0, Tipo.AVENTURAS);
-		Usuario usuarioObtenido1 = tierraMedia.getUsuarios().get(0);
+		Usuario usuarioObtenido1 = TierraMedia.getUsuarios().get(0);
 		assertEquals(usuarioEsperado1, usuarioObtenido1);
 	}
 
 	@Test
 	public void contruirAtraccionesTest() {
-		assertTrue(tierraMedia.construirAtracciones());
-		assertFalse(tierraMedia.getAtracciones().isEmpty());
-		assertEquals(8, tierraMedia.getAtracciones().size());
+		assertTrue(TierraMedia.construirAtracciones());
+		assertFalse(TierraMedia.getAtracciones().isEmpty());
+		assertEquals(8, TierraMedia.getAtracciones().size());
 
 		Atraccion atraccionEsperada = new Atraccion("La Comarca", 3, 6.5, 150, Tipo.DEGUSTACION);
-		Atraccion atraccionObtenida = tierraMedia.getAtracciones().get(2);
+		Atraccion atraccionObtenida = TierraMedia.getAtracciones().get(2);
 		assertEquals(atraccionEsperada, atraccionObtenida);
 	}
 
 	@Test
 	public void construirPromocionesTest() {
-		tierraMedia.construirAtracciones();
-		assertTrue(tierraMedia.construirPromociones());
-		assertFalse(tierraMedia.getPromociones().isEmpty());
-		assertEquals(3, tierraMedia.getPromociones().size());
+		TierraMedia.construirAtracciones();
+		assertTrue(TierraMedia.construirPromociones());
+		assertFalse(TierraMedia.getPromociones().isEmpty());
+		assertEquals(3, TierraMedia.getPromociones().size());
 	}
 
 	@Test
 	public void construirPromocionesSinAtraccionesTest() {
-		assertFalse(tierraMedia.construirPromociones());
-		assertTrue(tierraMedia.getPromociones().isEmpty());
+		assertFalse(TierraMedia.construirPromociones());
+		assertTrue(TierraMedia.getPromociones().isEmpty());
 	}
 
 	@Test
 	public void construirSugerenciasTest() {
-		tierraMedia.construirAtracciones();
-		tierraMedia.construirPromociones();
+		TierraMedia.construirAtracciones();
+		TierraMedia.construirPromociones();
 
-		assertTrue(tierraMedia.construirSugerencias());
-		assertFalse(tierraMedia.getSugerencias().isEmpty());
-		assertEquals(11, tierraMedia.getSugerencias().size());
+		assertTrue(TierraMedia.construirSugerencias());
+		assertFalse(TierraMedia.getSugerencias().isEmpty());
+		assertEquals(11, TierraMedia.getSugerencias().size());
 	}
 
 	@Test
 	public void construirSugerenciasSinAtraccionesTest() {
-		assertFalse(tierraMedia.construirSugerencias());
-		assertTrue(tierraMedia.getSugerencias().isEmpty());
+		assertFalse(TierraMedia.construirSugerencias());
+		assertTrue(TierraMedia.getSugerencias().isEmpty());
 	}
 }

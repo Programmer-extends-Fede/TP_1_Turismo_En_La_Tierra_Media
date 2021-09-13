@@ -10,7 +10,7 @@ import java.util.Arrays;
 
 import org.junit.Test;
 
-import entradaSalida.EntradaSalida;
+import entradaSalidaTierraMediaConsola.EntradaSalida;
 
 public class EntradaSalidaTest {
 
@@ -27,9 +27,10 @@ public class EntradaSalidaTest {
 
 	@Test
 	public void guardarEnArchivoTest() {
+
+		File archivoEsperado = new File("Salida/SalidaTest/ArchivoSalidaTest.csv");
 		ArrayList<String> arrayDePrueba = new ArrayList<String>();
 		String rutaRelativa = "SalidaTest/ArchivoSalidaTest";
-		File archivoEsperado = new File("Salida/SalidaTest/ArchivoSalidaTest.csv");
 
 		EntradaSalida.guardarEnArchivo(arrayDePrueba, rutaRelativa);
 

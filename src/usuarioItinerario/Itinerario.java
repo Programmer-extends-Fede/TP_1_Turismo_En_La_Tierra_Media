@@ -1,21 +1,14 @@
-package itinerario;
+package usuarioItinerario;
 
 import java.util.ArrayList;
 
-import sugerencia.Sugerencia;
-import usuario.Usuario;
+import sugerenciaPromocionAtraccion.Sugerencia;
 
 public class Itinerario {
 
 	private ArrayList<Sugerencia> sugerenciasDiarias = new ArrayList<Sugerencia>();
 	private int costoDelItinerario = 0;
 	private double duracionDelItinerario = 0;
-	private Usuario usuario;
-
-	public Itinerario(Usuario usuario) {
-		this.usuario = usuario;
-
-	}
 
 	public void agregarLaCompraDe(Sugerencia unaSugerencia) {
 		this.sugerenciasDiarias.add(unaSugerencia);
@@ -27,24 +20,19 @@ public class Itinerario {
 		return sugerenciasDiarias;
 	}
 
-	public ArrayList<String> obtenerDatosDeItinerario() {
+	public ArrayList<String> obtenerDetalleDeCompras() {
 		ArrayList<String> datosDelItinerario = new ArrayList<String>();
 
 		if (!sugerenciasDiarias.isEmpty()) {
-
-			datosDelItinerario.add(("Usuario: " + usuario.getNombre() + ";Saldo inicial: "
-					+ (usuario.getDineroDisponible() + this.costoDelItinerario) + " monedas;Tiempo inicial: "
-					+ (usuario.getTiempoDisponible() + this.duracionDelItinerario) + " hs.\n\n").toUpperCase());
-			datosDelItinerario.add("ESTE ES EL DETALLE DE TU ITINERARIO\n\n");
-			datosDelItinerario.add("Costo de tu Itinerario:;" + this.costoDelItinerario + " monedas.;Duracion de tu Itinerario:;"
-					+ this.duracionDelItinerario + " hs.\n\n");
-			datosDelItinerario.add("\nPromocion / Atraccion Comprada;Tipo;Costo;Duracion\n\n");
+			datosDelItinerario.add("ESTE ES EL DETALLE DE TU ITINERARIO\r\n\r\n");
+			datosDelItinerario.add("Costo de tu Itinerario:;" + this.costoDelItinerario
+					+ " monedas.;Duracion de tu Itinerario:;" + this.duracionDelItinerario + " hs.\r\n\r\n");
+			datosDelItinerario.add("\r\nPromocion / Atraccion Comprada;Tipo;Costo;Duracion\r\n\r\n");
 
 			for (Sugerencia sugerencia : sugerenciasDiarias) {
 				datosDelItinerario.add(sugerencia.getNombre() + ";" + sugerencia.getTipo().getDescripcion() + ";"
-						+ sugerencia.getPrecio() + " monedas." + ";" + sugerencia.getDuracion() + " hs.\n");
+						+ sugerencia.getPrecio() + " monedas." + ";" + sugerencia.getDuracion() + " hs.\r\n");
 			}
-			datosDelItinerario.add("\n\nTu saldo actual es:;" + usuario.getDineroDisponible() + " monedas.;Tu tiempo restante es de:;" + usuario.getTiempoDisponible() + " hs.");
 		}
 		return datosDelItinerario;
 	}

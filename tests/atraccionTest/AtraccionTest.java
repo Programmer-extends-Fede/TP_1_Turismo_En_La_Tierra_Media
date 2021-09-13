@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
-import atraccion.Atraccion;
+import sugerenciaPromocionAtraccion.Atraccion;
 import tipo.Tipo;
 
 public class AtraccionTest {

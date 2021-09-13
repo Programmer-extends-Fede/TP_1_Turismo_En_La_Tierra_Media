@@ -1,8 +1,6 @@
-package promocion;
+package sugerenciaPromocionAtraccion;
 
 import java.util.ArrayList;
-
-import atraccion.Atraccion;
 
 public class PromocionAbsoluta extends Promocion {
 
@@ -10,11 +8,11 @@ public class PromocionAbsoluta extends Promocion {
 
 	public PromocionAbsoluta(String nombre, ArrayList<Atraccion> atracciones, int precioDePaquete) {
 		super(nombre, atracciones);
-		this.precioDePaquete= precioDePaquete;
+		this.precioDePaquete = precioDePaquete;
 	}
-	
-	 @Override
-	 public int getPrecio() {
-		 return this.precioDePaquete;
-	 }
-}  
+
+	@Override
+	public int getPrecio() {
+		return this.precioDePaquete;
+	}
+}
