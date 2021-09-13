@@ -7,10 +7,10 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-import atraccion.Atraccion;
-import tierraMediaConsolaYEntradaSalida.TierraMedia;
+import entradaSalidaTierraMediaConsola.TierraMedia;
+import sugerenciaPromocionAtraccion.Atraccion;
 import tipo.Tipo;
-import usuarioEItinerario.Usuario;
+import usuarioItinerario.Usuario;
 
 public class TierraMediaTest {
 

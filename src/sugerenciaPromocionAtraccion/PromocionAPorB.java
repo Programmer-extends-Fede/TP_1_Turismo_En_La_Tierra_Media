@@ -1,9 +1,7 @@
-package promocion;
+package sugerenciaPromocionAtraccion;
 
 import java.util.ArrayList;
 import java.util.Collections;
-
-import atraccion.Atraccion;
 
 public class PromocionAPorB extends Promocion {
 
@@ -25,6 +23,5 @@ public class PromocionAPorB extends Promocion {
 			importeACobrar += atraccion.getPrecio();
 		}
 		return importeACobrar;
-	}	
+	}
 }
-

@@ -10,9 +10,9 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
-import atraccion.Atraccion;
-import promocion.Promocion;
-import promocion.PromocionPorcentual;
+import sugerenciaPromocionAtraccion.Atraccion;
+import sugerenciaPromocionAtraccion.Promocion;
+import sugerenciaPromocionAtraccion.PromocionPorcentual;
 import tipo.Tipo;
 
 public class PromocionPorcentualTest {

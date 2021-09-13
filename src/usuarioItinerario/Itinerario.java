@@ -1,8 +1,8 @@
-package usuarioEItinerario;
+package usuarioItinerario;
 
 import java.util.ArrayList;
 
-import sugerencia.Sugerencia;
+import sugerenciaPromocionAtraccion.Sugerencia;
 
 public class Itinerario {
 

@@ -13,13 +13,13 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
-import atraccion.Atraccion;
-import promocion.Promocion;
-import promocion.PromocionPorcentual;
-import tierraMediaConsolaYEntradaSalida.Consola;
-import tierraMediaConsolaYEntradaSalida.EntradaSalida;
+import entradaSalidaTierraMediaConsola.Consola;
+import entradaSalidaTierraMediaConsola.EntradaSalida;
+import sugerenciaPromocionAtraccion.Atraccion;
+import sugerenciaPromocionAtraccion.Promocion;
+import sugerenciaPromocionAtraccion.PromocionPorcentual;
 import tipo.Tipo;
-import usuarioEItinerario.Usuario;
+import usuarioItinerario.Usuario;
 
 public class ConsolaTest {
 

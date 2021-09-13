@@ -1,7 +1,7 @@
 package app;
 
-import tierraMediaConsolaYEntradaSalida.Consola;
-import tierraMediaConsolaYEntradaSalida.TierraMedia;
+import entradaSalidaTierraMediaConsola.Consola;
+import entradaSalidaTierraMediaConsola.TierraMedia;
 
 public class App {
 

@@ -8,12 +8,12 @@ import java.util.Arrays;
 
 import org.junit.Test;
 
-import atraccion.Atraccion;
 import ordenarSugerencias.OrdenarSugerencias;
-import promocion.Promocion;
-import promocion.PromocionAbsoluta;
-import promocion.PromocionPorcentual;
-import sugerencia.Sugerencia;
+import sugerenciaPromocionAtraccion.Atraccion;
+import sugerenciaPromocionAtraccion.Promocion;
+import sugerenciaPromocionAtraccion.PromocionAbsoluta;
+import sugerenciaPromocionAtraccion.PromocionPorcentual;
+import sugerenciaPromocionAtraccion.Sugerencia;
 import tipo.Tipo;
 
 public class OrdenarSugerenciasTest {

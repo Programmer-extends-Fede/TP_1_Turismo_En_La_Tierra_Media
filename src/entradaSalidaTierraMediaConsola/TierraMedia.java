@@ -1,17 +1,17 @@
-package tierraMediaConsolaYEntradaSalida;
+package entradaSalidaTierraMediaConsola;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import atraccion.Atraccion;
 import ordenarSugerencias.OrdenarSugerencias;
-import promocion.Promocion;
-import promocion.PromocionAPorB;
-import promocion.PromocionAbsoluta;
-import promocion.PromocionPorcentual;
-import sugerencia.Sugerencia;
+import sugerenciaPromocionAtraccion.Atraccion;
+import sugerenciaPromocionAtraccion.Promocion;
+import sugerenciaPromocionAtraccion.PromocionAPorB;
+import sugerenciaPromocionAtraccion.PromocionAbsoluta;
+import sugerenciaPromocionAtraccion.PromocionPorcentual;
+import sugerenciaPromocionAtraccion.Sugerencia;
 import tipo.Tipo;
-import usuarioEItinerario.Usuario;
+import usuarioItinerario.Usuario;
 
 public abstract class TierraMedia {
 
@@ -63,12 +63,12 @@ public abstract class TierraMedia {
 				ArrayList<String> nombreAtracciones = new ArrayList<String>(Arrays.asList(datosPromo[2].split(",")));
 				double descuento = Double.parseDouble(datosPromo[3]);
 				ArrayList<Atraccion> atraccionIncluidas = new ArrayList<Atraccion>();
-				
+
 				for (Atraccion atraccion : atracciones) {
 					if (nombreAtracciones.contains(atraccion.getNombre()))
 						atraccionIncluidas.add(atraccion);
 				}
-				
+
 				if (tipo.equals("Porcentual")) {
 					promociones.add(new PromocionPorcentual(nombre, atraccionIncluidas, descuento));
 				} else if (tipo.equals("Absoluta")) {

@@ -1,12 +1,12 @@
-package tierraMediaConsolaYEntradaSalida;
+package entradaSalidaTierraMediaConsola;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import atraccion.Atraccion;
-import promocion.Promocion;
-import sugerencia.Sugerencia;
-import usuarioEItinerario.Usuario;
+import sugerenciaPromocionAtraccion.Atraccion;
+import sugerenciaPromocionAtraccion.Promocion;
+import sugerenciaPromocionAtraccion.Sugerencia;
+import usuarioItinerario.Usuario;
 
 public class Consola {
 
@@ -43,7 +43,8 @@ public class Consola {
 				}
 
 				if (!usuario.obtenerDatosDelItinerario().isEmpty()) {
-					EntradaSalida.guardarEnArchivo(usuario.obtenerDatosDelItinerario(), "Itinerario de " + usuario.getNombre());
+					EntradaSalida.guardarEnArchivo(usuario.obtenerDatosDelItinerario(),
+							"Itinerario de " + usuario.getNombre());
 					System.out.println("\nEste es el detalle de tu itinerario".indent(6) + SUBRAYADO + "\n");
 					System.out.println(usuario.getItinerario());
 					System.out.println(

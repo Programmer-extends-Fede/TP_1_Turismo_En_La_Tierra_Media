@@ -1,10 +1,8 @@
-package promocion;
+package sugerenciaPromocionAtraccion;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
-import atraccion.Atraccion;
-import sugerencia.Sugerencia;
 import tipo.Tipo;
 
 public abstract class Promocion implements Sugerencia {
@@ -22,7 +20,7 @@ public abstract class Promocion implements Sugerencia {
 			this.nombre += "(" + atraccion.getNombre() + ")";
 		}
 	}
- 
+
 	public ArrayList<Atraccion> getAtracciones() {
 		return this.atracciones;
 	}
@@ -58,6 +56,7 @@ public abstract class Promocion implements Sugerencia {
 		}
 		return cupo;
 	}
+
 	@Override
 	public Tipo getTipo() {
 		return tipoDePromocion;
@@ -77,8 +76,8 @@ public abstract class Promocion implements Sugerencia {
 
 	@Override
 	public String toString() {
-		return getNombre() + ". Tipo " + tipoDePromocion.getDescripcion()
-				+ ". Su costo es de " + getPrecio() + " monedas. Su duracion de " + getDuracion() + " hs.\n";
+		return getNombre() + ". Tipo " + tipoDePromocion.getDescripcion() + ". Su costo es de " + getPrecio()
+				+ " monedas. Su duracion de " + getDuracion() + " hs.\n";
 	}
 
 	@Override

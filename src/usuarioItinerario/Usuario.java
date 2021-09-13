@@ -1,9 +1,9 @@
-package usuarioEItinerario;
+package usuarioItinerario;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
-import sugerencia.Sugerencia;
+import sugerenciaPromocionAtraccion.Sugerencia;
 import tipo.Tipo;
 
 public class Usuario {
@@ -50,10 +50,11 @@ public class Usuario {
 	public ArrayList<String> obtenerDatosDelItinerario() {
 		ArrayList<String> datosADevolver = itinerario.obtenerDetalleDeCompras();
 		if (!datosADevolver.isEmpty()) {
-			datosADevolver.add(0, ("Usuario: " + this.nombre + ";Saldo inicial: "
-					+ (this.dineroDisponible + itinerario.getCostoDelItinerario()) + " monedas;Tiempo inicial: "
-					+ (this.tiempoDisponible + itinerario.getDuracionDelItinerario()) + " hs.\r\n\r\n")
-							.toUpperCase());
+			datosADevolver.add(0,
+					("Usuario: " + this.nombre + ";Saldo inicial: "
+							+ (this.dineroDisponible + itinerario.getCostoDelItinerario()) + " monedas;Tiempo inicial: "
+							+ (this.tiempoDisponible + itinerario.getDuracionDelItinerario()) + " hs.\r\n\r\n")
+									.toUpperCase());
 			datosADevolver.add("\r\n\r\nTu saldo actual es:;" + this.dineroDisponible
 					+ " monedas.;Tu tiempo restante es de:;" + this.tiempoDisponible + " hs.");
 

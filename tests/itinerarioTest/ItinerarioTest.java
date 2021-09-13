@@ -9,11 +9,11 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
-import atraccion.Atraccion;
-import promocion.PromocionPorcentual;
-import sugerencia.Sugerencia;
+import sugerenciaPromocionAtraccion.Atraccion;
+import sugerenciaPromocionAtraccion.PromocionPorcentual;
+import sugerenciaPromocionAtraccion.Sugerencia;
 import tipo.Tipo;
-import usuarioEItinerario.Itinerario;
+import usuarioItinerario.Itinerario;
 
 public class ItinerarioTest {
 
