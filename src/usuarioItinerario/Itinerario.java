@@ -52,5 +52,4 @@ public class Itinerario {
 		return sugerenciasDiariasLimpio + ("\nCosto total: " + this.costoDelItinerario
 				+ " monedas.                 Duracion total: " + this.duracionDelItinerario + " hs.").indent(30);
 	}
-
 }

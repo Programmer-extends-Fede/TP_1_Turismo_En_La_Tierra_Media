@@ -20,7 +20,6 @@ public class EntradaSalida {
 			while ((linea = bufferDeLectura.readLine()) != null) {
 				misDatos.add(linea);
 			}
-
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
@@ -44,9 +43,9 @@ public class EntradaSalida {
 			for (String dato : datosAGuardar) {
 				salida.print(dato);
 			}
-
 		} catch (IOException e) {
 			e.printStackTrace();
+			System.exit(1);
 		} finally {
 			try {
 				if (salida != null) {

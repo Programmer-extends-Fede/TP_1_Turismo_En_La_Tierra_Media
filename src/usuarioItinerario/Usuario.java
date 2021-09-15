@@ -57,7 +57,6 @@ public class Usuario {
 									.toUpperCase());
 			datosADevolver.add("\r\n\r\nTu saldo actual es:;" + this.dineroDisponible
 					+ " monedas.;Tu tiempo restante es de:;" + this.tiempoDisponible + " hs.");
-
 		}
 		return datosADevolver;
 	}
